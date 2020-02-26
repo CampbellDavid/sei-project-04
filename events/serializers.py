@@ -36,6 +36,7 @@ class PopulatedReviewSerializer(ReviewSerializer):
 class PopulatedEventSerializer(EventSerializer):
     sport = SportSerializer()
     reviews = PopulatedReviewSerializer(many=True)
+    # group = PopulatedEventGroupSerializer(many=True)
 
 # Check if below are correct
 
