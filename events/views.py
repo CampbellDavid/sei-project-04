@@ -7,6 +7,8 @@ from .models import Event, Review, EventGroup
 from .serializers import EventSerializer, PopulatedEventSerializer, ReviewSerializer, EventGroupSerializer, PopulatedEventGroupSerializer
 
 
+# Event Views
+
 class EventListView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
@@ -54,6 +56,8 @@ class EventDetailView(APIView):
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
 
 
+# Review Views
+
 class ReviewListView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
@@ -83,7 +87,7 @@ class ReviewDetailView(APIView):
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
 
 
-# Check if below are correct
+# Event Group Views
 
 class EventGroupListView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )

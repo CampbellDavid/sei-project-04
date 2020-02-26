@@ -36,6 +36,7 @@ class PopulatedReviewSerializer(ReviewSerializer):
 class PopulatedEventSerializer(EventSerializer):
     sport = SportSerializer()
     reviews = PopulatedReviewSerializer(many=True)
+    owner = UserSerializer()
     # group = PopulatedEventGroupSerializer(many=True)
 
 # Check if below are correct
@@ -50,3 +51,4 @@ class EventGroupSerializer(serializers.ModelSerializer):
 class PopulatedEventGroupSerializer(EventGroupSerializer):
     members = UserSerializer(many=True)
     event = PopulatedEventSerializer()
+    owner = UserSerializer()

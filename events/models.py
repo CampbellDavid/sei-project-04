@@ -11,7 +11,7 @@ class Event(models.Model):
     title = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
     sport = models.ForeignKey(
-        Sport, related_name='events', null=True, on_delete=models.CASCADE)  # needs to be many to many?
+        Sport, related_name='events', null=True, on_delete=models.CASCADE)
     time_and_date = models.CharField(max_length=50)
     owner = models.ForeignKey(
         User, related_name='events', null=True, on_delete=models.CASCADE)
@@ -31,8 +31,6 @@ class Review(models.Model):
 
     def __str__(self):
         return f'Review {self.id} on {self.event}'
-
-# Check if works
 
 
 class EventGroup(models.Model):
