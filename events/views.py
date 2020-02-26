@@ -109,6 +109,26 @@ class EventGroupListView(APIView):
 class EventGroupDetailView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
+    def get(self, _request, pk):
+        try:
+            event_group = EventGroup.objects.get(pk=pk)
+            serialized_event_group = PopulatedEventGroupSerializer(event_group)
+            return Response(serialized_event_group.data)
+        except EventGroup.DoesNotExist:
+            return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
+
+    def put(self, request, pk):
+        try:
+            event_group = EventGroup.objects.get(pk=pk)
+            updated_event_group = EventGroupSerializer(
+                event_group, data=request.data)
+            if updated_event_group.is_valid():
+                updated_event_group.save()
+                return Response(updated_event_group.data, status=HTTP_202_ACCEPTED)
+            return Response(updated_event_group.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
+        except EventGroup.DoesNotExist:
+            return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
+
     def delete(self, request, **kwargs):
         try:
             event_group = EventGroup.objects.get(pk=kwargs['event_group_pk'])
