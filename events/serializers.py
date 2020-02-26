@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from sports.models import Sport
-from .models import Event, Review, Group
+from .models import Event, Review, EventGroup
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -40,12 +40,12 @@ class PopulatedEventSerializer(EventSerializer):
 # Check if below are correct
 
 
-class GroupSerializer(serializers.ModelSerializer):
+class EventGroupSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Group
+        model = EventGroup
         fields = '__all__'
 
 
-class PopulatedGroupSerializer(GroupSerializer):
+class PopulatedEventGroupSerializer(EventGroupSerializer):
     owner = UserSerializer()
     members = UserSerializer()

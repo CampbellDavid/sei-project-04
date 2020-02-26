@@ -32,15 +32,17 @@ class Review(models.Model):
     def __str__(self):
         return f'Review {self.id} on {self.event}'
 
+# Check if works
 
-class Group(models.Model):
+
+class EventGroup(models.Model):
+    name = models.CharField(max_length=300)
     members = models.ManyToManyField(
-        'jwt_auth.User', related_name='groups', blank=True)  # check if correct
-
+        User, related_name='event_groups', blank=True)
     event = models.ForeignKey(
-        Event, related_name='reviews', null=True, on_delete=models.CASCADE)
-    owner = models.ForeignKey(
-        User, related_name='reviews', null=True, on_delete=models.CASCADE)
+        Event, related_name='event_groups', null=True, on_delete=models.CASCADE)
+    # owner = models.ForeignKey(
+    #     User, related_name='event_groups', null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'Group for {self.event} with id: {self.id}'
