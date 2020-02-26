@@ -39,8 +39,6 @@ class PopulatedEventSerializer(EventSerializer):
     owner = UserSerializer()
     # group = PopulatedEventGroupSerializer(many=True)
 
-# Check if below are correct
-
 
 class EventGroupSerializer(serializers.ModelSerializer):
     class Meta:
