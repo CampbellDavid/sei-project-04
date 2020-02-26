@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/events/', include('events.urls')),
     path('api/sports/', include('sports.urls')),
-    path('', include('jwt_auth.urls'))
+    path('api/', include('jwt_auth.urls'))
 ]
