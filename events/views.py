@@ -3,8 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_201_CREATED, HTTP_422_UNPROCESSABLE_ENTITY, HTTP_204_NO_CONTENT, HTTP_202_ACCEPTED, HTTP_401_UNAUTHORIZED
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from .models import Event, Review
-from .serializers import EventSerializer, PopulatedEventSerializer, ReviewSerializer
+from .models import Event, Review, Group
+from .serializers import EventSerializer, PopulatedEventSerializer, ReviewSerializer, GroupSerializer
 
 
 class EventListView(APIView):
@@ -80,4 +80,35 @@ class ReviewDetailView(APIView):
             review.delete()
             return Response(status=HTTP_204_NO_CONTENT)
         except Review.DoesNotExist:
+            return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
+
+
+# Check if below are correct
+
+class GroupListView(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+
+    def post(self, request, pk):
+        request.data['event'] = pk
+        request.data['owner'] = request.user.id
+        group = GroupSerializer(data=request.data)
+        if group.is_valid():
+            group.save()
+            event = Event.objects.get(pk=pk)
+            serialized_event = PopulatedEventSerializer(event)
+            return Response(serialized_event.data, status=HTTP_201_CREATED)
+        return Response(group.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
+
+
+class GroupDetailView(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+
+    def delete(self, request, **kwargs):
+        try:
+            group = Group.objects.get(pk=kwargs['group_pk'])
+            if group.owner.id != request.user.id:
+                return Response(status=HTTP_401_UNAUTHORIZED)
+            group.delete()
+            return Response(status=HTTP_204_NO_CONTENT)
+        except Group.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)

@@ -1,6 +1,7 @@
 #pylint: disable=no-member
 
 from django.db import models
+from sports.models import Sport
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.contrib.auth import get_user_model
 User = get_user_model()
@@ -9,11 +10,11 @@ User = get_user_model()
 class Event(models.Model):
     title = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
-    sport = models.CharField(max_length=50)  # One to many field
-    # user = models.CharField(max_length=50)  # needs to reflect user model
-    review = models.CharField(max_length=50)
+    sport = models.ForeignKey(
+        Sport, related_name='events', null=True, on_delete=models.CASCADE)  # needs to be many to many?
     time_and_date = models.CharField(max_length=50)
-    # needs to reflect t & d model
+    owner = models.ForeignKey(
+        User, related_name='events', null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -30,3 +31,16 @@ class Review(models.Model):
 
     def __str__(self):
         return f'Review {self.id} on {self.event}'
+
+
+class Group(models.Model):
+    members = models.ManyToManyField(
+        'jwt_auth.User', related_name='groups', blank=True)  # check if correct
+
+    event = models.ForeignKey(
+        Event, related_name='reviews', null=True, on_delete=models.CASCADE)
+    owner = models.ForeignKey(
+        User, related_name='reviews', null=True, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Group for {self.event} with id: {self.id}'
