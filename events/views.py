@@ -19,6 +19,7 @@ class EventListView(APIView):
 
     def post(self, request):
         event = EventSerializer(data=request.data)
+        request.data['owner'] = request.user.id
         if event.is_valid():
             event.save()
             return Response(event.data, status=HTTP_201_CREATED)

@@ -1,5 +1,9 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../lib/auth'
+import EventCard from './EventCard'
+import { Link } from 'react-router-dom'
+
 
 class EventIndex extends React.Component {
   state = {
@@ -25,9 +29,18 @@ class EventIndex extends React.Component {
         <h1>Event index</h1>
         {events.map(event => {
           return (
-            <h1 key={event.id}>{event.title}</h1>
+            <EventCard key={event.id} {...event} />
           )
         })}
+
+        <div>
+          {Auth.isAuthenticated() ?
+            <Link to="/events/create">
+              <button type="button" className="button">Create Event</button>
+            </Link>
+            : null}
+        </div>
+
       </section>
     )
   }

@@ -22,9 +22,9 @@ class SportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sport
-        fields = ('id', 'name', 'image', 'events')
+        fields = ('id', 'name', 'image', 'events', 'owner')
 
 
 class PopulatedSportSerializer(SportSerializer):
-    events = EventSerializer(many=True)
     owner = UserSerializer()
+    events = EventSerializer(many=True)

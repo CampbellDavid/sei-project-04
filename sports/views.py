@@ -18,6 +18,7 @@ class SportListView(APIView):
 
     def post(self, request):
         sport = SportSerializer(data=request.data)
+        request.data['owner'] = request.user.id
         if sport.is_valid():
             sport.save()
             return Response(sport.data, status=HTTP_201_CREATED)
