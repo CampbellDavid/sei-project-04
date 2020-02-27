@@ -1,7 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
-export default class Register extends React.Component {
+class Register extends React.Component {
+
   state = {
     data: null,
     emailValid: false,
@@ -114,5 +115,7 @@ export default class Register extends React.Component {
     )
   }
 }
+
+export default Register
 
 //TODO: Import form errors
