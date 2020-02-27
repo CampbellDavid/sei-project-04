@@ -46,7 +46,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
             onChange={handleChange}
             placeholder="Sport"
             name="sport"
-          // value={data.sport} 
+          // value={data.sport} - needs to be drop down list of existing events
           />
         </div>
 

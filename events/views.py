@@ -126,6 +126,7 @@ class EventGroupDetailView(APIView):
     def put(self, request, pk):
         try:
             event_group = EventGroup.objects.get(pk=pk)
+            request.data['owner'] = request.user.id
             updated_event_group = EventGroupSerializer(
                 event_group, data=request.data)
             if updated_event_group.is_valid():

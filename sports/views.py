@@ -39,6 +39,7 @@ class SportDetailView(APIView):
     def put(self, request, pk):
         try:
             sport = Sport.objects.get(pk=pk)
+            request.data['owner'] = request.user.id
             updated_sport = SportSerializer(sport, data=request.data)
             if updated_sport.is_valid():
                 updated_sport.save()
