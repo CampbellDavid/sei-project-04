@@ -1,9 +1,24 @@
 import React from 'react'
-import Index from './components/Index'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+import Home from './components/common/Home'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+
 import './App.css'
 function App() {
   return (
-    <Index />
+
+
+    <main>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route path='/login' component={Login} />
+          <Route path='/register' component={Register} />
+        </Switch>
+      </BrowserRouter>
+    </main>
   )
 }
 
