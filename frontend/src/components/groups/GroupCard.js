@@ -9,8 +9,8 @@ class GroupCard extends React.Component {
     group: {
       group_name: '',
       attendees: [],
-      event: '',
-      owner: '',
+      event: {},
+      owner: {},
       id: ''
     },
     errors: {}
@@ -20,12 +20,15 @@ class GroupCard extends React.Component {
 
   async componentDidMount() {
     const groupId = this.props.id
-    const eventId = this.props.match.params.id // not functional
+    const eventId = this.props.event.id
+    console.log(groupId)
+    console.log(eventId)
     try {
-      const response = await axios.get(`/api/${eventId}/event_groups/${groupId}`)
+      const response = await axios.get(`/api/events/${eventId}/event_groups/${groupId}/`)
+      console.log(response)
       this.setState({ group: response.data })
     } catch (error) {
-      this.setState({ errors: error.res.data.errors })
+      this.setState({ errors: error.response.data.errors })
     }
   }
 
@@ -57,21 +60,24 @@ class GroupCard extends React.Component {
           <div className="card-info">
             <h2>{group.group_name}</h2>
           </div>
-          {/* <h3>Leader: {group.attendees[0]}</h3> */}
-          {/* {group.attendees !== null ?
+          <h3>Leader: {group.attendees[0]}</h3>
+          {group.attendees !== null ?
             <h3>Attendees: {group.attendees.map((attendee, i) => {
               return <li key={i}><Link to={`/user/${attendee.id}`}>{attendee.username}</Link></li>
             })}</h3>
-            : null} */}
+            : null}
 
-          {Auth.isAuthenticated() ?
+
+
+          {/* {Auth.isAuthenticated() ?
             <div className="buttons">
               {group.attendees.some(attendee => attendee.id === userId) ?
                 <button type="button" className="button" onClick={this.handleClick}>Leave</button> :
                 <button type="button" className="button" onClick={this.handleClick}>Join</button>}
               {this.isOwner() && <button type="button" className="button">Change Group Info</button>}
             </div>
-            : null}
+            : null} */}
+
         </div>
 
       </>
