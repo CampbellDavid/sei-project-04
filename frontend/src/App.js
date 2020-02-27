@@ -15,6 +15,8 @@ import EventCreate from './components/events/EventCreate'
 import EventAmend from './components/events/EventAmend'
 import EventDisplay from './components/events/EventDisplay'
 
+import GroupMake from './components/groups/GroupMake'
+
 import SportIndex from './components/sports/SportIndex'
 import SportCreate from './components/sports/SportCreate'
 import SportAmend from './components/sports/SportAmend'
@@ -23,6 +25,7 @@ import SportDisplay from './components/sports/SportDisplay'
 import ErrorPage from './components/common/ErrorPage'
 
 import './App.css'
+
 function App() {
   return (
     <main>
@@ -31,6 +34,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
 
+          <SecureRoute path='/events/:id/groups/create' component={GroupMake} />
           <SecureRoute path='/events/:id/amend' component={EventAmend} />
           <SecureRoute path='/events/create' component={EventCreate} />
           <Route path='/events/:id' component={EventDisplay} />

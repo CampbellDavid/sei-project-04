@@ -35,7 +35,7 @@ class Review(models.Model):
 
 
 class EventGroup(models.Model):
-    name = models.CharField(max_length=300)
+    group_name = models.CharField(max_length=300)
     members = models.ManyToManyField(
         'jwt_auth.User', related_name='event_groups', blank=True)
     event = models.ForeignKey(

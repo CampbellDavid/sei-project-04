@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
+import GroupCard from '../groups/GroupCard'
 
 class EventDisplay extends React.Component {
 
@@ -16,12 +17,12 @@ class EventDisplay extends React.Component {
       const eventId = this.props.match.params.id
       await axios.all([
         axios.get(`/api/events/${eventId}`),
-        // axios.get(`/api/events/${eventId}/groups`)
+        axios.get(`/api/events/${eventId}/event_groups`)
       ])
-        .then(axios.spread((eventRequest) => {
+        .then(axios.spread((eventRequest, groupsRequest) => {
           this.setState({
             event: eventRequest.data,
-            // groups: groupsRequest.data
+            groups: groupsRequest.data
           })
         }))
     } catch (error) {
@@ -52,6 +53,11 @@ class EventDisplay extends React.Component {
       <>
         <div className="event-show">
           <h1>{this.state.event.title}</h1>
+        </div>
+
+        <div>
+          <h3>Groups</h3>
+          {this.state.groups.map(group => <GroupCard key={group.id} {...group} />)}
         </div>
 
         {Auth.isAuthenticated() ?
