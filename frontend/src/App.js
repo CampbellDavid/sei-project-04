@@ -2,9 +2,13 @@ import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import NavBar from './components/common/NavBar'
+import SecureRoute from './components/common/SecureRoute'
+
 import Home from './components/common/Home'
 import Login from './components/auth/Login'
-import SecureRoute from './components/common/SecureRoute'
+import UserView from './components/user/UserView'
+import UserAmend from './components/user/UserAmend'
+
 import Register from './components/auth/Register'
 import EventIndex from './components/events/EventIndex'
 import EventCreate from './components/events/EventCreate'
@@ -39,6 +43,9 @@ function App() {
 
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
+          <SecureRoute path='/user/:id/amend' component={UserAmend} />
+          <Route path='/user/:id' component={UserView} />
+
           <Route path='/*' component={ErrorPage} />
         </Switch>
       </BrowserRouter>

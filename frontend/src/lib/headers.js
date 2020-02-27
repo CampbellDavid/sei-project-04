@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie'
-import { Auth } from './auth'
+import Auth from './auth'
 const csrftoken = Cookies.get('csrftoken')
 
 export const headers = {
@@ -7,6 +7,6 @@ export const headers = {
     'X-CSRF-TOKEN': csrftoken
   },
   headers: {
-    Authorization: `Bearer ${getToken()}`
+    Authorization: `Bearer ${Auth.getToken()}`
   }
 }

@@ -47,7 +47,7 @@ class LoginView(APIView):
             raise PermissionDenied({'message': 'Invalid Credentials'})
 
 
-class Profile(APIView):
+class UserView(APIView):
     permission_classes = (IsAuthenticatedOrReadOnly, )
 
     def get(self, _request, pk):
