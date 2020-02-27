@@ -103,6 +103,7 @@ class EventGroupListView(APIView):
     def post(self, request, pk):
         request.data['event'] = pk
         request.data['owner'] = request.user.id
+        request.data['attendees[0]'] = request.user.id  # check for function
         event_group = EventGroupSerializer(data=request.data)
         if event_group.is_valid():
             event_group.save()

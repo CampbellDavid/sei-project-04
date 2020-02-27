@@ -53,16 +53,16 @@ class EventGroupSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# class PopulatedEventGroupSerializer(EventGroupSerializer):
-#     attendees = UserSerializer(many=True)
-#     event = PopulatedEventSerializer()
-#     owner = UserSerializer()
-
 class PopulatedEventGroupSerializer(EventGroupSerializer):
+    attendees = UserSerializer(many=True)
     event = PopulatedEventSerializer()
     owner = UserSerializer()
-    attendees = serializers.SerializerMethodField()
 
-    def get_attendees(self, obj):
-        # check to see if correct
-        return [User.username for Users in obj.attendees.all()]
+# class PopulatedEventGroupSerializer(EventGroupSerializer):
+#     event = PopulatedEventSerializer()
+#     owner = UserSerializer()
+#     attendees = serializers.SerializerMethodField()
+
+#     def get_attendees(self, obj):
+#         # check to see if correct
+#         return [User.data for Users in obj.attendees.all()]

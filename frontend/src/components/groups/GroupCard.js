@@ -37,7 +37,7 @@ class GroupCard extends React.Component {
     const userId = Auth.getPayload().sub
     const attendeesArray = this.state.group.attendees
     try {
-      const response = await axios.get(`/api/user/${userId}/`)
+      const response = await axios.get(`/api/user/${userId}`)
       const currentUser = attendeesArray.filter(attendee => attendee.id === userId)[0]
       const index = attendeesArray.indexOf(currentUser)
       attendeesArray.some(attendee => attendee.id === userId) ?
@@ -67,7 +67,7 @@ class GroupCard extends React.Component {
             })}</h3>
             : null}
 
-
+          <button onClick={this.handleClick} type="button" className="button">Change Group Info</button>
 
           {/* {Auth.isAuthenticated() ?
             <div className="buttons">
