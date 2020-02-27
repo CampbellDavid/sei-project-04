@@ -40,6 +40,7 @@ class EventDetailView(APIView):
     def put(self, request, pk):
         try:
             event = Event.objects.get(pk=pk)
+            request.data['owner'] = request.user.id
             updated_event = EventSerializer(event, data=request.data)
             if updated_event.is_valid():
                 updated_event.save()

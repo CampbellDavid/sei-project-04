@@ -17,6 +17,13 @@ class SportSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# Will only display sport name where needed
+# class SportSerializerForEvent(serializers.ModelSerializer):
+#     class Meta:
+#         model = Sport
+#         fields = ['name']
+
+
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
@@ -34,7 +41,7 @@ class PopulatedReviewSerializer(ReviewSerializer):
 
 
 class PopulatedEventSerializer(EventSerializer):
-    sport = SportSerializer()
+    # sport = SportSerializer()
     reviews = PopulatedReviewSerializer(many=True)
     owner = UserSerializer()
     # group = PopulatedEventGroupSerializer(many=True)

@@ -33,6 +33,18 @@ class EventDisplay extends React.Component {
     return Auth.getPayload().sub === this.state.event.owner.id
   }
 
+  deleteEvent = async () => {
+    const eventId = this.props.match.params.id
+    try {
+      await axios.delete(`/api/events/${eventId}/`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      this.props.history.push('/events')
+    } catch (err) {
+      this.props.history.push('/unknown-path')
+    }
+  }
+
   render() {
     if (!this.state.event) return null
     const eventId = this.props.match.params.id
@@ -55,7 +67,7 @@ class EventDisplay extends React.Component {
                     className="button"
                     type="button">Amend</button>
                 </Link>
-                <button className="button" onClick={this.handleDelete}>Delete</button>
+                <button className="button" onClick={this.deleteEvent}>Delete</button>
               </div>}
 
           </>

@@ -26,8 +26,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
         <div className="form-div">
           <input
             onChange={handleChange}
-            type="datetime"
-            placeholder="Time and Date"
+            type="datetime-local"
             name="time_and_date"
             value={data.time_and_date}
             required />
@@ -47,7 +46,8 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
             onChange={handleChange}
             placeholder="Sport"
             name="sport"
-            value={data.sport} />
+          // value={data.sport} 
+          />
         </div>
 
         <div className="button-div">

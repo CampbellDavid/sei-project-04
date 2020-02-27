@@ -23,7 +23,7 @@ class EventIndex extends React.Component {
   render() {
     if (!this.state.events) return null
     const events = this.state.events
-    console.log(events)
+    console.log('events:', events)
     return (
       <section>
         <h1>Event index</h1>

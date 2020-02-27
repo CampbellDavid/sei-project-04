@@ -12,7 +12,7 @@ class Event(models.Model):
     location = models.CharField(max_length=50)
     price = models.PositiveIntegerField()
     sport = models.ForeignKey(
-        Sport, related_name='events', null=True, on_delete=models.CASCADE)
+        Sport, related_name='events', null=True, blank=True, on_delete=models.CASCADE)
     time_and_date = models.DateTimeField(auto_now=False, auto_now_add=False)
     owner = models.ForeignKey(
         User, related_name='events', null=True, on_delete=models.CASCADE)

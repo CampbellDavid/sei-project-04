@@ -18,7 +18,7 @@ class EventAmend extends React.Component {
   async componentDidMount() {
     const eventId = this.props.match.params.id
     try {
-      const response = await axios.get(`/api/events/${eventId}`)
+      const response = await axios.get(`/api/events/${eventId}/`)
       this.setState({ data: response.data })
     } catch (error) {
       console.log(error)
@@ -27,24 +27,28 @@ class EventAmend extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const data = { ...this.state.data, [name]: value }
+    console.log(data)
     this.setState({ data })
   }
 
   handleSubmit = async e => {
     e.preventDefault()
     const eventId = this.props.match.params.id
+    console.log(eventId)
     try {
-      const { data } = await axios.put(`/api/events/${eventId}`, this.state.data, {
+      const { data } = await axios.put(`/api/events/${eventId}/`, this.state.data, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
+      console.log({ data })
       this.props.history.push(`/events/${data.id}`)
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data)
     }
   }
 
 
   render() {
+    console.log(this.state.data)
     return (
       <EventForm
         data={this.state.data}
