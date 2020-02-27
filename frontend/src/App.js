@@ -10,6 +10,12 @@ import EventIndex from './components/events/EventIndex'
 import EventCreate from './components/events/EventCreate'
 import EventAmend from './components/events/EventAmend'
 import EventDisplay from './components/events/EventDisplay'
+
+import SportIndex from './components/sports/SportIndex'
+import SportCreate from './components/sports/SportCreate'
+import SportAmend from './components/sports/SportAmend'
+import SportDisplay from './components/sports/SportDisplay'
+
 import ErrorPage from './components/common/ErrorPage'
 
 import './App.css'
@@ -20,10 +26,17 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path='/' component={Home} />
+
           <SecureRoute path='/events/:id/amend' component={EventAmend} />
           <SecureRoute path='/events/create' component={EventCreate} />
           <Route path='/events/:id' component={EventDisplay} />
           <Route path='/events' component={EventIndex} />
+
+          <SecureRoute path='/sports/:id/amend' component={SportAmend} />
+          <SecureRoute path='/sports/create' component={SportCreate} />
+          <Route path='/sports/:id' component={SportDisplay} />
+          <Route path='/sports' component={SportIndex} />
+
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
           <Route path='/*' component={ErrorPage} />
