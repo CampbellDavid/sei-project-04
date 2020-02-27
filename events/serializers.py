@@ -54,6 +54,6 @@ class EventGroupSerializer(serializers.ModelSerializer):
 
 
 class PopulatedEventGroupSerializer(EventGroupSerializer):
-    members = UserSerializer(many=True)
+    attendees = UserSerializer(many=True)
     event = PopulatedEventSerializer()
     owner = UserSerializer()

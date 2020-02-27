@@ -8,13 +8,15 @@ class GroupCard extends React.Component {
   state = {
     group: {
       group_name: '',
-      users: [],
+      attendees: [],
+      event: '',
+      owner: '',
       id: ''
     },
     errors: {}
   }
 
-  isOwner = () => Auth.getPayload().sub === this.state.group.id // check if correct
+  isOwner = () => Auth.getPayload().sub === this.state.owner.id
 
   async componentDidMount() {
     const groupId = this.props.id
@@ -30,15 +32,15 @@ class GroupCard extends React.Component {
   handleClick = async e => {
     e.preventDefault()
     const userId = Auth.getPayload().sub
-    const usersArray = this.state.group.users
+    const attendeesArray = this.state.group.attendees
     try {
       const response = await axios.get(`/api/user/${userId}/`)
-      const currentUser = usersArray.filter(user => user.id === userId)[0]
-      const index = usersArray.indexOf(currentUser)
-      usersArray.some(user => user.id === userId) ?
-        usersArray.splice(index, 1) :
-        usersArray.push(response.data)
-      this.setState({ users: usersArray })
+      const currentUser = attendeesArray.filter(attendee => attendee.id === userId)[0]
+      const index = attendeesArray.indexOf(currentUser)
+      attendeesArray.some(attendee => attendee.id === userId) ?
+        attendeesArray.splice(index, 1) :
+        attendeesArray.push(response.data)
+      this.setState({ attendees: attendeesArray })
     } catch (err) {
       console.log(err)
     }
@@ -55,16 +57,16 @@ class GroupCard extends React.Component {
           <div className="card-info">
             <h2>{group.group_name}</h2>
           </div>
-          {/* <h3>Leader: {group.users[0]}</h3> */}
-          {/* {group.users !== null ?
-            <h3>Attendees: {group.users.map((user, i) => {
-              return <li key={i}><Link to={`/user/${user.id}`}>{user.username}</Link></li>
+          {/* <h3>Leader: {group.attendees[0]}</h3> */}
+          {/* {group.attendees !== null ?
+            <h3>Attendees: {group.attendees.map((attendee, i) => {
+              return <li key={i}><Link to={`/user/${attendee.id}`}>{attendee.username}</Link></li>
             })}</h3>
             : null} */}
 
           {Auth.isAuthenticated() ?
             <div className="buttons">
-              {group.users.some(user => user.id === userId) ?
+              {group.attendees.some(attendee => attendee.id === userId) ?
                 <button type="button" className="button" onClick={this.handleClick}>Leave</button> :
                 <button type="button" className="button" onClick={this.handleClick}>Join</button>}
               {this.isOwner() && <button type="button" className="button">Change Group Info</button>}

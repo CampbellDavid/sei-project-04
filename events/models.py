@@ -36,7 +36,7 @@ class Review(models.Model):
 
 class EventGroup(models.Model):
     group_name = models.CharField(max_length=300)
-    members = models.ManyToManyField(
+    attendees = models.ManyToManyField(
         'jwt_auth.User', related_name='event_groups', blank=True)
     event = models.ForeignKey(
         Event, related_name='event_groups', null=True, on_delete=models.CASCADE)
