@@ -2,7 +2,8 @@ from datetime import datetime, timedelta
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
-from rest_framework.status import HTTP_422_UNPROCESSABLE_ENTITY
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.status import HTTP_422_UNPROCESSABLE_ENTITY, HTTP_202_ACCEPTED, HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT
 from django.contrib.auth import get_user_model
 from django.conf import settings
 import jwt
@@ -44,3 +45,34 @@ class LoginView(APIView):
         except User.DoesNotExist:
 
             raise PermissionDenied({'message': 'Invalid Credentials'})
+
+
+class Profile(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+
+    def get(self, _request, pk):
+        try:
+            user = User.objects.get(pk=pk)
+            serialized_user = UserSerializer(user)
+            return Response(serialized_user.data)
+        except User.DoesNotExist:
+            return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
+
+    def put(self, request, pk):
+        try:
+            user = User.objects.get(pk=pk)
+            updated_user = UserSerializer(user, data=request.data)
+            if updated_user.is_valid():
+                updated_user.save()
+                return Response(updated_user.data, status=HTTP_202_ACCEPTED)
+            return Response(updated_user.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
+        except User.DoesNotExist:
+            return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
+
+    def delete(self, _request, pk):
+        try:
+            user = User.objects.get(pk=pk)
+            user.delete()
+            return Response(status=HTTP_204_NO_CONTENT)
+        except User.DoesNotExist:
+            return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
