@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'events',
     'sports',
-    'jwt_auth'
+    'jwt_auth',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -136,3 +138,5 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'jwt_auth.User'
+
+CORS_ORIGIN_ALLOW_ALL = True
