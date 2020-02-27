@@ -65,4 +65,4 @@ class PopulatedEventGroupSerializer(EventGroupSerializer):
 
     def get_attendees(self, obj):
         # check to see if correct
-        return [User.data for Users in obj.attendees.all()]
+        return [User.username for Users in obj.attendees.all()]
