@@ -16,7 +16,7 @@ class GroupCard extends React.Component {
     errors: {}
   }
 
-  isOwner = () => Auth.getPayload().sub === this.state.owner.id
+  isOwner = () => Auth.getPayload().sub === this.state.group.owner.id
 
   async componentDidMount() {
     const groupId = this.props.id
@@ -76,7 +76,8 @@ class GroupCard extends React.Component {
   render() {
     const userId = Auth.getPayload().sub
     const { group } = this.state
-
+    const lead = group.attendees[0]
+    if (lead) { console.log('leader:', lead.id) }
 
     return (
       <>
@@ -84,7 +85,7 @@ class GroupCard extends React.Component {
           <div className="card-info">
             <h2>{group.group_name}</h2>
           </div>
-          {/* <h3>Leader: {group.attendees[0].username}</h3> */}
+          {lead && <h3>Leader: {lead.username}</h3>}
           {group.attendees !== null ?
             <h3>Attendees: {group.attendees.map((attendee, i) => {
               return <li key={i}><Link to={`/user/${attendee.id}`}>{attendee.username}</Link></li>
@@ -95,7 +96,7 @@ class GroupCard extends React.Component {
           <button onClick={this.handleSubmit} type="button" className="button">Confirm</button>
 
 
-          {/* {group.attendees !== null ?
+          {group.attendees !== null ?
             (Auth.isAuthenticated() ?
               <div className="buttons">
                 {group.attendees.some(attendee => attendee.id === userId) ?
@@ -104,7 +105,7 @@ class GroupCard extends React.Component {
                 {this.isOwner() && <button type="button" className="button">Change Group Info</button>}
               </div>
               : null)
-            : null} */}
+            : null}
 
 
 

@@ -50,7 +50,7 @@ class EventDisplay extends React.Component {
     if (!this.state.event) return null
     const eventId = this.props.match.params.id
     const filteredGroups = this.state.groups.filter(group => group.event.id === this.state.event.id)
-    console.log(filteredGroups)
+
     return (
       <>
         <div className="event-show">
