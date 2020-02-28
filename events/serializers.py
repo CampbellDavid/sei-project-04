@@ -53,10 +53,17 @@ class EventGroupSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class AttendeesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username')
+
+
 class PopulatedEventGroupSerializer(EventGroupSerializer):
-    attendees = UserSerializer(many=True)
+    attendees = AttendeesSerializer(many=True)
     event = PopulatedEventSerializer()
     owner = UserSerializer()
+
 
 # class PopulatedEventGroupSerializer(EventGroupSerializer):
 #     event = PopulatedEventSerializer()

@@ -34,18 +34,41 @@ class GroupCard extends React.Component {
 
   handleClick = async e => {
     e.preventDefault()
+    const groupId = this.props.id
+    const eventId = this.props.event.id
     const userId = Auth.getPayload().sub
+
     const attendeesArray = this.state.group.attendees
     try {
-      const response = await axios.get(`/api/user/${userId}`)
+      const user = await axios.get(`/api/user/${userId}`)
+      console.log(user)
       const currentUser = attendeesArray.filter(attendee => attendee.id === userId)[0]
       const index = attendeesArray.indexOf(currentUser)
       attendeesArray.some(attendee => attendee.id === userId) ?
         attendeesArray.splice(index, 1) :
-        attendeesArray.push(response.data)
+        console.log('dataaaa', user.data.id)
+      attendeesArray.push(user.data.id)
       this.setState({ attendees: attendeesArray })
+      console.log(this.state)
+
     } catch (err) {
-      console.log(err)
+      console.log(err.response.data)
+    }
+  }
+
+  handleSubmit = async e => {
+    e.preventDefault()
+    const groupId = this.props.id
+    const eventId = this.props.event.id
+    // const userId = Auth.getPayload().sub
+    console.log(this.state)
+    try {
+
+      await axios.put(`/api/events/${eventId}/event_groups/${groupId}/`, this.state.group, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+    } catch (err) {
+      console.log(err.response.data)
     }
   }
 
@@ -54,29 +77,36 @@ class GroupCard extends React.Component {
     const userId = Auth.getPayload().sub
     const { group } = this.state
 
+
     return (
       <>
         <div className="card">
           <div className="card-info">
             <h2>{group.group_name}</h2>
           </div>
-          <h3>Leader: {group.attendees[0]}</h3>
+          {/* <h3>Leader: {group.attendees[0].username}</h3> */}
           {group.attendees !== null ?
             <h3>Attendees: {group.attendees.map((attendee, i) => {
               return <li key={i}><Link to={`/user/${attendee.id}`}>{attendee.username}</Link></li>
             })}</h3>
             : null}
 
-          <button onClick={this.handleClick} type="button" className="button">Change Group Info</button>
+          <button onClick={this.handleClick} type="button" className="button">Join</button>
+          <button onClick={this.handleSubmit} type="button" className="button">Confirm</button>
 
-          {/* {Auth.isAuthenticated() ?
-            <div className="buttons">
-              {group.attendees.some(attendee => attendee.id === userId) ?
-                <button type="button" className="button" onClick={this.handleClick}>Leave</button> :
-                <button type="button" className="button" onClick={this.handleClick}>Join</button>}
-              {this.isOwner() && <button type="button" className="button">Change Group Info</button>}
-            </div>
+
+          {/* {group.attendees !== null ?
+            (Auth.isAuthenticated() ?
+              <div className="buttons">
+                {group.attendees.some(attendee => attendee.id === userId) ?
+                  <button type="button" className="button" onClick={this.handleClick}>Leave</button> :
+                  <button type="button" className="button" onClick={this.handleClick}>Join</button>}
+                {this.isOwner() && <button type="button" className="button">Change Group Info</button>}
+              </div>
+              : null)
             : null} */}
+
+
 
         </div>
 

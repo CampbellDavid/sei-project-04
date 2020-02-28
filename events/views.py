@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.status import HTTP_404_NOT_FOUND, HTTP_201_CREATED, HTTP_422_UNPROCESSABLE_ENTITY, HTTP_204_NO_CONTENT, HTTP_202_ACCEPTED, HTTP_401_UNAUTHORIZED
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .models import Event, Review, EventGroup
-from .serializers import EventSerializer, PopulatedEventSerializer, ReviewSerializer, EventGroupSerializer, PopulatedEventGroupSerializer
+from .serializers import EventSerializer, PopulatedEventSerializer, ReviewSerializer, EventGroupSerializer, PopulatedEventGroupSerializer, AttendeesSerializer
 
 
 # Event Views
@@ -124,10 +124,13 @@ class EventGroupDetailView(APIView):
         except EventGroup.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
 
-    def put(self, request, **kwargs):
+    def put(self, request, pk, **kwargs):
         try:
             event_group = EventGroup.objects.get(pk=kwargs['event_group_pk'])
+
             request.data['owner'] = request.user.id
+            request.data['event'] = pk
+
             updated_event_group = EventGroupSerializer(
                 event_group, data=request.data)
             if updated_event_group.is_valid():
