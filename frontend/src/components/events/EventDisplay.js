@@ -49,6 +49,8 @@ class EventDisplay extends React.Component {
   render() {
     if (!this.state.event) return null
     const eventId = this.props.match.params.id
+    const filteredGroups = this.state.groups.filter(group => group.event.id === this.state.event.id)
+    console.log(filteredGroups)
     return (
       <>
         <div className="event-show">
@@ -57,7 +59,10 @@ class EventDisplay extends React.Component {
 
         <div>
           <h3>Groups</h3>
-          {this.state.groups.map(group => <GroupCard key={group.id} {...group} />)}
+
+
+
+          {filteredGroups.map(group => <GroupCard key={group.id} {...group} />)}
         </div>
 
         {Auth.isAuthenticated() ?
@@ -73,7 +78,7 @@ class EventDisplay extends React.Component {
                     className="button"
                     type="button">Amend</button>
                 </Link>
-                <button className="button" onClick={this.deleteEvent}>Delete</button>
+                <button className="button" onClick={this.deleteEvent}>Delete Event</button>
               </div>}
 
           </>
