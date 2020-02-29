@@ -68,15 +68,13 @@ class EventDisplay extends React.Component {
         {Auth.isAuthenticated() ?
           <>
             <Link to={`/events/${eventId}/groups/create`}>
-              <button type="button" className="button">Create Croup</button>
+              <button type="button" className="button">Create New Group</button>
             </Link>
 
             {this.isOwner() &&
               <div>
                 <Link to={`/events/${eventId}/amend`}>
-                  <button
-                    className="button"
-                    type="button">Amend</button>
+                  <button className="button" type="button">Amend Event</button>
                 </Link>
                 <button className="button" onClick={this.deleteEvent}>Delete Event</button>
               </div>}

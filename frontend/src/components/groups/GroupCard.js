@@ -21,11 +21,9 @@ class GroupCard extends React.Component {
   async componentDidMount() {
     const groupId = this.props.id
     const eventId = this.props.event.id
-    console.log(groupId)
-    console.log(eventId)
+
     try {
       const response = await axios.get(`/api/events/${eventId}/event_groups/${groupId}/`)
-      console.log(response)
       this.setState({ group: response.data })
     } catch (error) {
       this.setState({ errors: error.response.data.errors })
@@ -34,22 +32,19 @@ class GroupCard extends React.Component {
 
   handleClick = async e => {
     e.preventDefault()
-    const groupId = this.props.id
-    const eventId = this.props.event.id
+
     const userId = Auth.getPayload().sub
 
     const attendeesArray = this.state.group.attendees
+
     try {
       const user = await axios.get(`/api/user/${userId}`)
-      console.log(user)
       const currentUser = attendeesArray.filter(attendee => attendee.id === userId)[0]
       const index = attendeesArray.indexOf(currentUser)
-      attendeesArray.some(attendee => attendee.id === userId) ?
+      attendeesArray.some(attendee => attendee.id === user.data.id) ?
         attendeesArray.splice(index, 1) :
-        console.log('dataaaa', user.data.id)
-      attendeesArray.push(user.data.id)
+        attendeesArray.push(user.data)
       this.setState({ attendees: attendeesArray })
-      console.log(this.state)
 
     } catch (err) {
       console.log(err.response.data)
@@ -58,13 +53,20 @@ class GroupCard extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault()
+    const { group } = this.state
+    const sendData = {
+      group_name: group.group_name,
+      attendees: group.attendees.map(attendee => attendee.id),
+      event: group.event,
+      owner: group.owner,
+      id: group.id
+    }
+
     const groupId = this.props.id
     const eventId = this.props.event.id
-    // const userId = Auth.getPayload().sub
-    console.log(this.state)
     try {
 
-      await axios.put(`/api/events/${eventId}/event_groups/${groupId}/`, this.state.group, {
+      await axios.put(`/api/events/${eventId}/event_groups/${groupId}/`, sendData, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
     } catch (err) {
@@ -77,8 +79,6 @@ class GroupCard extends React.Component {
     const userId = Auth.getPayload().sub
     const { group } = this.state
     const lead = group.attendees[0]
-    if (lead) { console.log('leader:', lead.id) }
-
     return (
       <>
         <div className="card">
@@ -92,22 +92,22 @@ class GroupCard extends React.Component {
             })}</h3>
             : null}
 
-          <button onClick={this.handleClick} type="button" className="button">Join</button>
-          <button onClick={this.handleSubmit} type="button" className="button">Confirm</button>
-
-
           {group.attendees !== null ?
             (Auth.isAuthenticated() ?
               <div className="buttons">
                 {group.attendees.some(attendee => attendee.id === userId) ?
-                  <button type="button" className="button" onClick={this.handleClick}>Leave</button> :
-                  <button type="button" className="button" onClick={this.handleClick}>Join</button>}
+                  <div>
+                    <button type="button" className="button" onClick={this.handleClick}>Leave</button>
+                    <button onClick={this.handleSubmit} type="button" className="button">Confirm Join</button>
+                  </div> :
+                  <div>
+                    <button type="button" className="button" onClick={this.handleClick}>Join</button>
+                    <button onClick={this.handleSubmit} type="button" className="button">Confirm Leave</button>
+                  </div>}
                 {this.isOwner() && <button type="button" className="button">Change Group Info</button>}
               </div>
               : null)
             : null}
-
-
 
         </div>
 
