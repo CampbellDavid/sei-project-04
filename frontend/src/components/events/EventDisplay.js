@@ -8,21 +8,24 @@ class EventDisplay extends React.Component {
 
   state = {
     event: null,
-    groups: null
+    groups: null,
+    user: { wish_list: [] }
   }
 
   async componentDidMount() {
     try {
-
+      const userId = Auth.getPayload().sub
       const eventId = this.props.match.params.id
       await axios.all([
         axios.get(`/api/events/${eventId}`),
-        axios.get(`/api/events/${eventId}/event_groups`)
+        axios.get(`/api/events/${eventId}/event_groups`),
+        Auth.getPayload() && axios.get(`/api/user/${userId}`)
       ])
-        .then(axios.spread((eventRequest, groupsRequest) => {
+        .then(axios.spread((eventRequest, groupsRequest, userRequest) => {
           this.setState({
             event: eventRequest.data,
-            groups: groupsRequest.data
+            groups: groupsRequest.data,
+            user: userRequest.data
           })
         }))
     } catch (error) {
@@ -47,7 +50,16 @@ class EventDisplay extends React.Component {
   }
 
   addToWishList = async () => {
-    // code
+    const userId = Auth.getPayload().sub
+    this.state.user.wish_list.push(this.state.event.id)
+    console.log(this.state.user.wish_list)
+    try {
+      await axios.put(`/api/user/${userId}`, this.state.user, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+    } catch (err) {
+      console.log(err.response.data)
+    }
   }
 
   render() {

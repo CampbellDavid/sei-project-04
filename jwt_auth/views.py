@@ -61,6 +61,7 @@ class UserView(APIView):
     def put(self, request, pk):
         try:
             user = User.objects.get(pk=pk)
+
             updated_user = UserSerializer(user, data=request.data)
             if updated_user.is_valid():
                 updated_user.save()
