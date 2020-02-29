@@ -6,27 +6,20 @@ import UserForm from './UserForm'
 class UserAmend extends React.Component {
 
   state = {
-    user: {
-      username: '',
-      profile_image: '',
-      wish_list: [],
-      email: '',
-      bio: '',
-      sex: '',
-      id: ''
-    },
-    errors: {}
+    user: null,
+    errors: null
   }
 
   async componentDidMount() {
     const userId = this.props.match.params.id
     try {
-      const res = await axios.get(`/api/user/${userId}/`)
+      const res = await axios.get(`/api/user/${userId}`)
       this.setState({ user: res.data })
     } catch (error) {
       console.log(error)
     }
   }
+
   handleChange = e => {
     const user = { ...this.state.user, [e.target.name]: e.target.value }
     const errors = { ...this.state.errors, [e.target.name]: '' }
@@ -37,17 +30,18 @@ class UserAmend extends React.Component {
     e.preventDefault()
     const userId = this.props.match.params.id
     try {
-      const { user } = await axios.put(`/api/user/${userId}/`, this.state.user, {
+      await axios.put(`/api/user/${userId}`, this.state.user, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
-      this.props.history.push(`/user/${user.id}`)
+      this.props.history.push(`api/user/${userId}`)
     } catch (error) {
-      this.setState({ errors: error.response.data.errors })
+      console.log(error)
     }
   }
 
   render() {
     console.log('rendering')
+    if (!this.state.user) return null
     const { user } = this.state
     return (
       <>

@@ -46,6 +46,10 @@ class EventDisplay extends React.Component {
     }
   }
 
+  addToWishList = async () => {
+    // code
+  }
+
   render() {
     if (!this.state.event) return null
     const eventId = this.props.match.params.id
@@ -82,6 +86,9 @@ class EventDisplay extends React.Component {
           </>
           : null}
 
+        {Auth.isAuthenticated() ?
+          <button className="button" onClick={this.addToWishList}>Add to Wishlist</button>
+          : null}
       </>
     )
   }

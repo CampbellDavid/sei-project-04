@@ -21,7 +21,6 @@ class GroupCard extends React.Component {
   async componentDidMount() {
     const groupId = this.props.id
     const eventId = this.props.event.id
-
     try {
       const response = await axios.get(`/api/events/${eventId}/event_groups/${groupId}/`)
       this.setState({ group: response.data })
@@ -32,11 +31,8 @@ class GroupCard extends React.Component {
 
   handleClick = async e => {
     e.preventDefault()
-
     const userId = Auth.getPayload().sub
-
     const attendeesArray = this.state.group.attendees
-
     try {
       const user = await axios.get(`/api/user/${userId}`)
       const currentUser = attendeesArray.filter(attendee => attendee.id === userId)[0]
@@ -45,7 +41,6 @@ class GroupCard extends React.Component {
         attendeesArray.splice(index, 1) :
         attendeesArray.push(user.data)
       this.setState({ attendees: attendeesArray })
-
     } catch (err) {
       console.log(err.response.data)
     }
@@ -61,11 +56,9 @@ class GroupCard extends React.Component {
       owner: group.owner,
       id: group.id
     }
-
     const groupId = this.props.id
     const eventId = this.props.event.id
     try {
-
       await axios.put(`/api/events/${eventId}/event_groups/${groupId}/`, sendData, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })

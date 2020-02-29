@@ -42,8 +42,10 @@ class UserView extends React.Component {
           <div className="profile-bio">
 
             <div className="third-column">
-              <p><span>Name</span> {first_name}</p>
-              <p><span>Bio</span>{bio}</p>
+              <p><span>Name: </span>{first_name} {last_name}</p>
+              <p><span>Sex: </span>{sex}</p>
+              <p><span>Wish List: </span>{wish_list}</p>
+              <p><span>Bio: </span>{bio}</p>
               <img src={profile_image} alt={username} />
               <p><span>{email}</span></p>
             </div>

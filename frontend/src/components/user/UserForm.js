@@ -45,6 +45,24 @@ const UserForm = ({ user, handleChange, handleSubmit }) => {
           />
         </div>
 
+        <div>
+          <input
+            onChange={handleChange}
+            type="password"
+            placeholder="password"
+            name="password"
+            required />
+        </div>
+
+        <div>
+          <input
+            onChange={handleChange}
+            type="password"
+            placeholder="confirm password"
+            name="password_confirmation"
+            required />
+        </div>
+
         <div className="button-div">
           <button
             className="button"
