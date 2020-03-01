@@ -3,6 +3,9 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 import django.contrib.auth.password_validation as validations
 from django.core.exceptions import ValidationError
+from events.models import Event
+from django.contrib.auth.forms import UserChangeForm
+
 
 User = get_user_model()
 
@@ -32,3 +35,11 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
+
+class UserForm(UserChangeForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('username', 'email')

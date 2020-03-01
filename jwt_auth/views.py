@@ -1,3 +1,7 @@
+from .serializers import UserSerializer, UserForm
+import jwt
+from rest_framework.mixins import UpdateModelMixin
+from rest_framework.generics import GenericAPIView
 from datetime import datetime, timedelta
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -6,8 +10,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.status import HTTP_422_UNPROCESSABLE_ENTITY, HTTP_202_ACCEPTED, HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT
 from django.contrib.auth import get_user_model
 from django.conf import settings
-import jwt
-from .serializers import UserSerializer
+
 User = get_user_model()
 
 
@@ -58,10 +61,9 @@ class UserView(APIView):
         except User.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
 
-    def put(self, request, pk):
+    def put(self, request, pk, **kwargs):
         try:
             user = User.objects.get(pk=pk)
-
             updated_user = UserSerializer(user, data=request.data)
             if updated_user.is_valid():
                 updated_user.save()
@@ -77,3 +79,13 @@ class UserView(APIView):
             return Response(status=HTTP_204_NO_CONTENT)
         except User.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
+
+
+class UserPartialUpdateView(GenericAPIView, UpdateModelMixin):
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer  # needs to work with UserForm
+
+    def patch(self, request, *args, **kwargs):
+
+        return self.partial_update(request, *args, **kwargs)

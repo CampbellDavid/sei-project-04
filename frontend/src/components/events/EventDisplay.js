@@ -54,7 +54,7 @@ class EventDisplay extends React.Component {
     this.state.user.wish_list.push(this.state.event.id)
     console.log(this.state.user.wish_list)
     try {
-      await axios.put(`/api/user/${userId}`, this.state.user, {
+      await axios.patch(`/api/user/partial_update/${userId}`, this.state.user.wish_list, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
     } catch (err) {
