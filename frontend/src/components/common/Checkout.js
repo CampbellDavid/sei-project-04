@@ -9,11 +9,9 @@ class Checkout extends React.Component {
 
   async componentDidMount() {
     const userId = Auth.getPayload().sub
-    // console.log(userId)
     try {
       const res = await axios.get(`/api/user/${userId}`)
       this.setState({ user: res.data })
-      // console.log(res.data)
     } catch (error) {
       console.log(error)
     }

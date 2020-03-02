@@ -1,4 +1,4 @@
-from .serializers import UserSerializer, PartialUserSerializer
+from .serializers import UserSerializer, PartialUserSerializer, PopulatedUserSerializer
 import jwt
 from rest_framework.mixins import UpdateModelMixin
 from rest_framework.generics import GenericAPIView
@@ -56,7 +56,7 @@ class UserView(APIView):
     def get(self, _request, pk):
         try:
             user = User.objects.get(pk=pk)
-            serialized_user = UserSerializer(user)
+            serialized_user = PopulatedUserSerializer(user)
 
             return Response(serialized_user.data)
         except User.DoesNotExist:

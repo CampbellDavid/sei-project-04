@@ -6,6 +6,8 @@ from django.core.exceptions import ValidationError
 from events.models import Event
 from django.contrib.auth.forms import UserChangeForm
 
+from events.serializers import PopulatedEventSerializer, PopulatedReviewSerializer
+
 
 User = get_user_model()
 
@@ -41,3 +43,13 @@ class PartialUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = '__all__'
+
+
+class PopulatedUserSerializer(UserSerializer):
+    shopping_cart = PopulatedEventSerializer(many=True)
+    wish_list = PopulatedEventSerializer(many=True)
+    reviews = PopulatedReviewSerializer(many=True)
+
+    # class Meta:
+    #     model = User
+    #     fields = '__all__'
