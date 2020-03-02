@@ -85,8 +85,6 @@ class GroupCard extends React.Component {
     }
   }
 
-
-
   render() {
     const userId = Auth.getPayload().sub
     const { group } = this.state

@@ -25,8 +25,12 @@ class NavBar extends React.Component {
     }
   }
 
-  render() {
 
+
+  render() {
+    const userId = Auth.getPayload().sub
+    console.log(this.props)
+    console.log(Auth.getToken())
     return (
 
       <nav className="navbar">
@@ -35,7 +39,8 @@ class NavBar extends React.Component {
         <Link className="nav-item" to="/events">Events</Link>
         {!Auth.isAuthenticated() && <Link className="nav-item" to="/login">Login</Link>}
         {!Auth.isAuthenticated() && <Link className="nav-item" to="/register">Register</Link>}
-        {Auth.isAuthenticated() && <span onClick={this.handleLogout} ><Link className="nav-item" to="/">Logout</Link></span>}
+        {Auth.isAuthenticated() && <Link className="nav-item" to={`/user/${userId}`}>My Account</Link>}
+        {Auth.isAuthenticated() && <span onClick={this.handleLogout}><Link className="nav-item" to="/">Logout</Link></span>}
 
       </nav>
     )
