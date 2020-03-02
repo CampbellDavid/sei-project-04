@@ -9,7 +9,7 @@ class EventDisplay extends React.Component {
   state = {
     event: null,
     groups: null,
-    user: { wish_list: [] }
+    user: null
   }
 
   async componentDidMount() {
@@ -51,10 +51,18 @@ class EventDisplay extends React.Component {
 
   addToWishList = async () => {
     const userId = Auth.getPayload().sub
-    this.state.user.wish_list.push(this.state.event.id)
-    console.log(this.state.user.wish_list)
+    const wishListArr = this.state.user.wish_list
+    const currentEvent = this.state.event.id
+    const eventId = this.state.event.id
+    const index = wishListArr.indexOf(currentEvent)
+
+    wishListArr.includes(eventId) ?
+      wishListArr.splice(index, 1) :
+      wishListArr.push(this.state.event.id)
+    this.setState({ user: { wish_list: wishListArr } })
+    console.log(this.state.user)
     try {
-      await axios.patch(`/api/user/partial_update/${userId}`, this.state.user.wish_list, {
+      await axios.put(`/api/user/${userId}`, this.state.user, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
     } catch (err) {
@@ -64,7 +72,8 @@ class EventDisplay extends React.Component {
 
   render() {
     if (!this.state.event) return null
-    const eventId = this.props.match.params.id
+    const eventId = this.state.event.id
+    const wishListArr = this.state.user.wish_list
     const filteredGroups = this.state.groups.filter(group => group.event.id === this.state.event.id)
 
     return (
@@ -83,7 +92,7 @@ class EventDisplay extends React.Component {
 
         {Auth.isAuthenticated() ?
           <>
-            <Link to={`/events/${eventId}/groups/create`}>
+            <Link to={`/events/${eventId}/event_groups/create`}>
               <button type="button" className="button">Create New Group</button>
             </Link>
 
@@ -99,8 +108,11 @@ class EventDisplay extends React.Component {
           : null}
 
         {Auth.isAuthenticated() ?
-          <button className="button" onClick={this.addToWishList}>Add to Wishlist</button>
-          : null}
+          wishListArr.includes(eventId) ?
+            <button className="button" onClick={this.addToWishList}>Remove from Wishlist</button> :
+            <button className="button" onClick={this.addToWishList}>Add to Wishlist</button>
+          :
+          null}
       </>
     )
   }

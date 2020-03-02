@@ -51,7 +51,7 @@ const UserForm = ({ user, handleChange, handleSubmit }) => {
             type="password"
             placeholder="password"
             name="password"
-            required />
+          />
         </div>
 
         <div>
@@ -60,7 +60,7 @@ const UserForm = ({ user, handleChange, handleSubmit }) => {
             type="password"
             placeholder="confirm password"
             name="password_confirmation"
-            required />
+          />
         </div>
 
         <div className="button-div">

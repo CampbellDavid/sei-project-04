@@ -37,9 +37,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class UserForm(UserChangeForm):
-    password = None
-
+class PartialUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'email')
+        fields = '__all__'

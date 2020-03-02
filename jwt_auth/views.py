@@ -1,4 +1,4 @@
-from .serializers import UserSerializer, UserForm
+from .serializers import UserSerializer, PartialUserSerializer
 import jwt
 from rest_framework.mixins import UpdateModelMixin
 from rest_framework.generics import GenericAPIView
@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
-from rest_framework.status import HTTP_422_UNPROCESSABLE_ENTITY, HTTP_202_ACCEPTED, HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT
+from rest_framework.status import HTTP_422_UNPROCESSABLE_ENTITY, HTTP_202_ACCEPTED, HTTP_404_NOT_FOUND, HTTP_204_NO_CONTENT, HTTP_401_UNAUTHORIZED
 from django.contrib.auth import get_user_model
 from django.conf import settings
 
@@ -61,12 +61,19 @@ class UserView(APIView):
         except User.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
 
-    def put(self, request, pk, **kwargs):
+    def put(self, request, pk):
         try:
             user = User.objects.get(pk=pk)
-            updated_user = UserSerializer(user, data=request.data)
-            if updated_user.is_valid():
-                updated_user.save()
+
+            if user.id != request.user.id:
+                return Response(status=HTTP_401_UNAUTHORIZED)
+
+            serialized_user = PartialUserSerializer(
+                user, data=request.data, partial=True)
+
+            if serialized_user.is_valid():
+                serialized_user.save()
+                updated_user = UserSerializer(user)
                 return Response(updated_user.data, status=HTTP_202_ACCEPTED)
             return Response(updated_user.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
         except User.DoesNotExist:
@@ -79,13 +86,3 @@ class UserView(APIView):
             return Response(status=HTTP_204_NO_CONTENT)
         except User.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
-
-
-class UserPartialUpdateView(GenericAPIView, UpdateModelMixin):
-
-    queryset = User.objects.all()
-    serializer_class = UserSerializer  # needs to work with UserForm
-
-    def patch(self, request, *args, **kwargs):
-
-        return self.partial_update(request, *args, **kwargs)

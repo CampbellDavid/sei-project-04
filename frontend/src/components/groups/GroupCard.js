@@ -2,6 +2,7 @@ import React from 'react'
 import Auth from '../../lib/auth'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import GroupAmend from './GroupAmend'
 
 class GroupCard extends React.Component {
 
@@ -24,6 +25,7 @@ class GroupCard extends React.Component {
     try {
       const response = await axios.get(`/api/events/${eventId}/event_groups/${groupId}/`)
       this.setState({ group: response.data })
+
     } catch (error) {
       this.setState({ errors: error.response.data.errors })
     }
@@ -67,6 +69,21 @@ class GroupCard extends React.Component {
     }
   }
 
+  deleteGroup = async () => {
+    const groupId = this.props.id
+    const eventId = this.props.event.id
+    console.log(this.props)
+    try {
+      await axios.delete(`/api/events/${eventId}/event_groups/${groupId}/`, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      window.location.reload(false)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+
 
   render() {
     const userId = Auth.getPayload().sub
@@ -97,7 +114,13 @@ class GroupCard extends React.Component {
                     <button type="button" className="button" onClick={this.handleClick}>Join</button>
                     <button onClick={this.handleSubmit} type="button" className="button">Confirm Leave</button>
                   </div>}
-                {this.isOwner() && <button type="button" className="button">Change Group Info</button>}
+                {this.isOwner() && <div>
+                  <Link to={`/events/${group.event.id}/event_groups/${group.id}/amend`}>
+                    <button type="button" className="button">Change Group Info</button>
+                  </Link>
+                  <button onClick={this.deleteGroup} type="button" className="button">Delete Group</button>
+                </div>
+                }
               </div>
               : null)
             : null}

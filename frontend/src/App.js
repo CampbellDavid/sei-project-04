@@ -16,6 +16,7 @@ import EventAmend from './components/events/EventAmend'
 import EventDisplay from './components/events/EventDisplay'
 
 import GroupMake from './components/groups/GroupMake'
+import GroupAmend from './components/groups/GroupAmend'
 
 import SportIndex from './components/sports/SportIndex'
 import SportCreate from './components/sports/SportCreate'
@@ -34,7 +35,8 @@ function App() {
         <Switch>
           <Route exact path='/' component={Home} />
 
-          <SecureRoute path='/events/:id/groups/create' component={GroupMake} />
+          <SecureRoute path='/events/:id/event_groups/:id/amend' component={GroupAmend} />
+          <SecureRoute path='/events/:id/event_groups/create' component={GroupMake} />
           <SecureRoute path='/events/:id/amend' component={EventAmend} />
           <SecureRoute path='/events/create' component={EventCreate} />
           <Route path='/events/:id' component={EventDisplay} />
