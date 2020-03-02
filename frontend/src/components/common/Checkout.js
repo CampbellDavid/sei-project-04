@@ -24,7 +24,14 @@ class Checkout extends React.Component {
     return (
       <>
         <h1>Checkout</h1>
-        {user.shopping_cart.map(item => <p>{item}</p>)}
+        {user.shopping_cart.map(item => {
+          return (
+            <>
+              <p>{item.title}</p>
+              <p>{item.price}</p>
+            </>
+          )
+        })}
       </>
     )
   }

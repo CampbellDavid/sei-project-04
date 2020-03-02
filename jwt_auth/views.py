@@ -74,7 +74,7 @@ class UserView(APIView):
 
             if serialized_user.is_valid():
                 serialized_user.save()
-                updated_user = UserSerializer(user)
+                updated_user = PopulatedUserSerializer(user)
                 return Response(updated_user.data, status=HTTP_202_ACCEPTED)
             return Response(updated_user.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
         except User.DoesNotExist:

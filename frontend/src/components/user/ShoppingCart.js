@@ -15,6 +15,7 @@ class ShoppingCart extends React.Component {
     try {
       const res = await axios.get(`/api/user/${userId}`)
       this.setState({ user: res.data })
+      console.log(res.data)
     } catch (error) {
       console.log(error)
     }
@@ -47,7 +48,14 @@ class ShoppingCart extends React.Component {
     return (
       <>
         {Auth.isAuthenticated() && <p>{user.username}'s Shopping Cart:</p>}
-        {Auth.isAuthenticated() && this.state.user.shopping_cart.map(item => <h3>{item}</h3>)}
+        {Auth.isAuthenticated() && this.state.user.shopping_cart.map(item => {
+          return (
+            <>
+              <h3>{item.title}</h3>
+              <h3>{item.price}</h3>
+            </>
+          )
+        })}
 
         <Link to={`/user/${userId}/checkout`}>
           <button type="button" className="button">Checkout</button>
