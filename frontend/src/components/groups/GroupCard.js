@@ -2,7 +2,7 @@ import React from 'react'
 import Auth from '../../lib/auth'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import GroupAmend from './GroupAmend'
+// import GroupAmend from './GroupAmend'
 
 class GroupCard extends React.Component {
 
@@ -16,6 +16,8 @@ class GroupCard extends React.Component {
     },
     errors: {}
   }
+
+
 
   isOwner = () => Auth.getPayload().sub === this.state.group.owner.id
 
@@ -43,13 +45,13 @@ class GroupCard extends React.Component {
         attendeesArray.splice(index, 1) :
         attendeesArray.push(user.data)
       this.setState({ attendees: attendeesArray })
+      this.handleSubmit()
     } catch (err) {
       console.log(err.response.data)
     }
   }
 
   handleSubmit = async e => {
-    e.preventDefault()
     const { group } = this.state
     const sendData = {
       group_name: group.group_name,
@@ -108,11 +110,9 @@ class GroupCard extends React.Component {
                 {group.attendees.some(attendee => attendee.id === userId) ?
                   <div>
                     <button type="button" className="button" onClick={this.handleClick}>Leave</button>
-                    <button onClick={this.handleSubmit} type="button" className="button">Confirm Join</button>
                   </div> :
                   <div>
                     <button type="button" className="button" onClick={this.handleClick}>Join</button>
-                    <button onClick={this.handleSubmit} type="button" className="button">Confirm Leave</button>
                   </div>}
                 {this.isOwner() && <div>
                   <Link to={`/events/${group.event.id}/event_groups/${group.id}/amend`}>
