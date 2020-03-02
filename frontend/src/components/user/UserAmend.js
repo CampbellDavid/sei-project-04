@@ -11,10 +11,11 @@ class UserAmend extends React.Component {
   }
 
   async componentDidMount() {
-    const userId = this.props.match.params.id
+    const userId = Auth.getPayload().sub
     try {
       const res = await axios.get(`/api/user/${userId}`)
       this.setState({ user: res.data })
+      console.log(this.state)
     } catch (error) {
       console.log(error)
     }
@@ -28,9 +29,10 @@ class UserAmend extends React.Component {
 
   handleSubmit = async e => {
     e.preventDefault()
-    const userId = this.props.match.params.id
+    const userId = Auth.getPayload().sub
+    const userData = { ...this.state.user }
     try {
-      await axios.put(`/api/user/${userId}`, this.state.user, {
+      await axios.put(`/api/user/${userId}`, userData, {
         headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
       this.props.history.push(`api/user/${userId}`)
