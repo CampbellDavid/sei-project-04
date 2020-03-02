@@ -17,6 +17,16 @@ class Checkout extends React.Component {
     }
   }
 
+
+  getTotalPrice = () => {
+    const cartArr = this.state.user.shopping_cart
+    const priceArr = []
+    cartArr.map(item => priceArr.push(item.price))
+    console.log(priceArr)
+    return priceArr.reduce((a, b) => a + b)
+  }
+
+
   render() {
     if (!this.state.user) return null
     console.log(this.state.user)
@@ -24,14 +34,17 @@ class Checkout extends React.Component {
     return (
       <>
         <h1>Checkout</h1>
+
         {user.shopping_cart.map(item => {
           return (
             <>
-              <p>{item.title}</p>
-              <p>{item.price}</p>
+              <p key={item.title}>{item.title}</p>
+              <p key={item.price}>{item.price}</p>
             </>
           )
         })}
+        <p>Total: {this.getTotalPrice()}</p>
+
       </>
     )
   }
