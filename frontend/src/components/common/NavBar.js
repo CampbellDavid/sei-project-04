@@ -40,8 +40,8 @@ class NavBar extends React.Component {
         {!Auth.isAuthenticated() && <Link className="nav-item" to="/login">Login</Link>}
         {!Auth.isAuthenticated() && <Link className="nav-item" to="/register">Register</Link>}
         {Auth.isAuthenticated() && <Link className="nav-item" to={`/user/${userId}`}>My Account</Link>}
+        {Auth.isAuthenticated() && <Link className="nav-item" to={`/user/${userId}/cart`}>My Shopping Cart</Link>}
         {Auth.isAuthenticated() && <span onClick={this.handleLogout}><Link className="nav-item" to="/">Logout</Link></span>}
-
       </nav>
     )
 

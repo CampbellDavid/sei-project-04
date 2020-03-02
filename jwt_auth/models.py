@@ -7,5 +7,7 @@ class User(AbstractUser):
     profile_image = models.CharField(max_length=500, blank=True)
     wish_list = models.ManyToManyField(
         'events.Event', related_name='users', blank=True)
+    shopping_cart = models.ManyToManyField(
+        'events.Event', related_name='users+', blank=True)
     bio = models.CharField(max_length=500, blank=True)
     sex = models.CharField(max_length=50, blank=True)

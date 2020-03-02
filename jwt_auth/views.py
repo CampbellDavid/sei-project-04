@@ -57,6 +57,7 @@ class UserView(APIView):
         try:
             user = User.objects.get(pk=pk)
             serialized_user = UserSerializer(user)
+
             return Response(serialized_user.data)
         except User.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)

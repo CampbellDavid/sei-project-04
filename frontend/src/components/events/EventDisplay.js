@@ -53,6 +53,7 @@ class EventDisplay extends React.Component {
     const userId = Auth.getPayload().sub
     const wishListArr = this.state.user.wish_list
     const currentEvent = this.state.event.id
+    console.log(currentEvent)
     const eventId = this.state.event.id
     const index = wishListArr.indexOf(currentEvent)
 
@@ -70,10 +71,35 @@ class EventDisplay extends React.Component {
     }
   }
 
+  addToCart = async () => {
+    const userId = Auth.getPayload().sub
+    const cartArr = this.state.user.shopping_cart
+    const currentEventForCart = this.state.event.id
+    console.log(currentEventForCart)
+    const eventId = this.state.event.id
+    const index = cartArr.indexOf(currentEventForCart)
+
+    cartArr.includes(eventId) ?
+      cartArr.splice(index, 1) :
+      cartArr.push(this.state.event.id)
+    this.setState({ user: { shopping_cart: cartArr } })
+    console.log(this.state.user)
+    try {
+      await axios.put(`/api/user/${userId}`, this.state.user, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+    } catch (err) {
+      console.log(err.response.data)
+    }
+  }
+
   render() {
     if (!this.state.event) return null
+    if (!this.state.user) return null
     const eventId = this.state.event.id
     const wishListArr = this.state.user.wish_list
+    const cartArr = this.state.user.shopping_cart
+    console.log(cartArr, wishListArr)
     const filteredGroups = this.state.groups.filter(group => group.event.id === this.state.event.id)
 
     return (
@@ -108,11 +134,23 @@ class EventDisplay extends React.Component {
           : null}
 
         {Auth.isAuthenticated() ?
-          wishListArr.includes(eventId) ?
+          wishListArr && wishListArr.includes(eventId) ?
             <button className="button" onClick={this.addToWishList}>Remove from Wishlist</button> :
             <button className="button" onClick={this.addToWishList}>Add to Wishlist</button>
           :
           null}
+
+
+        <>
+          {Auth.isAuthenticated() ?
+            cartArr && cartArr.includes(eventId) ?
+              <button className="button" onClick={this.addToCart}>Remove from Cart</button> :
+              <button className="button" onClick={this.addToCart}>Add to Cart</button>
+            :
+            null}
+        </>
+
+
       </>
     )
   }

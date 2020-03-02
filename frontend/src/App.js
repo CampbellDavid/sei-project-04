@@ -8,7 +8,9 @@ import Home from './components/common/Home'
 import Login from './components/auth/Login'
 import UserView from './components/user/UserView'
 import UserAmend from './components/user/UserAmend'
+import Checkout from './components/common/Checkout'
 
+import ShoppingCart from './components/user/ShoppingCart'
 import Register from './components/auth/Register'
 import EventIndex from './components/events/EventIndex'
 import EventCreate from './components/events/EventCreate'
@@ -49,6 +51,8 @@ function App() {
 
           <Route path='/login' component={Login} />
           <Route path='/register' component={Register} />
+          <SecureRoute path='/user/:id/checkout' component={Checkout} />
+          <SecureRoute path='/user/:id/cart' component={ShoppingCart} />
           <SecureRoute path='/user/:id/amend' component={UserAmend} />
           <Route path='/user/:id' component={UserView} />
 
