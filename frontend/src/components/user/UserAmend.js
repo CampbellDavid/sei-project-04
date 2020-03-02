@@ -35,7 +35,7 @@ class UserAmend extends React.Component {
       })
       this.props.history.push(`api/user/${userId}`)
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data)
     }
   }
 

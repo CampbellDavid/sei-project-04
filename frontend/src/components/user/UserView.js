@@ -6,15 +6,7 @@ import { Link } from 'react-router-dom'
 class UserView extends React.Component {
 
   state = {
-    user: {
-      username: '',
-      profile_image: '',
-      wish_list: [],
-      email: '',
-      bio: '',
-      sex: '',
-      id: ''
-    }
+    user: null
   }
 
   isOwner = () => Auth.getPayload().sub === this.state.user.id
@@ -32,22 +24,23 @@ class UserView extends React.Component {
 
 
   render() {
+    if (!this.state.user) return null
     const userId = this.props.match.params.id
-    const { username, first_name, last_name, email, profile_image, bio, sex, wish_list } = this.state.user
+    const user = this.state.user
     return (
       <div className="profile-container">
         <div className="profile-card">
-          <h2>{username}</h2>
+          <h2>{user.username}</h2>
           <br />
           <div className="profile-bio">
 
             <div className="third-column">
-              <p><span>Name: </span>{first_name} {last_name}</p>
-              <p><span>Sex: </span>{sex}</p>
-              <p><span>Wish List: </span>{wish_list}</p>
-              <p><span>Bio: </span>{bio}</p>
-              <img src={profile_image} alt={username} />
-              <p><span>{email}</span></p>
+              <p><span>Name: </span>{user.first_name} {user.last_name}</p>
+              <p><span>Sex: </span>{user.sex}</p>
+              <span>Wish List: </span>{user.wish_list.map(item => <p key={item.title}>{item.title}</p>)}
+              <p><span>Bio: </span>{user.bio}</p>
+              <img src={user.profile_image} alt={user.username} />
+              <p><span>{user.email}</span></p>
             </div>
             {this.isOwner() && <Link to={`/user/${userId}/amend`}>
               <button type="button" className="button">Account Settings</button>
