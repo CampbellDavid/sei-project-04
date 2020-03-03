@@ -3,14 +3,11 @@ import { Link, withRouter } from 'react-router-dom'
 import { notify } from 'react-notify-toast'
 import Auth from '../../lib/auth'
 
-
 class NavBar extends React.Component {
   state = {
     loggedIn: false,
     navOpen: false
   }
-
-
 
   toggleNavbar = () => {
     this.setState({
@@ -31,14 +28,11 @@ class NavBar extends React.Component {
     }
   }
 
-
-
   render() {
     const userId = Auth.getPayload().sub
     console.log(this.props)
     console.log(Auth.getToken())
     return (
-
       <nav className="navbar is-dark">
         <div className="container">
           <div className="navbar-brand">
@@ -52,7 +46,6 @@ class NavBar extends React.Component {
               <span aria-hidden="true"></span>
             </a>
           </div>
-
           <div className={`navbar-menu ${this.state.navOpen ? 'is-active' : ''}`}>
             <div className="navbar-end">
               <Link className="navbar-item" to="/sports">SPORTS</Link>
@@ -63,16 +56,11 @@ class NavBar extends React.Component {
               {Auth.isAuthenticated() && <Link className="navbar-item" to={`/user/${userId}/cart`}>SHOPPING CART</Link>}
               {Auth.isAuthenticated() && <Link className="navbar-item" to="/" onClick={this.handleLogout}>LOGOUT</Link>}
             </div>
-
           </div>
         </div>
       </nav>
     )
-
   }
-
 }
-
-
 
 export default withRouter(NavBar)

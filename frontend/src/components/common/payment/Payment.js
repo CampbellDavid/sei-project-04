@@ -1,11 +1,11 @@
 import React from 'react'
-import { render } from 'react-dom'
+// import { render } from 'react-dom'
 import Card from 'react-credit-cards'
 import Auth from '../../../lib/auth'
 import axios from 'axios'
 import { formatCreditCardNumber, formatCVC, formatExpirationDate, formatFormData } from './utils'
 import 'react-credit-cards/es/styles-compiled.css'
-import styles from '../../../stylesheets/styles.css'
+// import styles from '../../../stylesheets/styles.css'
 
 class Payment extends React.Component {
 
@@ -56,7 +56,7 @@ class Payment extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const { issuer } = this.state
+
     const formData = [...e.target.elements]
       .filter(d => d.name)
       .reduce((acc, d) => {
