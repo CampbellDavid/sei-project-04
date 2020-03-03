@@ -46,26 +46,30 @@ class ShoppingCart extends React.Component {
 		const { user } = this.state
 		return (
 			<section className='cart-body'>
-				{Auth.isAuthenticated() && <p>{user.username}'s Shopping Cart:</p>}
+				{Auth.isAuthenticated() && (
+					<p className='cart-head'>{user.username}'s Shopping Cart:</p>
+				)}
 				{Auth.isAuthenticated() &&
 				this.state.user.shopping_cart.length !== 0 ? (
 					this.state.user.shopping_cart.map(item => {
 						return (
 							<>
-								<h3>{item.title}</h3>
-								<h3>{item.price}</h3>
+								<div className='item-card-checkout'>
+									<h3 className='cart-item'>{item.title}</h3>
+									<h3 className='cart-item-price'>£{item.price}</h3>
+								</div>
+								<hr className='divider-small' />
+								<Link to={`/user/${userId}/checkout`}>
+									<button type='button' className='button is-rounded'>
+										Checkout
+									</button>
+								</Link>
 							</>
 						)
 					})
 				) : (
-					<p>Your cart is empty!</p>
+					<p className='cart-head'>Your cart is empty!</p>
 				)}
-
-				<Link to={`/user/${userId}/checkout`}>
-					<button type='button' className='button'>
-						Checkout
-					</button>
-				</Link>
 			</section>
 		)
 	}

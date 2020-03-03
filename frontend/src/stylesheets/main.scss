@@ -164,14 +164,136 @@ $gray: #9b9b9b;
 	border: 2px solid #077067;
 }
 
-// Shopping Cart
+// Shopping Cart & Checkout
+
 .cart-body {
 	font-family: Arial, Helvetica, sans-serif;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	padding: 40px;
 	min-height: 100vh;
 	font-size: 1.5rem;
 	background-color: #222222;
+}
+
+.item-card-checkout {
+	width: 25vw;
+	padding: 10px;
+	border: 2px solid $primary;
+	margin: 10px 0;
+	border-radius: 15px;
+	background-color: #414141;
+}
+
+.cart-head {
+	color: $white;
+	margin-bottom: 10px;
+}
+
+.cart-item,
+.cart-item-price {
+	color: $white;
+	font-size: 18px;
+}
+
+// Events
+
+.main-body-event {
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	min-height: 100vh;
+	font-size: 1.5rem;
+	background-color: #222222;
+}
+
+.event-head {
+	color: $white;
+	margin-bottom: 10px;
+	font-size: 30px;
+	margin: 0 0 10px 10px;
+}
+
+.event-card {
+	width: 75vw;
+	height: 30vh;
+	padding: 10px;
+	border: 2px solid $primary;
+	margin: 10px 0;
+	border-radius: 10px;
+	background-color: #414141;
+}
+
+.ev-card-title {
+	color: $white;
+	margin: 5px;
+	font-size: 18px;
+}
+
+.ev-card-content {
+	color: $white;
+	margin: 5px;
+	font-size: 14px;
+}
+
+// Event display
+
+.main-body-event-disp {
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	min-height: 100vh;
+	font-size: 1.5rem;
+	background-color: #222222;
+}
+
+.event-disp-head {
+	color: $white;
+	margin-bottom: 10px;
+	font-size: 30px;
+	margin: 0 0 10px 10px;
+}
+
+.arr-btn {
+	width: 175px;
+	margin: 10px;
+}
+
+.ev-disp-subtitle {
+	color: $white;
+	margin: 5px;
+	font-size: 18px;
+}
+
+.ev-disp-title {
+	color: $white;
+	margin: 5px;
+	font-size: 22px;
+	font-weight: 800;
+}
+
+// Group display card
+
+.grp-card-sec {
+	width: 75vw;
+	padding: 10px;
+	border: 2px solid $primary;
+	margin: 10px 0;
+	border-radius: 10px;
+	background-color: #414141;
+}
+
+.card-div {
+	background-color: #414141;
+	color: $white;
+	font-size: 20px;
+}
+
+.user-img-card {
+	height: 100px;
+	width: 100px;
+	border-radius: 50%;
+	border: 2px solid white;
 }
