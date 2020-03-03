@@ -67,52 +67,52 @@ class Register extends React.Component {
 
   render() {
     return (
-      <section className="login-body">
-        <h1 className="login-heading">Register</h1>
+      <section className="main-body">
+        <h1 className="main-heading">Register</h1>
         <div className="form-wrapper">
           <form onSubmit={this.handleSubmit}>
 
-            <div className="login-form-group">
+            <div className="main-form-group">
               <input
-                className="login-form-field"
+                className="main-form-field"
                 onChange={this.handleChange}
                 placeholder="username"
                 name="username"
                 required />
-              <label for="username" class="login-form-label">Username</label>
+              <label for="username" class="main-form-label">Username</label>
             </div>
 
-            <div className="login-form-group">
+            <div className="main-form-group">
               <input
-                className="login-form-field"
+                className="main-form-field"
                 onChange={this.handleChange}
                 type="email"
                 placeholder="email"
                 name="email"
                 required />
-              <label for="email" class="login-form-label">Email</label>
+              <label for="email" class="main-form-label">Email</label>
             </div>
 
-            <div className="login-form-group">
+            <div className="main-form-group">
               <input
-                className="login-form-field"
+                className="main-form-field"
                 onChange={this.handleChange}
                 type="password"
                 placeholder="password"
                 name="password"
                 required />
-              <label for="password" class="login-form-label">Password</label>
+              <label for="password" class="main-form-label">Password</label>
             </div>
 
-            <div className="login-form-group">
+            <div className="main-form-group">
               <input
-                className="login-form-field"
+                className="main-form-field"
                 onChange={this.handleChange}
                 type="password"
                 placeholder="confirm password"
                 name="password_confirmation"
                 required />
-              <label for="password_confirmation" class="login-form-label">Confirm Password</label>
+              <label for="password_confirmation" class="main-form-label">Confirm Password</label>
             </div>
 
             <hr className="divider" />

@@ -81,83 +81,96 @@ class Payment extends React.Component {
     const { name, number, expiry, cvc, focused, issuer, formData } = this.state
     console.log(this.state.user)
     return (
-      <div key="Payment">
-        <div className="App-payment">
-          <h1>Secure Payment</h1>
-          <Card
-            number={number}
-            name={name}
-            expiry={expiry}
-            cvc={cvc}
-            focused={focused}
-            callback={this.handleCallback}
-          />
-          <form ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <input
-                type="tel"
-                name="number"
-                className="form-control"
-                placeholder="Card Number"
-                pattern="[\d| ]{16,22}"
-                required
-                onChange={this.handleInputChange}
-                onFocus={this.handleInputFocus}
-              />
-              {/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
+      <section className="main-body">
+        <hr className="divider" />
+        <h1 className="main-heading">Secure Payment</h1>
+        <hr className="divider" />
+        <div key="Payment">
+          <div className="App-payment">
+            <Card
+              number={number}
+              name={name}
+              expiry={expiry}
+              cvc={cvc}
+              focused={focused}
+              callback={this.handleCallback}
+            />
+            <div className="form-wrapper">
+              <form ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
+                <div className="form-group main-form-group">
+                  <input
+                    type="tel"
+                    name="number"
+                    className="form-control main-form-field"
+                    placeholder="Card Number"
+                    pattern="[\d| ]{16,22}"
+                    required
+                    onChange={this.handleInputChange}
+                    onFocus={this.handleInputFocus}
+                  />
+                  <label for="number" class="main-form-label">Card Number</label>
+                  {/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
+                </div>
+                <div className="form-group main-form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    className="form-control main-form-field"
+                    placeholder="Name"
+                    required
+                    onChange={this.handleInputChange}
+                    onFocus={this.handleInputFocus}
+                  />
+                  <label for="name" class="main-form-label">Cardholder's Name</label>
+                </div>
+                <div className="row">
+                  <div className="col-6 main-form-group">
+                    <input
+                      type="tel"
+                      name="expiry"
+                      className="form-control main-form-field"
+                      placeholder="Valid Thru"
+                      pattern="\d\d/\d\d"
+                      required
+                      onChange={this.handleInputChange}
+                      onFocus={this.handleInputFocus}
+                    />
+                    <label for="expiry" class="main-form-label">Card Expiry Date</label>
+                  </div>
+                  <div className="col-6 main-form-group">
+                    <input
+                      type="tel"
+                      name="cvc"
+                      className="form-control main-form-field"
+                      placeholder="CVC"
+                      pattern="\d{3,4}"
+                      required
+                      onChange={this.handleInputChange}
+                      onFocus={this.handleInputFocus}
+                    />
+                    <label for="cvc" class="main-form-label">CVC</label>
+                  </div>
+                </div>
+                <input type="hidden" name="issuer" value={issuer} />
+                <hr className="divider" />
+                <p className="final-price">Total: £{this.getTotalPrice()}</p>
+                <hr className="divider" />
+                <div className="form-actions">
+                  <button className="btn btn-primary btn-block button is-rounded">PAY</button>
+                </div>
+              </form>
+              <hr className="divider" />
             </div>
-            <div className="form-group">
-              <input
-                type="text"
-                name="name"
-                className="form-control"
-                placeholder="Name"
-                required
-                onChange={this.handleInputChange}
-                onFocus={this.handleInputFocus}
-              />
-            </div>
-            <div className="row">
-              <div className="col-6">
-                <input
-                  type="tel"
-                  name="expiry"
-                  className="form-control"
-                  placeholder="Valid Thru"
-                  pattern="\d\d/\d\d"
-                  required
-                  onChange={this.handleInputChange}
-                  onFocus={this.handleInputFocus}
-                />
+            {formData && (
+              <div className="App-highlight">
+                {formatFormData(formData).map((d, i) => <div key={i}>{d}</div>)}
               </div>
-              <div className="col-6">
-                <input
-                  type="tel"
-                  name="cvc"
-                  className="form-control"
-                  placeholder="CVC"
-                  pattern="\d{3,4}"
-                  required
-                  onChange={this.handleInputChange}
-                  onFocus={this.handleInputFocus}
-                />
-              </div>
-            </div>
-            <input type="hidden" name="issuer" value={issuer} />
-            <p>Total: {this.getTotalPrice()}</p>
-            <div className="form-actions">
-              <button className="btn btn-primary btn-block">PAY</button>
-            </div>
-          </form>
-          {formData && (
-            <div className="App-highlight">
-              {formatFormData(formData).map((d, i) => <div key={i}>{d}</div>)}
-            </div>
-          )}
+            )}
+
+          </div>
 
         </div>
-
-      </div>
+      </section>
     )
   }
 }

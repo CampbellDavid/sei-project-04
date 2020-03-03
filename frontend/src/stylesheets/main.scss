@@ -16,9 +16,9 @@ $gray: #9b9b9b;
   font-family: 'Archivo Black', sans-serif;
 }
 
-// Login
+// Forms
 
-.login-body {
+.main-body {
   font-family: Arial, Helvetica, sans-serif; 
   display: flex;
   flex-direction: column;
@@ -29,7 +29,11 @@ $gray: #9b9b9b;
   background-color:#222222;
 }
 
-.login-heading {
+.main-heading {
+  color: $white;
+}
+
+.final-price {
   color: $white;
 }
 
@@ -37,14 +41,14 @@ $gray: #9b9b9b;
   background-color: #222222;
 }
 
-.login-form-group {
+.main-form-group {
   position: relative;
   padding: 15px 0 0;
   margin-top: 10px;
   width: 50vw;
 }
 
-.login-form-field {
+.main-form-field {
   font-family: inherit;
   width: 100%;
   border: 0;
@@ -60,14 +64,14 @@ $gray: #9b9b9b;
     color: transparent;
   }
 
-  &:placeholder-shown ~ .login-form-label {
+  &:placeholder-shown ~ .main-form-label {
     font-size: 1.3rem;
     cursor: text;
     top: 20px;
   }
 }
 
-.login-form-label {
+.main-form-label {
   position: absolute;
   top: 0;
   display: block;
@@ -76,8 +80,8 @@ $gray: #9b9b9b;
   color: $gray;
 }
 
-.login-form-field:focus {
-  ~ .login-form-label {
+.main-form-field:focus {
+  ~ .main-form-label {
     position: absolute;
     top: 0;
     display: block;
@@ -93,7 +97,7 @@ $gray: #9b9b9b;
   border-image-slice: 1;
 }
 /* reset input */
-.login-form-field {
+.main-form-field {
   &:required,&:invalid { box-shadow:none; }
 }
 
