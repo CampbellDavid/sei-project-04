@@ -31,7 +31,7 @@ class Login extends React.Component {
   render() {
     return (
       <section className="login-body">
-        <h1>Login</h1>
+        <h1 className="login-heading">Login</h1>
         <div className="form-wrapper">
           <form onSubmit={this.handleSubmit}>
             <div className="login-form-group">
@@ -55,7 +55,7 @@ class Login extends React.Component {
             </div>
             <hr className="divider" />
             <div>
-              <button className="button" type="submit">Login</button>
+              <button className="button is-rounded" type="submit">Login</button>
             </div>
           </form>
         </div>
