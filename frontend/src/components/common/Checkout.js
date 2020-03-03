@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
 
 class Checkout extends React.Component {
   state = {
@@ -31,6 +32,8 @@ class Checkout extends React.Component {
     if (!this.state.user) return null
     console.log(this.state.user)
     const { user } = this.state
+    const userId = Auth.getPayload().sub
+    console.log(userId)
     return (
       <>
         <h1>Checkout</h1>
@@ -44,6 +47,11 @@ class Checkout extends React.Component {
           )
         })}
         <p>Total: {this.getTotalPrice()}</p>
+
+
+        <Link to='/secure_payment'>
+          <button>Proceed to payment</button>
+        </Link>
 
       </>
     )
