@@ -33,7 +33,7 @@ class EventIndex extends React.Component {
 					<hr className='divider-small' />
 					{Auth.isAuthenticated() ? (
 						<Link to='/events/create'>
-							<button type='button' className='button'>
+							<button type='button' className='button is-rounded'>
 								Create New Event
 							</button>
 						</Link>
