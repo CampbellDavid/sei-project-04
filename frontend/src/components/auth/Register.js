@@ -67,50 +67,62 @@ class Register extends React.Component {
 
   render() {
     return (
-      <section>
-        <h1>Register</h1>
-        <form onSubmit={this.handleSubmit}>
+      <section className="login-body">
+        <h1 className="login-heading">Register</h1>
+        <div className="form-wrapper">
+          <form onSubmit={this.handleSubmit}>
 
-          <div>
-            <input
-              onChange={this.handleChange}
-              placeholder="username"
-              name="username"
-              required />
-          </div>
+            <div className="login-form-group">
+              <input
+                className="login-form-field"
+                onChange={this.handleChange}
+                placeholder="username"
+                name="username"
+                required />
+              <label for="username" class="login-form-label">Username</label>
+            </div>
 
-          <div>
-            <input
-              onChange={this.handleChange}
-              type="email"
-              placeholder="email"
-              name="email"
-              required />
-          </div>
+            <div className="login-form-group">
+              <input
+                className="login-form-field"
+                onChange={this.handleChange}
+                type="email"
+                placeholder="email"
+                name="email"
+                required />
+              <label for="email" class="login-form-label">Email</label>
+            </div>
 
-          <div>
-            <input
-              onChange={this.handleChange}
-              type="password"
-              placeholder="password"
-              name="password"
-              required />
-          </div>
+            <div className="login-form-group">
+              <input
+                className="login-form-field"
+                onChange={this.handleChange}
+                type="password"
+                placeholder="password"
+                name="password"
+                required />
+              <label for="password" class="login-form-label">Password</label>
+            </div>
 
-          <div>
-            <input
-              onChange={this.handleChange}
-              type="password"
-              placeholder="confirm password"
-              name="password_confirmation"
-              required />
-          </div>
+            <div className="login-form-group">
+              <input
+                className="login-form-field"
+                onChange={this.handleChange}
+                type="password"
+                placeholder="confirm password"
+                name="password_confirmation"
+                required />
+              <label for="password_confirmation" class="login-form-label">Confirm Password</label>
+            </div>
 
-          <div>
-            <button type="submit" disabled={!this.state.formValid}>Register</button>
-          </div>
+            <hr className="divider" />
 
-        </form>
+            <div>
+              <button className="button is-rounded" type="submit" disabled={!this.state.formValid}>Register</button>
+            </div>
+
+          </form>
+        </div>
       </section>
     )
   }
