@@ -5,7 +5,7 @@ import Auth from '../../../lib/auth'
 import axios from 'axios'
 import { formatCreditCardNumber, formatCVC, formatExpirationDate, formatFormData } from './utils'
 import 'react-credit-cards/es/styles-compiled.css'
-import styles from './styles.css'
+import styles from '../../../stylesheets/styles.css'
 
 class Payment extends React.Component {
 
@@ -104,7 +104,7 @@ class Payment extends React.Component {
                 onChange={this.handleInputChange}
                 onFocus={this.handleInputFocus}
               />
-              <small>E.g.: 49..., 51..., 36..., 37...</small>
+              {/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
             </div>
             <div className="form-group">
               <input
