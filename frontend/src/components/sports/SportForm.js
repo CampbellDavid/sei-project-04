@@ -5,7 +5,7 @@ const SportForm = ({ data, handleChange, handleSubmit }) => {
 	return (
 		<section className='main-body'>
 			<div>
-				<h1 className='main-heading'>Sport Form</h1>
+				<h1 className='main-heading'>Sport</h1>
 				<div className='form-wrapper'>
 					<form onSubmit={handleSubmit}>
 						<div className='main-form-group'>

@@ -24,7 +24,7 @@ class EventIndex extends React.Component {
 		console.log("events:", events)
 		return (
 			<section className='main-body-event'>
-				<h1 className='event-head'>Event's</h1>
+				<h1 className='event-head'>Events</h1>
 				{events.map(event => {
 					return <EventCard key={event.id} {...event} />
 				})}
