@@ -1,5 +1,6 @@
 import React from 'react'
-
+import main from './stylesheets/main.scss'
+import 'bulma'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import NavBar from './components/common/NavBar'

@@ -5,17 +5,23 @@ import Auth from '../../lib/auth'
 
 
 class NavBar extends React.Component {
-  state = { loggedIn: false }
+  state = {
+    loggedIn: false,
+    navOpen: false
+  }
 
 
 
   toggleNavbar = () => {
-    this.setState({ loggedIn: !this.state.loggedIn })
+    this.setState({
+      loggedIn: !this.state.loggedIn,
+      navOpen: !this.state.navOpen
+    })
   }
 
   handleLogout = () => {
     Auth.logout()
-    // notify.show('You\'ve logged out!', 'custom', 3000, { background: 'FFFFF0' })
+    notify.show('You\'ve logged out!', 'custom', 3000, { background: 'FFFFF0' })
     this.props.history.push('/')
   }
 
@@ -36,7 +42,7 @@ class NavBar extends React.Component {
       <nav className="navbar is-dark">
         <div className="container">
           <div className="navbar-brand">
-
+            <Link className="navbar-item" to="/">HOME</Link>
             <a
               className={`navbar-burger ${this.state.navOpen ? 'is-active' : ''}`}
               onClick={this.toggleNavbar}
@@ -45,15 +51,19 @@ class NavBar extends React.Component {
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
             </a>
+          </div>
 
-            <Link className="nav-item" to="/">Home</Link>
-            <Link className="nav-item" to="/sports">Sports</Link>
-            <Link className="nav-item" to="/events">Events</Link>
-            {!Auth.isAuthenticated() && <Link className="nav-item" to="/login">Login</Link>}
-            {!Auth.isAuthenticated() && <Link className="nav-item" to="/register">Register</Link>}
-            {Auth.isAuthenticated() && <Link className="nav-item" to={`/user/${userId}`}>My Account</Link>}
-            {Auth.isAuthenticated() && <Link className="nav-item" to={`/user/${userId}/cart`}>My Shopping Cart</Link>}
-            {Auth.isAuthenticated() && <span onClick={this.handleLogout}><Link className="nav-item" to="/">Logout</Link></span>}
+          <div className={`navbar-menu ${this.state.navOpen ? 'is-active' : ''}`}>
+            <div className="navbar-end">
+              <Link className="navbar-item" to="/sports">SPORTS</Link>
+              <Link className="navbar-item" to="/events">EVENTS</Link>
+              {!Auth.isAuthenticated() && <Link className="navbar-item" to="/login">LOGIN</Link>}
+              {!Auth.isAuthenticated() && <Link className="navbar-item" to="/register">REGISTER</Link>}
+              {Auth.isAuthenticated() && <Link className="navbar-item" to={`/user/${userId}`}>MY ACCOUNT</Link>}
+              {Auth.isAuthenticated() && <Link className="navbar-item" to={`/user/${userId}/cart`}>SHOPPING CART</Link>}
+              {Auth.isAuthenticated() && <Link className="navbar-item" to="/" onClick={this.handleLogout}>LOGOUT</Link>}
+            </div>
+
           </div>
         </div>
       </nav>
