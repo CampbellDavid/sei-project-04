@@ -1,13 +1,27 @@
 import React from 'react'
+import Background from '../../assets/hero.jpg'
+
+const sectionStyle = {
+  width: '100%',
+  backgroundImage: `url(${Background})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundAttachment: 'fixed',
+  backgroundSize: 'cover'
+}
 
 const Home = () => (
-  <div>
-    <div>
-      <h1>Extreme Meet Up</h1>
-      <p>Destroy your fear.</p>
-    </div>
+  <>
+    <section style={sectionStyle} className="hero is-fullheight-with-navbar">
 
-  </div>
+      <div className="container">
+        <div className="text-container">
+          <h1 className="heading-hero">EXTREME Meet Up</h1>
+          <h2 className="slogan-hero">Destroy your fear.</h2>
+        </div>
+      </div>
+
+    </section>
+  </>
 )
 
 export default Home
