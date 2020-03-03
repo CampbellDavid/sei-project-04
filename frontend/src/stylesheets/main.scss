@@ -2,102 +2,176 @@ $primary: #11998e;
 $secondary: #38ef7d;
 $white: #fff;
 $gray: #9b9b9b;
-@import url('https://fonts.googleapis.com/css?family=Archivo+Black&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Archivo+Black&display=swap");
 
 // Home
 
 .heading-hero {
-  font-size: 50px;
-  font-family: 'Archivo Black', sans-serif;
+	font-size: 50px;
+	font-family: "Archivo Black", sans-serif;
 }
 
 .slogan-hero {
-  font-size: 30px;
-  font-family: 'Archivo Black', sans-serif;
+	font-size: 30px;
+	font-family: "Archivo Black", sans-serif;
 }
 
 // Forms
 
 .main-body {
-  font-family: Arial, Helvetica, sans-serif; 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-size: 1.5rem;
-  background-color:#222222;
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-size: 1.5rem;
+	background-color: #222222;
 }
 
 .main-heading {
-  color: $white;
+	color: $white;
 }
 
 .final-price {
-  color: $white;
+	color: $white;
 }
 
 .divider {
-  background-color: #222222;
+	background-color: #222222;
 }
 
 .main-form-group {
-  position: relative;
-  padding: 15px 0 0;
-  margin-top: 10px;
-  width: 50vw;
+	position: relative;
+	padding: 15px 0 0;
+	margin-top: 10px;
+	width: 50vw;
 }
 
 .main-form-field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid $gray;
-  outline: 0;
-  font-size: 1.3rem;
-  color: $white;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.2s;
+	font-family: inherit;
+	width: 100%;
+	border: 0;
+	border-bottom: 2px solid $gray;
+	outline: 0;
+	font-size: 1.3rem;
+	color: $white;
+	padding: 7px 0;
+	background: transparent;
+	transition: border-color 0.2s;
 
-  &::placeholder {
-    color: transparent;
-  }
+	&::placeholder {
+		color: transparent;
+	}
 
-  &:placeholder-shown ~ .main-form-label {
-    font-size: 1.3rem;
-    cursor: text;
-    top: 20px;
-  }
+	&:placeholder-shown ~ .main-form-label {
+		font-size: 1.3rem;
+		cursor: text;
+		top: 20px;
+	}
 }
 
 .main-form-label {
-  position: absolute;
-  top: 0;
-  display: block;
-  transition: 0.2s;
-  font-size: 1rem;
-  color: $gray;
+	position: absolute;
+	top: 0;
+	display: block;
+	transition: 0.2s;
+	font-size: 1rem;
+	color: $gray;
 }
 
 .main-form-field:focus {
-  ~ .main-form-label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: $primary;
-    font-weight:700;    
-  }
-  padding-bottom: 6px;  
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, $primary,$secondary);
-  border-image-slice: 1;
+	~ .main-form-label {
+		position: absolute;
+		top: 0;
+		display: block;
+		transition: 0.2s;
+		font-size: 1rem;
+		color: $primary;
+		font-weight: 700;
+	}
+	padding-bottom: 6px;
+	font-weight: 700;
+	border-width: 3px;
+	border-image: linear-gradient(to right, $primary, $secondary);
+	border-image-slice: 1;
 }
 /* reset input */
 .main-form-field {
-  &:required,&:invalid { box-shadow:none; }
+	&:required,
+	&:invalid {
+		box-shadow: none;
+	}
 }
 
+// User Profile
+
+.pro-img {
+	border: 3px solid $white;
+	border-radius: 50%;
+}
+
+.pro-body {
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-size: 1.5rem;
+	background-color: #222222;
+}
+
+.user-info {
+	color: $white;
+}
+
+.user-self-bio {
+	color: $white;
+	font-size: 18px;
+}
+
+.profile-container {
+	margin: 30px;
+}
+
+.pro-bg-img {
+	height: 35vh;
+	width: 100vw;
+}
+
+.divider-small {
+	margin: 5px;
+	background-color: #222222;
+}
+
+// User form
+
+.main-user-form-field {
+	font-family: inherit;
+	border-radius: 10px;
+	width: 100%;
+	border: 2px solid $gray;
+	outline: 0;
+	font-size: 1rem;
+	color: $white;
+	padding: 7px;
+	background: transparent;
+	transition: border-color 0.2s;
+}
+
+.main-user-form-field:focus {
+	border: 2px solid #077067;
+}
+
+// Shopping Cart
+.cart-body {
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-size: 1.5rem;
+	background-color: #222222;
+}
