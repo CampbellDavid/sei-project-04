@@ -97,7 +97,7 @@ class GroupCard extends React.Component {
 			<section>
 				<div className='card-div'>
 					<div className='grp-card-info'>
-						<h2>{group.group_name}</h2>
+						<h2 className='grp-name-head'>{group.group_name}</h2>
 					</div>
 					{lead && <h3>Leader: {lead.username}</h3>}
 					{group.attendees !== null ? (
@@ -107,7 +107,7 @@ class GroupCard extends React.Component {
 								return (
 									<div className='meta-user-card' key={i}>
 										<Link to={`/user/${attendee.id}`}>
-											<p>
+											<p className='user-name-grp'>
 												{attendee.first_name} {attendee.last_name}
 											</p>
 

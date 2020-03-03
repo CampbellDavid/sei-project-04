@@ -296,4 +296,30 @@ $gray: #9b9b9b;
 	width: 100px;
 	border-radius: 50%;
 	border: 2px solid white;
+	margin: 0 25px;
+}
+
+.meta-user-card {
+	height: 150px;
+	width: 200px;
+	display: flex;
+	justify-content: center;
+	border: 2px solid transparent;
+	border-radius: 10px;
+}
+
+.meta-user-card:hover {
+	border: 2px solid $primary;
+	border-radius: 10px;
+	background-color: gray;
+}
+
+.user-name-grp {
+	color: white;
+}
+
+.grp-name-head {
+	color: white;
+	font-size: 28px;
+	font-weight: 800;
 }
