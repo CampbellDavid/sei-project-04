@@ -70,13 +70,14 @@ class ShoppingCart extends React.Component {
 				{Auth.isAuthenticated() &&
 				this.state.user.shopping_cart.length !== 0 ? (
 					this.state.user.shopping_cart.map(item => {
-						console.log(item.id)
 						return (
 							<>
-								<div className='item-card-checkout'>
-									<h3 className='cart-item'>{item.title}</h3>
-									<h3 className='cart-item-price'>£{item.price}</h3>
-								</div>
+								<Link to={`/events/${item.id}`}>
+									<div className='item-card-checkout'>
+										<h3 className='cart-item'>{item.title}</h3>
+										<h3 className='cart-item-price'>£{item.price}</h3>
+									</div>
+								</Link>
 								<button
 									name={item.id}
 									onClick={this.remFromShopCart}

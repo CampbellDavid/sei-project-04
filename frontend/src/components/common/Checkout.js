@@ -38,14 +38,16 @@ class Checkout extends React.Component {
 
 				{user.shopping_cart.map(item => {
 					return (
-						<div className='item-card-checkout'>
-							<p className='cart-item' key={item.title}>
-								{item.title}
-							</p>
-							<p className='cart-item-price' key={item.price}>
-								£{item.price}
-							</p>
-						</div>
+						<Link to={`/events/${item.id}`}>
+							<div className='item-card-checkout'>
+								<p className='cart-item' key={item.title}>
+									{item.title}
+								</p>
+								<p className='cart-item-price' key={item.price}>
+									£{item.price}
+								</p>
+							</div>
+						</Link>
 					)
 				})}
 				<p className='cart-item-price'>Total: {this.getTotalPrice()}</p>
