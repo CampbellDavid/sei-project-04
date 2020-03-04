@@ -64,6 +64,7 @@ class UserView(APIView):
 
     def put(self, request, pk):
         try:
+
             user = User.objects.get(pk=pk)
 
             if user.id != request.user.id:
@@ -73,6 +74,7 @@ class UserView(APIView):
                 user, data=request.data, partial=True)
 
             if serialized_user.is_valid():
+
                 serialized_user.save()
                 updated_user = PopulatedUserSerializer(user)
                 return Response(updated_user.data, status=HTTP_202_ACCEPTED)
