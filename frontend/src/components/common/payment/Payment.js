@@ -112,7 +112,7 @@ class Payment extends React.Component {
 										onChange={this.handleInputChange}
 										onFocus={this.handleInputFocus}
 									/>
-									<label for='number' class='main-form-label'>
+									<label for='number' className='main-form-label'>
 										Card Number
 									</label>
 									{/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
@@ -127,7 +127,7 @@ class Payment extends React.Component {
 										onChange={this.handleInputChange}
 										onFocus={this.handleInputFocus}
 									/>
-									<label for='name' class='main-form-label'>
+									<label for='name' className='main-form-label'>
 										Cardholder's Name
 									</label>
 								</div>
@@ -143,7 +143,7 @@ class Payment extends React.Component {
 											onChange={this.handleInputChange}
 											onFocus={this.handleInputFocus}
 										/>
-										<label for='expiry' class='main-form-label'>
+										<label for='expiry' className='main-form-label'>
 											Card Expiry Date
 										</label>
 									</div>
@@ -158,7 +158,7 @@ class Payment extends React.Component {
 											onChange={this.handleInputChange}
 											onFocus={this.handleInputFocus}
 										/>
-										<label for='cvc' class='main-form-label'>
+										<label for='cvc' className='main-form-label'>
 											CVC
 										</label>
 									</div>

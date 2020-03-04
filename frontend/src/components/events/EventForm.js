@@ -15,7 +15,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							value={data.title}
 							required
 						/>
-						<label for='title' class='main-form-label'>
+						<label for='title' className='main-form-label'>
 							Event Title
 						</label>
 					</div>
@@ -29,7 +29,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							value={data.price}
 							required
 						/>
-						<label for='price' class='main-form-label'>
+						<label for='price' className='main-form-label'>
 							Price
 						</label>
 					</div>
@@ -44,7 +44,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							value={data.time_and_date}
 							required
 						/>
-						<label for='time_and_date' class='main-form-label'>
+						<label for='time_and_date' className='main-form-label'>
 							Time & Date
 						</label>
 					</div>
@@ -58,7 +58,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							value={data.location}
 							required
 						/>
-						<label for='location' class='main-form-label'>
+						<label for='location' className='main-form-label'>
 							Location
 						</label>
 					</div>
@@ -71,7 +71,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							name='sport'
 							// value={data.sport} - needs to be drop down list of existing events
 						/>
-						<label for='sport' class='main-form-label'>
+						<label for='sport' className='main-form-label'>
 							Sport
 						</label>
 					</div>

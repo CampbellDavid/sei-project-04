@@ -13,7 +13,7 @@ const GroupForm = ({ handleChange, handleSubmit }) => {
 							name='group_name'
 							required
 						/>
-						<label for='group_name' class='main-form-label'>
+						<label for='group_name' className='main-form-label'>
 							Group Name
 						</label>
 					</div>

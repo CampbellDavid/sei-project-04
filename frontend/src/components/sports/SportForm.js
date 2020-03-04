@@ -17,7 +17,7 @@ const SportForm = ({ data, handleChange, handleSubmit }) => {
 								value={data.name}
 								required
 							/>
-							<label for='name' class='main-form-label'>
+							<label for='name' className='main-form-label'>
 								Name
 							</label>
 						</div>
@@ -31,7 +31,7 @@ const SportForm = ({ data, handleChange, handleSubmit }) => {
 								value={data.image}
 								required
 							/>
-							<label for='image' class='main-form-label'>
+							<label for='image' className='main-form-label'>
 								Image URL
 							</label>
 						</div>
