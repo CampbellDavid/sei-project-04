@@ -2,10 +2,12 @@ import React from "react"
 import axios from "axios"
 import Auth from "../../lib/auth"
 import UserForm from "./UserForm"
+import { headers } from "./../../lib/headers"
 
 class UserAmend extends React.Component {
 	state = {
 		user: null,
+		data: {},
 		errors: null
 	}
 
@@ -21,19 +23,17 @@ class UserAmend extends React.Component {
 	}
 
 	handleChange = e => {
+		const data = { ...this.state.data, [e.target.name]: e.target.value }
 		const user = { ...this.state.user, [e.target.name]: e.target.value }
 		const errors = { ...this.state.errors, [e.target.name]: "" }
-		this.setState({ user, errors })
+		this.setState({ user, data, errors })
 	}
 
 	handleSubmit = async e => {
 		e.preventDefault()
 		const userId = Auth.getPayload().sub
-		const userData = { ...this.state.user }
 		try {
-			await axios.put(`/api/user/${userId}`, userData, {
-				headers: { Authorization: `Bearer ${Auth.getToken()}` }
-			})
+			await axios.put(`/api/user/${userId}`, this.state.data, headers)
 			this.props.history.push(`api/user/${userId}`)
 		} catch (error) {
 			console.log(error.response.data)

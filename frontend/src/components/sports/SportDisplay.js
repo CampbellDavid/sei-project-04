@@ -47,7 +47,7 @@ class SportDisplay extends React.Component {
 					className='sport-img-disp'
 				/>
 				<hr className='divider-small' />
-				<Link to={"/events"}>
+				<Link to={"/events/create"}>
 					<button type='button' className='button is-rounded sport-arr-btn'>
 						Add Event
 					</button>

@@ -149,6 +149,7 @@ class EventGroupDetailView(APIView):
 
     def put(self, request, pk, **kwargs):
         try:
+            print(request.data)
             event_group = EventGroup.objects.get(pk=kwargs['event_group_pk'])
 
             request.data['owner'] = request.user.id
@@ -161,6 +162,7 @@ class EventGroupDetailView(APIView):
                 serialized_event_group.save()
                 updated_event_group = EventGroupSerializer(event_group)
                 return Response(updated_event_group.data, status=HTTP_202_ACCEPTED)
+
             return Response(updated_event_group.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
 
             # updated_event_group = EventGroupSerializer(

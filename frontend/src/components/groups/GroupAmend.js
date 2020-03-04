@@ -1,65 +1,67 @@
-import React from 'react'
-import axios from 'axios'
-import Auth from '../../lib/auth'
-import GroupForm from './GroupForm'
+import React from "react"
+import axios from "axios"
+import Auth from "../../lib/auth"
+import GroupForm from "./GroupForm"
+import { headers } from "./../../lib/headers"
 
 class GroupAmend extends React.Component {
+	state = {
+		event_group: {},
+		data: {
+			group_name: ""
+		}
+	}
 
-  state = {
-    event_group: {
-      group_name: ''
-    }
-  }
+	async componentDidMount() {
+		const groupId = this.props.location.pathname.charAt(23)
+		const eventId = this.props.match.params.id
+		console.log("groupId", groupId)
+		console.log("eventId", eventId)
 
-  async componentDidMount() {
-    const groupId = this.props.location.pathname.charAt(23)
-    const eventId = this.props.match.params.id
-    console.log('groupId', groupId)
-    console.log('eventId', eventId)
+		try {
+			const response = await axios.get(
+				`/api/events/${eventId}/event_groups/${groupId}`
+			)
+			this.setState({ event_group: response.data })
+			console.log(eventId)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
-    try {
-      const response = await axios.get(`/api/events/${eventId}/event_groups/${groupId}`)
-      this.setState({ event_group: response.data })
-      console.log(eventId)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+	handleChange = ({ target: { value } }) => {
+		this.setState({
+			data: { ...this.state.data, group_name: value }
+		})
+	}
 
-  handleChange = ({ target: { name, value } }) => {
-    const group_name = { ...this.state.event_group.group_name, [name]: value }
-    console.log(this.state.event_group.group_name)
-    this.setState({ event_group: group_name })
-  }
+	handleSubmit = async e => {
+		e.preventDefault()
+		const eventId = this.state.event_group.event.id
+		const groupId = this.state.event_group.id
 
-  handleSubmit = async e => {
-    e.preventDefault()
-    const eventId = this.props.location.pathname.charAt(23)
-    const groupId = this.props.match.params.id
-    console.log(eventId)
-    console.log(groupId)
-    console.log(this.state.event_group.group_name)
-    try {
-      const { data } = await axios.put(`/api/events/${eventId}/event_groups/${groupId}/`, this.state.event_group, {
-        headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      })
-      console.log({ data })
-      this.props.history.push(`/events/${data.id}`)
-    } catch (error) {
-      console.log(error.response.data)
-    }
-  }
+		try {
+			await axios.put(
+				`/api/events/${eventId}/event_groups/${groupId}/`,
+				this.state.data,
+				headers
+			)
+			this.props.history.push(`/events/${eventId}`)
+		} catch (error) {
+			console.log(error.response.data)
+		}
+	}
 
-
-  render() {
-    console.log(this.state.event_group.group_name)
-    return (
-      <GroupForm
-        data={this.state.data}
-        handleChange={this.handleChange}
-        handleSubmit={this.handleSubmit} />
-    )
-  }
+	render() {
+		console.log(this.state)
+		return (
+			<GroupForm
+				data={this.state.data}
+				handleChange={this.handleChange}
+				handleSubmit={this.handleSubmit}
+			/>
+		)
+	}
 }
 
 export default GroupAmend

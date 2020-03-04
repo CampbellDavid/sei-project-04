@@ -1,7 +1,7 @@
 import React from "react"
 
-const SportForm = ({ data, handleChange, handleSubmit }) => {
-	console.log(data)
+const SportForm = ({ sport, handleChange, handleSubmit }) => {
+	console.log(sport)
 	return (
 		<section className='main-body'>
 			<div>
@@ -14,7 +14,7 @@ const SportForm = ({ data, handleChange, handleSubmit }) => {
 								onChange={handleChange}
 								placeholder='Name'
 								name='name'
-								value={data.name}
+								value={sport.name}
 								required
 							/>
 							<label for='name' className='main-form-label'>
@@ -28,13 +28,27 @@ const SportForm = ({ data, handleChange, handleSubmit }) => {
 								onChange={handleChange}
 								placeholder='Image'
 								name='image'
-								value={data.image}
+								value={sport.image}
 								required
 							/>
 							<label for='image' className='main-form-label'>
 								Image URL
 							</label>
 						</div>
+
+						<div className='main-form-group'>
+							<textarea
+								className='main-user-form-field'
+								rows='5'
+								cols='30'
+								onChange={handleChange}
+								placeholder='Description'
+								name='description'
+								value={sport.description}
+								required
+							/>
+						</div>
+
 						<hr className='divider' />
 						<div className='button-div'>
 							<button className='button is-rounded' type='submit'>
