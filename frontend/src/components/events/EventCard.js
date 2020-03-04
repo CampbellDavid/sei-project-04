@@ -1,5 +1,5 @@
-import React from "react"
-import { Link } from "react-router-dom"
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const EventCard = ({
 	id,
@@ -15,7 +15,7 @@ const EventCard = ({
 			<h2 className='ev-card-title'>{title}</h2>
 			<p className='ev-card-content'>{sport}</p>
 			<p className='ev-card-content'>{location}</p>
-			<p className='ev-card-content'>{price}</p>
+			<p className='ev-card-content'>£{price}</p>
 			<p className='ev-card-content'>{time_and_date}</p>
 			<p className='ev-card-content'>{description}</p>
 		</Link>

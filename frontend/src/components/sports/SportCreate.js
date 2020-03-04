@@ -4,42 +4,41 @@ import Auth from '../../lib/auth'
 import SportForm from './SportForm'
 
 class SportCreate extends React.Component {
+	state = {
+		sport: {},
+		errors: null
+	}
 
-  state = {
-    data: {
-      name: '',
-      image: '',
-      events: ''
-    }
-  }
+	handleChange = e => {
+		const sport = { ...this.state.sport, [e.target.name]: e.target.value }
+		const errors = { ...this.state.errors, [e.target.name]: '' }
+		this.setState({ sport, errors })
+	}
 
-  handleChange = ({ target: { name, value } }) => {
-    const data = { ...this.state.data, [name]: value }
-    this.setState({ data })
-  }
+	handleSubmit = async e => {
+		e.preventDefault()
+		console.log(this.state.sport)
+		try {
+			const response = await axios.post('/api/sports/', this.state.sport, {
+				headers: { Authorization: `Bearer ${Auth.getToken()}` }
+			})
+			this.props.history.push(`/sports/${response.data.id}`)
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
-  handleSubmit = async e => {
-    e.prsportDefault()
-    try {
-      const response = await axios.post('/api/sports/', this.state.data, {
-        headers: { Authorization: `Bearer ${Auth.getToken()}` }
-      })
-      this.props.history.push(`/sports/${response.data.id}`)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  render() {
-    return (
-      <section className="form">
-        <SportForm
-          data={this.state.data}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit} />
-      </section>
-    )
-  }
+	render() {
+		return (
+			<section className='form'>
+				<SportForm
+					sport={this.state.sport}
+					handleChange={this.handleChange}
+					handleSubmit={this.handleSubmit}
+				/>
+			</section>
+		)
+	}
 }
 
 export default SportCreate
