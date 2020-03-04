@@ -1,7 +1,7 @@
-import axios from "axios"
-import React from "react"
-import Auth from "../../lib/auth"
-import { Link } from "react-router-dom"
+import axios from 'axios'
+import React from 'react'
+import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
 
 class Checkout extends React.Component {
 	state = {
@@ -50,7 +50,7 @@ class Checkout extends React.Component {
 						</Link>
 					)
 				})}
-				<p className='cart-item-price'>Total: {this.getTotalPrice()}</p>
+				<p className='cart-item-price'>Total: £{this.getTotalPrice()}</p>
 				<hr className='divider-small' />
 				<Link to='/secure_payment'>
 					<button type='button' className='button is-rounded'>
