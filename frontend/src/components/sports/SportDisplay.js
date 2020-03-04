@@ -1,7 +1,7 @@
-import React from "react"
-import axios from "axios"
-import { Link } from "react-router-dom"
-import Auth from "../../lib/auth"
+import React from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import Auth from '../../lib/auth'
 
 class SportDisplay extends React.Component {
 	state = {
@@ -28,9 +28,9 @@ class SportDisplay extends React.Component {
 			await axios.delete(`/api/sports/${sportId}/`, {
 				headers: { Authorization: `Bearer ${Auth.getToken()}` }
 			})
-			this.props.history.push("/sports")
+			this.props.history.push('/sports')
 		} catch (err) {
-			this.props.history.push("/unknown-path")
+			this.props.history.push('/unknown-path')
 		}
 	}
 
@@ -47,12 +47,27 @@ class SportDisplay extends React.Component {
 					className='sport-img-disp'
 				/>
 				<hr className='divider-small' />
-				<Link to={"/events/create"}>
+				<Link to={'/events/create'}>
 					<button type='button' className='button is-rounded sport-arr-btn'>
 						Add Event
 					</button>
 				</Link>
 				<hr className='divider-small' />
+
+				<div className='events-section'>
+					<h3 className='events-title-spt'>Events:</h3>
+					<p className='sport-card-content'>
+						{this.state.sport.events.map(event => {
+							return (
+								<Link to={`/events/${event.id}`}>
+									<p className='event-desc-spt-disp'>{event.title}</p>
+								</Link>
+							)
+						})}
+					</p>
+				</div>
+				<hr className='divider-small' />
+
 				{Auth.isAuthenticated() ? (
 					<>
 						{this.isOwner() && (

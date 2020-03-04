@@ -2,18 +2,18 @@ $primary: #11998e;
 $secondary: #38ef7d;
 $white: #fff;
 $gray: #9b9b9b;
-@import url("https://fonts.googleapis.com/css?family=Archivo+Black&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Archivo+Black&display=swap');
 
 // Home
 
 .heading-hero {
 	font-size: 50px;
-	font-family: "Archivo Black", sans-serif;
+	font-family: 'Archivo Black', sans-serif;
 }
 
 .slogan-hero {
 	font-size: 30px;
-	font-family: "Archivo Black", sans-serif;
+	font-family: 'Archivo Black', sans-serif;
 }
 
 // Forms
@@ -338,30 +338,28 @@ $gray: #9b9b9b;
 // Sport card
 
 .sport-card {
-	width: 75vw;
+	width: 200px;
+	height: 230px;
 	padding: 10px;
 	border: 2px solid $primary;
 	margin: 10px 0;
 	border-radius: 10px;
 	background-color: #414141;
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+
+.spt-cd-wrapper {
+	width: 200px;
+	margin: 0 10px;
 }
 
 .sport-card-title {
 	color: $white;
 	margin: 5px;
 	font-size: 18px;
-}
-
-.sport-card-content {
-	color: $white;
-	margin: 5px;
-	font-size: 14px;
-}
-
-.sport-card-content {
-	color: $white;
-	margin: 5px;
-	font-size: 14px;
+	width: max-content;
 }
 
 .sport-card-img {
@@ -372,6 +370,24 @@ $gray: #9b9b9b;
 }
 
 // Sport display
+
+.meta-container-spt-disp {
+	width: 75vw;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.sport-card-content {
+	color: $white;
+	margin: 5px;
+	font-size: 14px;
+	width: max-content;
+}
+
+.events-title-spt {
+	color: $white;
+}
 
 .main-body-sport-disp {
 	font-family: Arial, Helvetica, sans-serif;

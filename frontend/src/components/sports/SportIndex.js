@@ -1,8 +1,8 @@
-import React from "react"
-import axios from "axios"
-import Auth from "../../lib/auth"
-import SportCard from "./SportCard"
-import { Link } from "react-router-dom"
+import React from 'react'
+import axios from 'axios'
+import Auth from '../../lib/auth'
+import SportCard from './SportCard'
+import { Link } from 'react-router-dom'
 
 class SportIndex extends React.Component {
 	state = {
@@ -11,7 +11,7 @@ class SportIndex extends React.Component {
 
 	async componentDidMount() {
 		try {
-			const response = await axios.get("/api/sports")
+			const response = await axios.get('/api/sports')
 			this.setState({ sports: response.data })
 		} catch (error) {
 			console.log(error)
@@ -21,17 +21,19 @@ class SportIndex extends React.Component {
 	render() {
 		if (!this.state.sports) return null
 		const sports = this.state.sports
-		console.log("sports:", sports)
+		console.log('sports:', sports)
 		return (
 			<section className='main-body-event'>
 				<h1 className='event-head'>Sports</h1>
-				{sports.map(sport => {
-					return (
-						<div>
-							<SportCard key={sport.id} {...sport} />
-						</div>
-					)
-				})}
+				<div className='meta-container-spt-disp'>
+					{sports.map(sport => {
+						return (
+							<div className='spt-cd-wrapper'>
+								<SportCard key={sport.id} {...sport} />
+							</div>
+						)
+					})}
+				</div>
 				<hr className='divider-small' />
 				<div>
 					{Auth.isAuthenticated() ? (
