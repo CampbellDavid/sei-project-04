@@ -17,6 +17,26 @@ const UserForm = ({ user, handleChange, handleSubmit }) => {
 				</div>
 
 				<div className='main-form-group'>
+					<input
+						className='main-user-form-field'
+						onChange={handleChange}
+						placeholder='First Name'
+						name='first_name'
+						value={user.first_name}
+					/>
+				</div>
+
+				<div className='main-form-group'>
+					<input
+						className='main-user-form-field'
+						onChange={handleChange}
+						placeholder='Last Name'
+						name='last_name'
+						value={user.last_name}
+					/>
+				</div>
+
+				<div className='main-form-group'>
 					<textarea
 						className='main-user-form-field'
 						rows='5'
