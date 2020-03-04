@@ -217,7 +217,7 @@ $gray: #9b9b9b;
 
 .event-card {
 	width: 75vw;
-	height: 30vh;
+
 	padding: 10px;
 	border: 2px solid $primary;
 	margin: 10px 0;
@@ -322,4 +322,88 @@ $gray: #9b9b9b;
 	color: white;
 	font-size: 28px;
 	font-weight: 800;
+}
+
+// Sport card
+
+.sport-card {
+	width: 75vw;
+	padding: 10px;
+	border: 2px solid $primary;
+	margin: 10px 0;
+	border-radius: 10px;
+	background-color: #414141;
+}
+
+.sport-card-title {
+	color: $white;
+	margin: 5px;
+	font-size: 18px;
+}
+
+.sport-card-content {
+	color: $white;
+	margin: 5px;
+	font-size: 14px;
+}
+
+.sport-card-content {
+	color: $white;
+	margin: 5px;
+	font-size: 14px;
+}
+
+.sport-card-img {
+	height: 150px;
+	width: 150px;
+	border: 2px solid white;
+	border-radius: 50%;
+}
+
+// Sport display
+
+.main-body-sport-disp {
+	font-family: Arial, Helvetica, sans-serif;
+	display: flex;
+	flex-direction: column;
+	padding: 40px;
+	min-height: 100vh;
+	font-size: 1.5rem;
+	background-color: #222222;
+}
+
+.sport-disp-head {
+	color: $white;
+	margin-bottom: 10px;
+	font-size: 30px;
+	margin: 0 0 10px 10px;
+}
+
+.sport-arr-btn {
+	width: 175px;
+	margin: 10px;
+}
+
+.sport-disp-subtitle {
+	color: $white;
+	margin: 5px;
+	font-size: 18px;
+}
+
+.sport-disp-title {
+	color: $white;
+	margin: 5px;
+	font-size: 22px;
+	font-weight: 800;
+}
+
+.sport-img-disp {
+	height: 300px;
+	width: 600px;
+	border-radius: 15px;
+}
+
+.sport-description {
+	color: white;
+	font-size: 16px;
 }

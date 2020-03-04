@@ -22,7 +22,7 @@ class SportSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Sport
-        fields = ('id', 'name', 'image', 'events', 'owner')
+        fields = '__all__'
 
 
 class PopulatedSportSerializer(SportSerializer):
