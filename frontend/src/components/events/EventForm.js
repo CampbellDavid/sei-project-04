@@ -1,6 +1,7 @@
-import React from "react"
+import React from 'react'
 
 const EventForm = ({ data, handleChange, handleSubmit }) => {
+	console.log(data)
 	return (
 		<section className='main-body'>
 			<h1 className='main-heading'>Event</h1>
@@ -47,6 +48,19 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 						<label for='time_and_date' className='main-form-label'>
 							Time & Date
 						</label>
+					</div>
+
+					<div className='main-form-group'>
+						<textarea
+							className='main-user-form-field'
+							rows='5'
+							cols='30'
+							onChange={handleChange}
+							placeholder='Description'
+							name='description'
+							value={data.description}
+							required
+						/>
 					</div>
 
 					<div className='main-form-group'>

@@ -1,8 +1,8 @@
-import React from "react"
-import axios from "axios"
-import { Link } from "react-router-dom"
-import Auth from "../../lib/auth"
-import GroupCard from "../groups/GroupCard"
+import React from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import Auth from '../../lib/auth'
+import GroupCard from '../groups/GroupCard'
 
 class EventDisplay extends React.Component {
 	state = {
@@ -45,9 +45,9 @@ class EventDisplay extends React.Component {
 			await axios.delete(`/api/events/${eventId}/`, {
 				headers: { Authorization: `Bearer ${Auth.getToken()}` }
 			})
-			this.props.history.push("/events")
+			this.props.history.push('/events')
 		} catch (err) {
-			this.props.history.push("/unknown-path")
+			this.props.history.push('/unknown-path')
 		}
 	}
 
@@ -100,7 +100,11 @@ class EventDisplay extends React.Component {
 		return (
 			<section className='main-body-event-disp'>
 				<h1 className='ev-disp-title'>{this.state.event.title}</h1>
-				<h3 className='ev-disp-subtitle'>Price: £{this.state.event.price}</h3>
+				<h3 className='ev-disp-subtitle'>
+					Price: £{this.state.event.price} | {this.state.event.time_and_date} |{' '}
+					{this.state.event.location}
+				</h3>
+
 				<p className='ev-disp-subtitle'>{this.state.event.description}</p>
 				<div>
 					<h3 className='ev-disp-subtitle'>Groups</h3>

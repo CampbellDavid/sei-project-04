@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 const SportForm = ({ sport, handleChange, handleSubmit }) => {
 	console.log(sport)
