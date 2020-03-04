@@ -52,44 +52,36 @@ class EventDisplay extends React.Component {
 	}
 
 	addToWishList = async () => {
+		const user = this.state.user
+		const pkArr = user.wish_list.map(event => event.id)
+		const sendData = { wish_list: pkArr }
 		const userId = Auth.getPayload().sub
-		const wishListArr = this.state.user.wish_list
-		const currentEvent = this.state.event.id
-		console.log(currentEvent)
 		const eventId = this.state.event.id
-		const index = wishListArr.indexOf(currentEvent)
-
-		wishListArr.includes(eventId)
-			? wishListArr.splice(index, 1)
-			: wishListArr.push(this.state.event.id)
-		this.setState({ user: { wish_list: wishListArr } })
-		console.log(this.state.user)
+		const ind = pkArr.indexOf(eventId)
+		pkArr.includes(eventId) ? pkArr.splice(ind, 1) : pkArr.push(eventId)
 		try {
-			await axios.put(`/api/user/${userId}`, this.state.user, {
+			await axios.put(`/api/user/${userId}`, sendData, {
 				headers: { Authorization: `Bearer ${Auth.getToken()}` }
 			})
+			window.location.reload(false)
 		} catch (err) {
 			console.log(err.response.data)
 		}
 	}
 
-	addToCart = async () => {
+	addToShopCart = async () => {
+		const user = this.state.user
+		const pkArr = user.shopping_cart.map(event => event.id)
+		const sendData = { shopping_cart: pkArr }
 		const userId = Auth.getPayload().sub
-		const cartArr = this.state.user.shopping_cart
-		const currentEventForCart = this.state.event.id
-		console.log(currentEventForCart)
 		const eventId = this.state.event.id
-		const index = cartArr.indexOf(currentEventForCart)
-
-		cartArr.includes(eventId)
-			? cartArr.splice(index, 1)
-			: cartArr.push(this.state.event.id)
-		this.setState({ user: { shopping_cart: cartArr } })
-		console.log(this.state.user)
+		const ind = pkArr.indexOf(eventId)
+		pkArr.includes(eventId) ? pkArr.splice(ind, 1) : pkArr.push(eventId)
 		try {
-			await axios.put(`/api/user/${userId}`, this.state.user, {
+			await axios.put(`/api/user/${userId}`, sendData, {
 				headers: { Authorization: `Bearer ${Auth.getToken()}` }
 			})
+			window.location.reload(false)
 		} catch (err) {
 			console.log(err.response.data)
 		}
@@ -99,9 +91,8 @@ class EventDisplay extends React.Component {
 		if (!this.state.event) return null
 		if (!this.state.user) return null
 		const eventId = this.state.event.id
-		const wishListArr = this.state.user.wish_list
-		const cartArr = this.state.user.shopping_cart
-		console.log(cartArr, wishListArr)
+		const wishListArr = this.state.user.wish_list.map(event => event.id)
+		const cartArr = this.state.user.shopping_cart.map(event => event.id)
 		const filteredGroups = this.state.groups.filter(
 			group => group.event.id === this.state.event.id
 		)
@@ -144,14 +135,14 @@ class EventDisplay extends React.Component {
 							cartArr && cartArr.includes(eventId) ? (
 								<button
 									className='button is-rounded arr-btn'
-									onClick={this.addToCart}
+									onClick={this.addToShopCart}
 								>
 									Remove from Cart
 								</button>
 							) : (
 								<button
 									className='button is-rounded arr-btn'
-									onClick={this.addToCart}
+									onClick={this.addToShopCart}
 								>
 									Add to Cart
 								</button>
