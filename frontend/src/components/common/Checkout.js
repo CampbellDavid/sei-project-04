@@ -26,6 +26,12 @@ class Checkout extends React.Component {
 		return priceArr.reduce((a, b) => a + b)
 	}
 
+	currency = new Intl.NumberFormat('en-GB', {
+		style: 'currency',
+		currency: 'GBP',
+		minimumFractionDigits: 2
+	})
+
 	render() {
 		if (!this.state.user) return null
 		console.log(this.state.user)
@@ -44,7 +50,7 @@ class Checkout extends React.Component {
 									{item.title}
 								</p>
 								<p className='cart-item-price' key={item.price}>
-									£{item.price}
+									{this.currency.format(item.price)}
 								</p>
 							</div>
 						</Link>
