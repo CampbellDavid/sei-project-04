@@ -87,6 +87,12 @@ class EventDisplay extends React.Component {
 		}
 	}
 
+	currency = new Intl.NumberFormat('en-GB', {
+		style: 'currency',
+		currency: 'GBP',
+		minimumFractionDigits: 2
+	})
+
 	render() {
 		if (!this.state.event) return null
 		if (!this.state.user) return null
@@ -101,8 +107,8 @@ class EventDisplay extends React.Component {
 			<section className='main-body-event-disp'>
 				<h1 className='ev-disp-title'>{this.state.event.title}</h1>
 				<h3 className='ev-disp-subtitle'>
-					Price: £{this.state.event.price} | {this.state.event.time_and_date} |{' '}
-					{this.state.event.location}
+					Price: {this.currency.format(this.state.event.price)} |{' '}
+					{this.state.event.time_and_date} | {this.state.event.location}
 				</h3>
 
 				<p className='ev-disp-subtitle'>{this.state.event.description}</p>

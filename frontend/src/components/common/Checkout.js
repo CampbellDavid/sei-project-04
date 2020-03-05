@@ -23,7 +23,9 @@ class Checkout extends React.Component {
 		const priceArr = []
 		cartArr.map(item => priceArr.push(item.price))
 		console.log(priceArr)
-		return priceArr.reduce((a, b) => a + b)
+		const finalPrice = priceArr.reduce((a, b) => a + b)
+		console.log(finalPrice)
+		return this.currency.format(finalPrice)
 	}
 
 	currency = new Intl.NumberFormat('en-GB', {
@@ -56,7 +58,7 @@ class Checkout extends React.Component {
 						</Link>
 					)
 				})}
-				<p className='cart-item-price'>Total: £{this.getTotalPrice()}</p>
+				<p className='cart-item-price'>Total: {this.getTotalPrice()}</p>
 				<hr className='divider-small' />
 				<Link to='/secure_payment'>
 					<button type='button' className='button is-rounded'>

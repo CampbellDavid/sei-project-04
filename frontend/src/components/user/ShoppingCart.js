@@ -1,7 +1,7 @@
-import React from "react"
-import axios from "axios"
-import Auth from "../../lib/auth"
-import { Link } from "react-router-dom"
+import React from 'react'
+import axios from 'axios'
+import Auth from '../../lib/auth'
+import { Link } from 'react-router-dom'
 
 class ShoppingCart extends React.Component {
 	state = {
@@ -38,6 +38,12 @@ class ShoppingCart extends React.Component {
 		}
 	}
 
+	currency = new Intl.NumberFormat('en-GB', {
+		style: 'currency',
+		currency: 'GBP',
+		minimumFractionDigits: 2
+	})
+
 	// handleChange = e => {
 	//   const user = { ...this.state.user, [e.target.name]: e.target.value }
 	//   const errors = { ...this.state.errors, [e.target.name]: '' }
@@ -59,7 +65,7 @@ class ShoppingCart extends React.Component {
 
 	render() {
 		const userId = Auth.getPayload().sub
-		console.log("rendering")
+		console.log('rendering')
 		if (!this.state.user) return null
 		const { user } = this.state
 		return (
@@ -75,7 +81,9 @@ class ShoppingCart extends React.Component {
 								<Link to={`/events/${item.id}`}>
 									<div className='item-card-checkout'>
 										<h3 className='cart-item'>{item.title}</h3>
-										<h3 className='cart-item-price'>£{item.price}</h3>
+										<h3 className='cart-item-price'>
+											{this.currency.format(item.price)}
+										</h3>
 									</div>
 								</Link>
 								<button

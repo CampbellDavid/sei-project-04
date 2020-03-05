@@ -1,26 +1,26 @@
-import React from "react"
+import React from 'react'
 // import { render } from 'react-dom'
-import Card from "react-credit-cards"
-import Auth from "../../../lib/auth"
-import axios from "axios"
+import Card from 'react-credit-cards'
+import Auth from '../../../lib/auth'
+import axios from 'axios'
 import {
 	formatCreditCardNumber,
 	formatCVC,
 	formatExpirationDate,
 	formatFormData
-} from "./utils"
-import "react-credit-cards/es/styles-compiled.css"
+} from './utils'
+import 'react-credit-cards/es/styles-compiled.css'
 // import styles from '../../../stylesheets/styles.css'
 
 class Payment extends React.Component {
 	state = {
 		user: null,
-		number: "",
-		name: "",
-		expiry: "",
-		cvc: "",
-		issuer: "",
-		focused: "",
+		number: '',
+		name: '',
+		expiry: '',
+		cvc: '',
+		issuer: '',
+		focused: '',
 		formData: null
 	}
 
@@ -47,11 +47,11 @@ class Payment extends React.Component {
 	}
 
 	handleInputChange = ({ target }) => {
-		if (target.name === "number") {
+		if (target.name === 'number') {
 			target.value = formatCreditCardNumber(target.value)
-		} else if (target.name === "expiry") {
+		} else if (target.name === 'expiry') {
 			target.value = formatExpirationDate(target.value)
-		} else if (target.name === "cvc") {
+		} else if (target.name === 'cvc') {
 			target.value = formatCVC(target.value)
 		}
 
@@ -77,8 +77,16 @@ class Payment extends React.Component {
 		const priceArr = []
 		cartArr.map(item => priceArr.push(item.price))
 		console.log(priceArr)
-		return priceArr.reduce((a, b) => a + b)
+		const finalPrice = priceArr.reduce((a, b) => a + b)
+		console.log(finalPrice)
+		return this.currency.format(finalPrice)
 	}
+
+	currency = new Intl.NumberFormat('en-GB', {
+		style: 'currency',
+		currency: 'GBP',
+		minimumFractionDigits: 2
+	})
 
 	render() {
 		if (!this.state.user) return null
@@ -101,33 +109,35 @@ class Payment extends React.Component {
 						/>
 						<div className='form-wrapper'>
 							<form ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
-								<div className='form-group main-form-group'>
+								<div className='main-form-group'>
 									<input
 										type='tel'
 										name='number'
-										className='form-control main-form-field'
+										id='number'
+										className='main-form-field'
 										placeholder='Card Number'
 										pattern='[\d| ]{16,22}'
 										required
 										onChange={this.handleInputChange}
 										onFocus={this.handleInputFocus}
 									/>
-									<label for='number' className='main-form-label'>
+									<label htmlFor='number' className='main-form-label'>
 										Card Number
 									</label>
 									{/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
 								</div>
-								<div className='form-group main-form-group'>
+								<div className='main-form-group'>
 									<input
 										type='text'
 										name='name'
-										className='form-control main-form-field'
+										id='name'
+										className='main-form-field'
 										placeholder='Name'
 										required
 										onChange={this.handleInputChange}
 										onFocus={this.handleInputFocus}
 									/>
-									<label for='name' className='main-form-label'>
+									<label htmlFor='name' className='main-form-label'>
 										Cardholder's Name
 									</label>
 								</div>
@@ -136,14 +146,15 @@ class Payment extends React.Component {
 										<input
 											type='tel'
 											name='expiry'
-											className='form-control main-form-field'
+											id='expiry'
+											className='main-form-field'
 											placeholder='Valid Thru'
 											pattern='\d\d/\d\d'
 											required
 											onChange={this.handleInputChange}
 											onFocus={this.handleInputFocus}
 										/>
-										<label for='expiry' className='main-form-label'>
+										<label htmlFor='expiry' className='main-form-label'>
 											Card Expiry Date
 										</label>
 									</div>
@@ -151,21 +162,22 @@ class Payment extends React.Component {
 										<input
 											type='tel'
 											name='cvc'
-											className='form-control main-form-field'
+											id='cvc'
+											className='main-form-field'
 											placeholder='CVC'
 											pattern='\d{3,4}'
 											required
 											onChange={this.handleInputChange}
 											onFocus={this.handleInputFocus}
 										/>
-										<label for='cvc' className='main-form-label'>
+										<label htmlFor='cvc' className='main-form-label'>
 											CVC
 										</label>
 									</div>
 								</div>
 								<input type='hidden' name='issuer' value={issuer} />
 								<hr className='divider' />
-								<p className='final-price'>Total: £{this.getTotalPrice()}</p>
+								<p className='final-price'>Total: {this.getTotalPrice()}</p>
 								<hr className='divider' />
 								<div className='form-actions'>
 									<button className='btn btn-primary btn-block button is-rounded'>
