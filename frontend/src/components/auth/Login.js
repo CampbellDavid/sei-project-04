@@ -1,29 +1,29 @@
-import React from "react"
-import axios from "axios"
-import Auth from "../../lib/auth"
+import React from 'react'
+import axios from 'axios'
+import Auth from '../../lib/auth'
 
 class Login extends React.Component {
 	state = {
 		data: {
-			email: "",
-			password: ""
+			email: '',
+			password: ''
 		},
-		error: ""
+		error: ''
 	}
 
 	handleChange = ({ target: { name, value } }) => {
 		const data = { ...this.state.data, [name]: value }
-		this.setState({ data, error: "" })
+		this.setState({ data, error: '' })
 	}
 
 	handleSubmit = async e => {
 		e.preventDefault()
 		try {
-			const res = await axios.post("/api/login", this.state.data)
+			const res = await axios.post('/api/login', this.state.data)
 			Auth.setToken(res.data.token)
-			this.props.history.push("/")
+			this.props.history.push('/')
 		} catch (error) {
-			this.setState({ error: "Wrong Username/Password Combination" })
+			this.setState({ error: 'Wrong Username/Password Combination' })
 		}
 	}
 
@@ -38,6 +38,7 @@ class Login extends React.Component {
 								className='main-form-field'
 								placeholder='email'
 								name='email'
+								id='email'
 								onChange={this.handleChange}
 								required
 							/>
@@ -51,10 +52,11 @@ class Login extends React.Component {
 								type='password'
 								placeholder='password'
 								name='password'
+								id='password'
 								onChange={this.handleChange}
 								required
 							/>
-							<label for='password' className='main-form-label'>
+							<label htmlFor='password' className='main-form-label'>
 								Password
 							</label>
 						</div>

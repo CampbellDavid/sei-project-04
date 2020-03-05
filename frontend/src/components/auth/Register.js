@@ -1,5 +1,5 @@
-import React from "react"
-import axios from "axios"
+import React from 'react'
+import axios from 'axios'
 
 class Register extends React.Component {
 	state = {
@@ -7,7 +7,7 @@ class Register extends React.Component {
 		emailValid: false,
 		formValid: false,
 		passwordValid: false,
-		formErrors: { email: "", password: "" }
+		formErrors: { email: '', password: '' }
 	}
 
 	handleChange = e => {
@@ -25,13 +25,13 @@ class Register extends React.Component {
 		let passwordValid = this.state.passwordValid
 
 		switch (fieldName) {
-			case "email":
+			case 'email':
 				emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)
-				fieldValidationErrors.email = emailValid ? "" : " is invalid"
+				fieldValidationErrors.email = emailValid ? '' : ' is invalid'
 				break
-			case "password":
+			case 'password':
 				passwordValid = value.length >= 1
-				fieldValidationErrors.password = passwordValid ? "" : " is too short"
+				fieldValidationErrors.password = passwordValid ? '' : ' is too short'
 				break
 			default:
 				break
@@ -53,14 +53,14 @@ class Register extends React.Component {
 	}
 
 	errorClass(error) {
-		return error.length === 0 ? "" : "has-error"
+		return error.length === 0 ? '' : 'has-error'
 	}
 
 	handleSubmit = async e => {
 		e.preventDefault()
 		try {
-			await axios.post("/api/register", this.state.data)
-			this.props.history.push("/login")
+			await axios.post('/api/register', this.state.data)
+			this.props.history.push('/login')
 		} catch (error) {
 			console.log(error)
 		}
@@ -78,9 +78,10 @@ class Register extends React.Component {
 								onChange={this.handleChange}
 								placeholder='username'
 								name='username'
+								id='username'
 								required
 							/>
-							<label for='username' className='main-form-label'>
+							<label htmlFor='username' className='main-form-label'>
 								Username
 							</label>
 						</div>
@@ -92,9 +93,10 @@ class Register extends React.Component {
 								type='email'
 								placeholder='email'
 								name='email'
+								id='email'
 								required
 							/>
-							<label for='email' className='main-form-label'>
+							<label htmlFor='email' className='main-form-label'>
 								Email
 							</label>
 						</div>
@@ -106,9 +108,10 @@ class Register extends React.Component {
 								type='password'
 								placeholder='password'
 								name='password'
+								id='password'
 								required
 							/>
-							<label for='password' className='main-form-label'>
+							<label htmlFor='password' className='main-form-label'>
 								Password
 							</label>
 						</div>
@@ -120,9 +123,13 @@ class Register extends React.Component {
 								type='password'
 								placeholder='confirm password'
 								name='password_confirmation'
+								id='password_confirmation'
 								required
 							/>
-							<label for='password_confirmation' className='main-form-label'>
+							<label
+								htmlFor='password_confirmation'
+								className='main-form-label'
+							>
 								Confirm Password
 							</label>
 						</div>
