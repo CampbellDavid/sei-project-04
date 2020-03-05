@@ -1,22 +1,22 @@
-import React from "react"
-import axios from "axios"
-import Auth from "../../lib/auth"
-import GroupForm from "./GroupForm"
-import { headers } from "./../../lib/headers"
+import React from 'react'
+import axios from 'axios'
+// import Auth from "../../lib/auth"
+import GroupForm from './GroupForm'
+import { headers } from './../../lib/headers'
 
 class GroupAmend extends React.Component {
 	state = {
 		event_group: {},
 		data: {
-			group_name: ""
+			group_name: ''
 		}
 	}
 
 	async componentDidMount() {
 		const groupId = this.props.location.pathname.charAt(23)
 		const eventId = this.props.match.params.id
-		console.log("groupId", groupId)
-		console.log("eventId", eventId)
+		console.log('groupId', groupId)
+		console.log('eventId', eventId)
 
 		try {
 			const response = await axios.get(

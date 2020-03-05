@@ -1,7 +1,7 @@
-import React from "react"
-import { Link, withRouter } from "react-router-dom"
-import { notify } from "react-notify-toast"
-import Auth from "../../lib/auth"
+import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
+// import { notify } from "react-notify-toast"
+import Auth from '../../lib/auth'
 
 class NavBar extends React.Component {
 	state = {
@@ -19,7 +19,7 @@ class NavBar extends React.Component {
 	handleLogout = () => {
 		Auth.logout()
 		// notify.show('You\'ve logged out!', 'custom', 3000, { background: 'FFFFF0' })
-		this.props.history.push("/")
+		this.props.history.push('/')
 	}
 
 	componentDidUpdate(prevProps) {
@@ -39,19 +39,19 @@ class NavBar extends React.Component {
 						<Link className='navbar-item' to='/'>
 							HOME
 						</Link>
-						<a
+						<p
 							className={`navbar-burger ${
-								this.state.navOpen ? "is-active" : ""
+								this.state.navOpen ? 'is-active' : ''
 							}`}
 							onClick={this.toggleNavbar}
 						>
 							<span aria-hidden='true'></span>
 							<span aria-hidden='true'></span>
 							<span aria-hidden='true'></span>
-						</a>
+						</p>
 					</div>
 					<div
-						className={`navbar-menu ${this.state.navOpen ? "is-active" : ""}`}
+						className={`navbar-menu ${this.state.navOpen ? 'is-active' : ''}`}
 					>
 						<div className='navbar-end'>
 							<Link className='navbar-item' to='/sports'>

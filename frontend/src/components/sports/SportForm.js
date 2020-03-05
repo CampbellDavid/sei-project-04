@@ -14,10 +14,11 @@ const SportForm = ({ sport, handleChange, handleSubmit }) => {
 								onChange={handleChange}
 								placeholder='Name'
 								name='name'
+								id='name'
 								value={sport.name}
 								required
 							/>
-							<label for='name' className='main-form-label'>
+							<label htmlFor='name' className='main-form-label'>
 								Name
 							</label>
 						</div>
@@ -28,10 +29,11 @@ const SportForm = ({ sport, handleChange, handleSubmit }) => {
 								onChange={handleChange}
 								placeholder='Image'
 								name='image'
+								id='image'
 								value={sport.image}
 								required
 							/>
-							<label for='image' className='main-form-label'>
+							<label htmlFor='image' className='main-form-label'>
 								Image URL
 							</label>
 						</div>
@@ -44,6 +46,7 @@ const SportForm = ({ sport, handleChange, handleSubmit }) => {
 								onChange={handleChange}
 								placeholder='Description'
 								name='description'
+								id='description'
 								value={sport.description}
 								required
 							/>

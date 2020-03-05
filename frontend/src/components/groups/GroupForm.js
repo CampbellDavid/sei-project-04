@@ -1,4 +1,4 @@
-import React from "react"
+import React from 'react'
 
 const GroupForm = ({ handleChange, handleSubmit }) => {
 	return (
@@ -11,9 +11,10 @@ const GroupForm = ({ handleChange, handleSubmit }) => {
 							onChange={handleChange}
 							placeholder='Group Name'
 							name='group_name'
+							id='group_name'
 							required
 						/>
-						<label for='group_name' className='main-form-label'>
+						<label htmlFor='group_name' className='main-form-label'>
 							Group Name
 						</label>
 					</div>

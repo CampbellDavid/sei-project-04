@@ -1,8 +1,8 @@
-import React from "react"
-import axios from "axios"
-import Auth from "../../lib/auth"
-import UserForm from "./UserForm"
-import { headers } from "./../../lib/headers"
+import React from 'react'
+import axios from 'axios'
+import Auth from '../../lib/auth'
+import UserForm from './UserForm'
+import { headers } from './../../lib/headers'
 
 class UserAmend extends React.Component {
 	state = {
@@ -25,7 +25,7 @@ class UserAmend extends React.Component {
 	handleChange = e => {
 		const data = { ...this.state.data, [e.target.name]: e.target.value }
 		const user = { ...this.state.user, [e.target.name]: e.target.value }
-		const errors = { ...this.state.errors, [e.target.name]: "" }
+		const errors = { ...this.state.errors, [e.target.name]: '' }
 		this.setState({ user, data, errors })
 	}
 
@@ -41,9 +41,9 @@ class UserAmend extends React.Component {
 	}
 
 	render() {
-		console.log("rendering")
+		console.log('rendering')
 		if (!this.state.user) return null
-		const { user } = this.state
+		// const { user } = this.state
 		return (
 			<>
 				{Auth.isAuthenticated() && (

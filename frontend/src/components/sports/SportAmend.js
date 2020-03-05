@@ -1,8 +1,8 @@
-import React from "react"
-import axios from "axios"
-import Auth from "../../lib/auth"
-import SportForm from "./SportForm"
-import { headers } from "./../../lib/headers"
+import React from 'react'
+import axios from 'axios'
+// import Auth from "../../lib/auth"
+import SportForm from './SportForm'
+import { headers } from './../../lib/headers'
 
 class SportAmend extends React.Component {
 	state = {
@@ -28,7 +28,7 @@ class SportAmend extends React.Component {
 
 	handleChange = e => {
 		const sport = { ...this.state.sport, [e.target.name]: e.target.value }
-		const errors = { ...this.state.errors, [e.target.name]: "" }
+		const errors = { ...this.state.errors, [e.target.name]: '' }
 		this.setState({ sport, errors })
 	}
 

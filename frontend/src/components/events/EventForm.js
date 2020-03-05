@@ -13,10 +13,11 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							onChange={handleChange}
 							placeholder='Event Title'
 							name='title'
+							id='title'
 							value={data.title}
 							required
 						/>
-						<label for='title' className='main-form-label'>
+						<label htmlFor='title' className='main-form-label'>
 							Event Title
 						</label>
 					</div>
@@ -27,10 +28,11 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							onChange={handleChange}
 							placeholder='Price'
 							name='price'
+							id='price'
 							value={data.price}
 							required
 						/>
-						<label for='price' className='main-form-label'>
+						<label htmlFor='price' className='main-form-label'>
 							Price
 						</label>
 					</div>
@@ -42,10 +44,11 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							placeholder='Time & Date'
 							type='datetime-local'
 							name='time_and_date'
+							id='time_and_date'
 							value={data.time_and_date}
 							required
 						/>
-						<label for='time_and_date' className='main-form-label'>
+						<label htmlFor='time_and_date' className='main-form-label'>
 							Time & Date
 						</label>
 					</div>
@@ -58,6 +61,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							onChange={handleChange}
 							placeholder='Description'
 							name='description'
+							id='description'
 							value={data.description}
 							required
 						/>
@@ -69,10 +73,11 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							onChange={handleChange}
 							placeholder='Location'
 							name='location'
+							id='location'
 							value={data.location}
 							required
 						/>
-						<label for='location' className='main-form-label'>
+						<label htmlFor='location' className='main-form-label'>
 							Location
 						</label>
 					</div>
@@ -83,9 +88,10 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							onChange={handleChange}
 							placeholder='Sport'
 							name='sport'
+							id='sport'
 							// value={data.sport} - needs to be drop down list of existing events
 						/>
-						<label for='sport' className='main-form-label'>
+						<label htmlFor='sport' className='main-form-label'>
 							Sport
 						</label>
 					</div>
