@@ -25,6 +25,7 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 					<div className='main-form-group'>
 						<input
 							className='main-form-field'
+							type='number'
 							onChange={handleChange}
 							placeholder='Price'
 							name='price'
