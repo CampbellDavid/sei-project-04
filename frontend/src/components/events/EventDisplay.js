@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Auth from '../../lib/auth'
 import GroupCard from '../groups/GroupCard'
+import Moment from 'moment'
 
 class EventDisplay extends React.Component {
 	state = {
@@ -96,6 +97,8 @@ class EventDisplay extends React.Component {
 	render() {
 		if (!this.state.event) return null
 		if (!this.state.user) return null
+
+		const eventDate = this.state.event.time_and_date
 		const eventId = this.state.event.id
 		const wishListArr = this.state.user.wish_list.map(event => event.id)
 		const cartArr = this.state.user.shopping_cart.map(event => event.id)
@@ -109,7 +112,7 @@ class EventDisplay extends React.Component {
 					<h1 className='ev-disp-title'>{this.state.event.title}</h1>
 					<h3 className='ev-disp-subtitle'>
 						Price: {this.currency.format(this.state.event.price)} |{' '}
-						{this.state.event.time_and_date} | {this.state.event.location}
+						{Moment(eventDate).format('lll')} | {this.state.event.location}
 					</h3>
 
 					<p className='ev-disp-subtitle'>{this.state.event.description}</p>

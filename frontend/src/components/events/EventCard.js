@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Moment from 'moment'
 
 const currency = new Intl.NumberFormat('en-GB', {
 	style: 'currency',
@@ -22,7 +23,7 @@ const EventCard = ({
 			<p className='ev-card-content'>{sport}</p>
 			<p className='ev-card-content'>{location}</p>
 			<p className='ev-card-content'>{currency.format(price)}</p>
-			<p className='ev-card-content'>{time_and_date}</p>
+			<p className='ev-card-content'>{Moment(time_and_date).format('lll')}</p>
 			<p className='ev-card-content'>{description}</p>
 		</Link>
 	</div>
