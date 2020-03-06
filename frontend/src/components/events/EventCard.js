@@ -17,7 +17,7 @@ const EventCard = ({
 	time_and_date,
 	description
 }) => (
-	<Link to={`/events/${id}`}>
+	<Link className='event-card-meta' to={`/events/${id}`}>
 		<div className='event-card'>
 			<h2 className='ev-card-title'>{title}</h2>
 			<p className='ev-card-content'>{sport}</p>
