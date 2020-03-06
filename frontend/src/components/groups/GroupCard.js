@@ -1,17 +1,17 @@
-import React from "react"
-import Auth from "../../lib/auth"
-import axios from "axios"
-import { Link } from "react-router-dom"
+import React from 'react'
+import Auth from '../../lib/auth'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 // import GroupAmend from './GroupAmend'
 
 class GroupCard extends React.Component {
 	state = {
 		group: {
-			group_name: "",
+			group_name: '',
 			attendees: [],
 			event: {},
 			owner: {},
-			id: ""
+			id: ''
 		},
 		errors: {}
 	}
@@ -105,8 +105,12 @@ class GroupCard extends React.Component {
 							Attendees:
 							{group.attendees.map((attendee, i) => {
 								return (
-									<div className='meta-user-card' key={i}>
-										<Link to={`/user/${attendee.id}`}>
+									<Link
+										key={i}
+										className='meta-user-card'
+										to={`/user/${attendee.id}`}
+									>
+										<div>
 											<p className='user-name-grp'>
 												{attendee.first_name} {attendee.last_name}
 											</p>
@@ -116,8 +120,8 @@ class GroupCard extends React.Component {
 												src={attendee.profile_image}
 												alt={attendee.username}
 											/>
-										</Link>
-									</div>
+										</div>
+									</Link>
 								)
 							})}
 						</h3>

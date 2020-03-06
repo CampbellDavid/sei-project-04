@@ -111,8 +111,11 @@ class EventDisplay extends React.Component {
 				<section className='main-body-event-disp'>
 					<h1 className='ev-disp-title'>{this.state.event.title}</h1>
 					<h3 className='ev-disp-subtitle'>
-						Price: {this.currency.format(this.state.event.price)} |{' '}
-						{Moment(eventDate).format('lll')} | {this.state.event.location}
+						Price:{' '}
+						{this.state.event.price === 0
+							? 'Free'
+							: this.currency.format(this.state.event.price)}{' '}
+						| {Moment(eventDate).format('lll')} | {this.state.event.location}
 					</h3>
 
 					<p className='ev-disp-subtitle'>{this.state.event.description}</p>

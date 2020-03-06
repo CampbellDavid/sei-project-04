@@ -17,15 +17,15 @@ const EventCard = ({
 	time_and_date,
 	description
 }) => (
-	<div className='event-card'>
-		<Link to={`/events/${id}`}>
+	<Link to={`/events/${id}`}>
+		<div className='event-card'>
 			<h2 className='ev-card-title'>{title}</h2>
 			<p className='ev-card-content'>{sport}</p>
 			<p className='ev-card-content'>{location}</p>
 			<p className='ev-card-content'>{currency.format(price)}</p>
 			<p className='ev-card-content'>{Moment(time_and_date).format('lll')}</p>
 			<p className='ev-card-content'>{description}</p>
-		</Link>
-	</div>
+		</div>
+	</Link>
 )
 export default EventCard

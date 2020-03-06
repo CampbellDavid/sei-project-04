@@ -194,6 +194,10 @@ $gray: #9b9b9b;
 	background-color: #414141;
 }
 
+.item-card-checkout:hover {
+	background-color: #7a7a7a;
+}
+
 .cart-head {
 	color: $white;
 	margin-bottom: 10px;
@@ -230,12 +234,15 @@ $gray: #9b9b9b;
 
 .event-card {
 	width: 75vw;
-
 	padding: 10px;
 	border: 2px solid $primary;
 	margin: 10px 0;
 	border-radius: 10px;
 	background-color: #414141;
+}
+
+.event-card:hover {
+	background-color: #7a7a7a;
 }
 
 .ev-card-title {
@@ -324,7 +331,7 @@ $gray: #9b9b9b;
 .meta-user-card:hover {
 	border: 2px solid $primary;
 	border-radius: 10px;
-	background-color: gray;
+	background-color: #7a7a7a;
 }
 
 .user-name-grp {
@@ -350,6 +357,10 @@ $gray: #9b9b9b;
 	display: flex;
 	align-content: center;
 	justify-content: center;
+}
+
+.sport-card:hover {
+	background-color: #7a7a7a;
 }
 
 .spt-cd-wrapper {

@@ -79,7 +79,7 @@ class ShoppingCart extends React.Component {
 						this.state.user.shopping_cart.map(item => {
 							return (
 								<>
-									<Link to={`/events/${item.id}`}>
+									<Link className='cart-card' to={`/events/${item.id}`}>
 										<div className='item-card-checkout'>
 											<h3 className='cart-item'>{item.title}</h3>
 											<h3 className='cart-item-price'>
