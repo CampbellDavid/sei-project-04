@@ -51,11 +51,19 @@ class UserView extends React.Component {
 										<p className='user-self-bio'>{user.bio}</p>
 										<hr className='divider-small' />
 										<span className='user-info'>Wish List: </span>
-										{user.wish_list.map(item => (
-											<p className='user-info' key={item.title}>
-												{item.title}
-											</p>
-										))}
+										{user.wish_list.map(item => {
+											return (
+												<ul>
+													<a
+														href={`/events/${item.id}`}
+														className='user-info-sub'
+														key={item.title}
+													>
+														{item.title}
+													</a>
+												</ul>
+											)
+										})}
 									</div>
 									<hr className='divider-small' />
 									{this.isOwner() && (
