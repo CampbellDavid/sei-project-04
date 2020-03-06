@@ -33,13 +33,15 @@ class EventCreate extends React.Component {
 
 	render() {
 		return (
-			<section className='form'>
-				<EventForm
-					data={this.state.data}
-					handleChange={this.handleChange}
-					handleSubmit={this.handleSubmit}
-				/>
-			</section>
+			<body className='has-navbar-fixed-top'>
+				<section className='form'>
+					<EventForm
+						data={this.state.data}
+						handleChange={this.handleChange}
+						handleSubmit={this.handleSubmit}
+					/>
+				</section>
+			</body>
 		)
 	}
 }

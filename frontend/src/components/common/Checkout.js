@@ -41,31 +41,33 @@ class Checkout extends React.Component {
 		const userId = Auth.getPayload().sub
 		console.log(userId)
 		return (
-			<section className='cart-body'>
-				<h1 className='cart-head'>Checkout</h1>
+			<body className='has-navbar-fixed-top'>
+				<section className='cart-body'>
+					<h1 className='cart-head'>Checkout</h1>
 
-				{user.shopping_cart.map(item => {
-					return (
-						<Link to={`/events/${item.id}`}>
-							<div className='item-card-checkout'>
-								<p className='cart-item' key={item.title}>
-									{item.title}
-								</p>
-								<p className='cart-item-price' key={item.price}>
-									{this.currency.format(item.price)}
-								</p>
-							</div>
-						</Link>
-					)
-				})}
-				<p className='cart-item-price'>Total: {this.getTotalPrice()}</p>
-				<hr className='divider-small' />
-				<Link to='/secure_payment'>
-					<button type='button' className='button is-rounded'>
-						Proceed to payment
-					</button>
-				</Link>
-			</section>
+					{user.shopping_cart.map(item => {
+						return (
+							<Link to={`/events/${item.id}`}>
+								<div className='item-card-checkout'>
+									<p className='cart-item' key={item.title}>
+										{item.title}
+									</p>
+									<p className='cart-item-price' key={item.price}>
+										{this.currency.format(item.price)}
+									</p>
+								</div>
+							</Link>
+						)
+					})}
+					<p className='cart-item-price'>Total: {this.getTotalPrice()}</p>
+					<hr className='divider-small' />
+					<Link to='/secure_payment'>
+						<button type='button' className='button is-rounded'>
+							Proceed to payment
+						</button>
+					</Link>
+				</section>
+			</body>
 		)
 	}
 }

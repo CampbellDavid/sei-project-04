@@ -30,13 +30,15 @@ class SportCreate extends React.Component {
 
 	render() {
 		return (
-			<section className='form'>
-				<SportForm
-					sport={this.state.sport}
-					handleChange={this.handleChange}
-					handleSubmit={this.handleSubmit}
-				/>
-			</section>
+			<body className='has-navbar-fixed-top'>
+				<section className='form'>
+					<SportForm
+						sport={this.state.sport}
+						handleChange={this.handleChange}
+						handleSubmit={this.handleSubmit}
+					/>
+				</section>
+			</body>
 		)
 	}
 }

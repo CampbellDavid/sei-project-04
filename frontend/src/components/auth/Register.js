@@ -68,86 +68,88 @@ class Register extends React.Component {
 
 	render() {
 		return (
-			<section className='main-body'>
-				<h1 className='main-heading'>Register</h1>
-				<div className='form-wrapper'>
-					<form onSubmit={this.handleSubmit}>
-						<div className='main-form-group'>
-							<input
-								className='main-form-field'
-								onChange={this.handleChange}
-								placeholder='username'
-								name='username'
-								id='username'
-								required
-							/>
-							<label htmlFor='username' className='main-form-label'>
-								Username
-							</label>
-						</div>
+			<body className='has-navbar-fixed-top'>
+				<section className='main-body'>
+					<h1 className='main-heading'>Register</h1>
+					<div className='form-wrapper'>
+						<form onSubmit={this.handleSubmit}>
+							<div className='main-form-group'>
+								<input
+									className='main-form-field'
+									onChange={this.handleChange}
+									placeholder='username'
+									name='username'
+									id='username'
+									required
+								/>
+								<label htmlFor='username' className='main-form-label'>
+									Username
+								</label>
+							</div>
 
-						<div className='main-form-group'>
-							<input
-								className='main-form-field'
-								onChange={this.handleChange}
-								type='email'
-								placeholder='email'
-								name='email'
-								id='email'
-								required
-							/>
-							<label htmlFor='email' className='main-form-label'>
-								Email
-							</label>
-						</div>
+							<div className='main-form-group'>
+								<input
+									className='main-form-field'
+									onChange={this.handleChange}
+									type='email'
+									placeholder='email'
+									name='email'
+									id='email'
+									required
+								/>
+								<label htmlFor='email' className='main-form-label'>
+									Email
+								</label>
+							</div>
 
-						<div className='main-form-group'>
-							<input
-								className='main-form-field'
-								onChange={this.handleChange}
-								type='password'
-								placeholder='password'
-								name='password'
-								id='password'
-								required
-							/>
-							<label htmlFor='password' className='main-form-label'>
-								Password
-							</label>
-						</div>
+							<div className='main-form-group'>
+								<input
+									className='main-form-field'
+									onChange={this.handleChange}
+									type='password'
+									placeholder='password'
+									name='password'
+									id='password'
+									required
+								/>
+								<label htmlFor='password' className='main-form-label'>
+									Password
+								</label>
+							</div>
 
-						<div className='main-form-group'>
-							<input
-								className='main-form-field'
-								onChange={this.handleChange}
-								type='password'
-								placeholder='confirm password'
-								name='password_confirmation'
-								id='password_confirmation'
-								required
-							/>
-							<label
-								htmlFor='password_confirmation'
-								className='main-form-label'
-							>
-								Confirm Password
-							</label>
-						</div>
+							<div className='main-form-group'>
+								<input
+									className='main-form-field'
+									onChange={this.handleChange}
+									type='password'
+									placeholder='confirm password'
+									name='password_confirmation'
+									id='password_confirmation'
+									required
+								/>
+								<label
+									htmlFor='password_confirmation'
+									className='main-form-label'
+								>
+									Confirm Password
+								</label>
+							</div>
 
-						<hr className='divider' />
+							<hr className='divider' />
 
-						<div>
-							<button
-								className='button is-rounded'
-								type='submit'
-								disabled={!this.state.formValid}
-							>
-								Register
-							</button>
-						</div>
-					</form>
-				</div>
-			</section>
+							<div>
+								<button
+									className='button is-rounded'
+									type='submit'
+									disabled={!this.state.formValid}
+								>
+									Register
+								</button>
+							</div>
+						</form>
+					</div>
+				</section>
+			</body>
 		)
 	}
 }

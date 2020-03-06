@@ -33,7 +33,7 @@ class NavBar extends React.Component {
 		console.log(this.props)
 		console.log(Auth.getToken())
 		return (
-			<nav className='navbar is-dark'>
+			<nav className='navbar is-dark is-fixed-top'>
 				<div className='container'>
 					<div className='navbar-brand'>
 						<Link className='navbar-item' to='/'>

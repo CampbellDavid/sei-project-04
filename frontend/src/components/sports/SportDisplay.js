@@ -38,63 +38,65 @@ class SportDisplay extends React.Component {
 		if (!this.state.sport) return null
 		const sportId = this.props.match.params.id
 		return (
-			<section className='main-body-sport-disp'>
-				<h1 className='sport-disp-title'>{this.state.sport.name}</h1>
+			<body className='has-navbar-fixed-top'>
+				<section className='main-body-sport-disp'>
+					<h1 className='sport-disp-title'>{this.state.sport.name}</h1>
 
-				<img
-					src={this.state.sport.image}
-					alt={this.state.sport.name}
-					className='sport-img-disp'
-				/>
-				<hr className='divider-small' />
-				<Link to={'/events/create'}>
-					<button type='button' className='button is-rounded sport-arr-btn'>
-						Add Event
-					</button>
-				</Link>
-				<hr className='divider-small' />
+					<img
+						src={this.state.sport.image}
+						alt={this.state.sport.name}
+						className='sport-img-disp'
+					/>
+					<hr className='divider-small' />
+					<Link to={'/events/create'}>
+						<button type='button' className='button is-rounded sport-arr-btn'>
+							Add Event
+						</button>
+					</Link>
+					<hr className='divider-small' />
 
-				<div className='events-section'>
-					<h3 className='events-title-spt'>Events:</h3>
-					<p className='sport-card-content'>
-						{this.state.sport.events.map(event => {
-							return (
-								<Link to={`/events/${event.id}`}>
-									<p className='event-desc-spt-disp'>{event.title}</p>
-								</Link>
-							)
-						})}
-					</p>
-				</div>
-				<hr className='divider-small' />
+					<div className='events-section'>
+						<h3 className='events-title-spt'>Events:</h3>
+						<p className='sport-card-content'>
+							{this.state.sport.events.map(event => {
+								return (
+									<Link to={`/events/${event.id}`}>
+										<p className='event-desc-spt-disp'>{event.title}</p>
+									</Link>
+								)
+							})}
+						</p>
+					</div>
+					<hr className='divider-small' />
 
-				{Auth.isAuthenticated() ? (
-					<>
-						{this.isOwner() && (
-							<div>
-								<Link to={`/sports/${sportId}/amend`}>
+					{Auth.isAuthenticated() ? (
+						<>
+							{this.isOwner() && (
+								<div>
+									<Link to={`/sports/${sportId}/amend`}>
+										<button
+											className='button is-rounded sport-arr-btn'
+											type='button'
+										>
+											Amend Sport
+										</button>
+									</Link>
 									<button
-										className='button is-rounded sport-arr-btn'
-										type='button'
+										className='button is-rounded is-danger sport-arr-btn'
+										onClick={this.deleteSport}
 									>
-										Amend Sport
+										Delete Sport
 									</button>
-								</Link>
-								<button
-									className='button is-rounded is-danger sport-arr-btn'
-									onClick={this.deleteSport}
-								>
-									Delete Sport
-								</button>
-							</div>
-						)}
-					</>
-				) : null}
+								</div>
+							)}
+						</>
+					) : null}
 
-				<div className='right-column'>
-					<p className='sport-description'>{this.state.sport.description}</p>
-				</div>
-			</section>
+					<div className='right-column'>
+						<p className='sport-description'>{this.state.sport.description}</p>
+					</div>
+				</section>
+			</body>
 		)
 	}
 }

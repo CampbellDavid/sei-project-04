@@ -29,46 +29,48 @@ class Login extends React.Component {
 
 	render() {
 		return (
-			<section className='main-body'>
-				<h1 className='main-heading'>Login</h1>
-				<div className='form-wrapper'>
-					<form onSubmit={this.handleSubmit}>
-						<div className='main-form-group'>
-							<input
-								className='main-form-field'
-								placeholder='email'
-								name='email'
-								id='email'
-								onChange={this.handleChange}
-								required
-							/>
-							<label htmlFor='email' className='main-form-label'>
-								Email
-							</label>
-						</div>
-						<div className='main-form-group'>
-							<input
-								className='main-form-field'
-								type='password'
-								placeholder='password'
-								name='password'
-								id='password'
-								onChange={this.handleChange}
-								required
-							/>
-							<label htmlFor='password' className='main-form-label'>
-								Password
-							</label>
-						</div>
-						<hr className='divider' />
-						<div>
-							<button className='button is-rounded' type='submit'>
-								Login
-							</button>
-						</div>
-					</form>
-				</div>
-			</section>
+			<body className='has-navbar-fixed-top'>
+				<section className='main-body'>
+					<h1 className='main-heading'>Login</h1>
+					<div className='form-wrapper'>
+						<form onSubmit={this.handleSubmit}>
+							<div className='main-form-group'>
+								<input
+									className='main-form-field'
+									placeholder='email'
+									name='email'
+									id='email'
+									onChange={this.handleChange}
+									required
+								/>
+								<label htmlFor='email' className='main-form-label'>
+									Email
+								</label>
+							</div>
+							<div className='main-form-group'>
+								<input
+									className='main-form-field'
+									type='password'
+									placeholder='password'
+									name='password'
+									id='password'
+									onChange={this.handleChange}
+									required
+								/>
+								<label htmlFor='password' className='main-form-label'>
+									Password
+								</label>
+							</div>
+							<hr className='divider' />
+							<div>
+								<button className='button is-rounded' type='submit'>
+									Login
+								</button>
+							</div>
+						</form>
+					</div>
+				</section>
+			</body>
 		)
 	}
 }

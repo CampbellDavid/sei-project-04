@@ -45,7 +45,7 @@ class UserAmend extends React.Component {
 		if (!this.state.user) return null
 		// const { user } = this.state
 		return (
-			<>
+			<body className='has-navbar-fixed-top'>
 				{Auth.isAuthenticated() && (
 					<UserForm
 						user={this.state.user}
@@ -54,7 +54,7 @@ class UserAmend extends React.Component {
 						errors={this.state.errors}
 					/>
 				)}
-			</>
+			</body>
 		)
 	}
 }

@@ -55,11 +55,13 @@ class GroupAmend extends React.Component {
 	render() {
 		console.log(this.state)
 		return (
-			<GroupForm
-				data={this.state.data}
-				handleChange={this.handleChange}
-				handleSubmit={this.handleSubmit}
-			/>
+			<body className='has-navbar-fixed-top'>
+				<GroupForm
+					data={this.state.data}
+					handleChange={this.handleChange}
+					handleSubmit={this.handleSubmit}
+				/>
+			</body>
 		)
 	}
 }

@@ -69,47 +69,49 @@ class ShoppingCart extends React.Component {
 		if (!this.state.user) return null
 		const { user } = this.state
 		return (
-			<section className='cart-body'>
-				{Auth.isAuthenticated() && (
-					<p className='cart-head'>{user.username}'s Shopping Cart:</p>
-				)}
-				{Auth.isAuthenticated() &&
-				this.state.user.shopping_cart.length !== 0 ? (
-					this.state.user.shopping_cart.map(item => {
-						return (
-							<>
-								<Link to={`/events/${item.id}`}>
-									<div className='item-card-checkout'>
-										<h3 className='cart-item'>{item.title}</h3>
-										<h3 className='cart-item-price'>
-											{this.currency.format(item.price)}
-										</h3>
-									</div>
-								</Link>
-								<button
-									name={item.id}
-									onClick={this.remFromShopCart}
-									className='button cart-btn is-rounded is-danger'
-								>
-									Remove item
-								</button>
-								<hr className='divider' />
-							</>
-						)
-					})
-				) : (
-					<p className='cart-head'>Your cart is empty!</p>
-				)}
+			<body className='has-navbar-fixed-top'>
+				<section className='cart-body'>
+					{Auth.isAuthenticated() && (
+						<p className='cart-head'>{user.username}'s Shopping Cart:</p>
+					)}
+					{Auth.isAuthenticated() &&
+					this.state.user.shopping_cart.length !== 0 ? (
+						this.state.user.shopping_cart.map(item => {
+							return (
+								<>
+									<Link to={`/events/${item.id}`}>
+										<div className='item-card-checkout'>
+											<h3 className='cart-item'>{item.title}</h3>
+											<h3 className='cart-item-price'>
+												{this.currency.format(item.price)}
+											</h3>
+										</div>
+									</Link>
+									<button
+										name={item.id}
+										onClick={this.remFromShopCart}
+										className='button cart-btn is-rounded is-danger'
+									>
+										Remove item
+									</button>
+									<hr className='divider' />
+								</>
+							)
+						})
+					) : (
+						<p className='cart-head'>Your cart is empty!</p>
+					)}
 
-				{Auth.isAuthenticated() &&
-				this.state.user.shopping_cart.length !== 0 ? (
-					<Link to={`/user/${userId}/checkout`}>
-						<button type='button' className='button is-rounded cart-btn'>
-							Checkout
-						</button>
-					</Link>
-				) : null}
-			</section>
+					{Auth.isAuthenticated() &&
+					this.state.user.shopping_cart.length !== 0 ? (
+						<Link to={`/user/${userId}/checkout`}>
+							<button type='button' className='button is-rounded cart-btn'>
+								Checkout
+							</button>
+						</Link>
+					) : null}
+				</section>
+			</body>
 		)
 	}
 }
