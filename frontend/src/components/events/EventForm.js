@@ -90,7 +90,6 @@ const EventForm = ({ data, handleChange, handleSubmit }) => {
 							placeholder='Sport'
 							name='sport'
 							id='sport'
-							// value={data.sport} - needs to be drop down list of existing events
 						/>
 						<label htmlFor='sport' className='main-form-label'>
 							Sport

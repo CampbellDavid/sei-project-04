@@ -52,25 +52,8 @@ class EventDetailView(APIView):
                 return Response(updated_event.data, status=HTTP_202_ACCEPTED)
             return Response(updated_event.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
 
-            # updated_event_group = EventGroupSerializer(
-            #     event_group, data=request.data)
-            # if updated_event_group.is_valid():
-            #     updated_event_group.save()
-            #     return Response(updated_event_group.data, status=HTTP_202_ACCEPTED)
-            # return Response(updated_event_group.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
         except Event.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
-
-        # try:
-        #     event = Event.objects.get(pk=pk)
-        #     request.data['owner'] = request.user.id
-        #     updated_event = EventSerializer(event, data=request.data)
-        #     if updated_event.is_valid():
-        #         updated_event.save()
-        #         return Response(updated_event.data, status=HTTP_202_ACCEPTED)
-        #     return Response(updated_event.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
-        # except Event.DoesNotExist:
-        #     return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
 
     def delete(self, _request, pk):
         try:
@@ -165,12 +148,6 @@ class EventGroupDetailView(APIView):
 
             return Response(updated_event_group.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
 
-            # updated_event_group = EventGroupSerializer(
-            #     event_group, data=request.data)
-            # if updated_event_group.is_valid():
-            #     updated_event_group.save()
-            #     return Response(updated_event_group.data, status=HTTP_202_ACCEPTED)
-            # return Response(updated_event_group.errors, status=HTTP_422_UNPROCESSABLE_ENTITY)
         except EventGroup.DoesNotExist:
             return Response({'message': 'Not Found'}, status=HTTP_404_NOT_FOUND)
 

@@ -49,7 +49,3 @@ class PopulatedUserSerializer(UserSerializer):
     shopping_cart = PopulatedEventSerializer(many=True)
     wish_list = PopulatedEventSerializer(many=True)
     reviews = PopulatedReviewSerializer(many=True)
-
-    # class Meta:
-    #     model = User
-    #     fields = '__all__'

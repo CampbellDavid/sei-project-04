@@ -2,7 +2,6 @@ import React from 'react'
 import Auth from '../../lib/auth'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-// import GroupAmend from './GroupAmend'
 
 class GroupCard extends React.Component {
 	state = {

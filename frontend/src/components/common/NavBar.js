@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-// import { notify } from "react-notify-toast"
 import Auth from '../../lib/auth'
 
 class NavBar extends React.Component {
@@ -18,7 +17,6 @@ class NavBar extends React.Component {
 
 	handleLogout = () => {
 		Auth.logout()
-		// notify.show('You\'ve logged out!', 'custom', 3000, { background: 'FFFFF0' })
 		this.props.history.push('/')
 	}
 

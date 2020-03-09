@@ -1,5 +1,4 @@
 import React from 'react'
-// import { render } from 'react-dom'
 import Card from 'react-credit-cards'
 import Auth from '../../../lib/auth'
 import axios from 'axios'
@@ -10,7 +9,6 @@ import {
 	formatFormData
 } from './utils'
 import 'react-credit-cards/es/styles-compiled.css'
-// import styles from '../../../stylesheets/styles.css'
 
 class Payment extends React.Component {
 	state = {
@@ -125,7 +123,6 @@ class Payment extends React.Component {
 										<label htmlFor='number' className='main-form-label'>
 											Card Number
 										</label>
-										{/* <small>E.g.: 49..., 51..., 36..., 37...</small> */}
 									</div>
 									<div className='main-form-group'>
 										<input

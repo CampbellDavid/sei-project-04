@@ -17,13 +17,6 @@ class SportSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# Will only display sport name where needed
-# class SportSerializerForEvent(serializers.ModelSerializer):
-#     class Meta:
-#         model = Sport
-#         fields = ['name']
-
-
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
@@ -41,10 +34,9 @@ class PopulatedReviewSerializer(ReviewSerializer):
 
 
 class PopulatedEventSerializer(EventSerializer):
-    # sport = SportSerializer()
+
     reviews = PopulatedReviewSerializer(many=True)
     owner = UserSerializer()
-    # group = PopulatedEventGroupSerializer(many=True)
 
 
 class EventGroupSerializer(serializers.ModelSerializer):
@@ -64,15 +56,6 @@ class PopulatedEventGroupSerializer(EventGroupSerializer):
     event = PopulatedEventSerializer()
     owner = UserSerializer()
 
-
-# class PopulatedEventGroupSerializer(EventGroupSerializer):
-#     event = PopulatedEventSerializer()
-#     owner = UserSerializer()
-#     attendees = serializers.SerializerMethodField()
-
-#     def get_attendees(self, obj):
-#         # check to see if correct
-#         return [User.data for Users in obj.attendees.all()]
 
 class PartialEventGroupSerializer(serializers.ModelSerializer):
     class Meta:

@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-// import Auth from "../../lib/auth"
 import GroupForm from './GroupForm'
 import { headers } from './../../lib/headers'
 
