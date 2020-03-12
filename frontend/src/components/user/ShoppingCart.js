@@ -53,7 +53,7 @@ class ShoppingCart extends React.Component {
 			<body className='has-navbar-fixed-top'>
 				<section className='cart-body'>
 					{Auth.isAuthenticated() && (
-						<p className='cart-head'>{user.username}'s Shopping Cart:</p>
+						<p className='cart-head'>Shopping Cart for {user.username}</p>
 					)}
 					{Auth.isAuthenticated() &&
 					this.state.user.shopping_cart.length !== 0 ? (
