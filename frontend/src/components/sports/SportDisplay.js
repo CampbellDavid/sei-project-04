@@ -11,7 +11,7 @@ class SportDisplay extends React.Component {
 	async componentDidMount() {
 		try {
 			const sportId = this.props.match.params.id
-			const response = await axios.get(`/api/sports/${sportId}`)
+			const response = await axios.get(`/api/sports/${sportId}/`)
 			this.setState({ sport: response.data })
 		} catch (error) {
 			console.log(error)

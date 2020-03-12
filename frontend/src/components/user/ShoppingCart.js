@@ -44,25 +44,6 @@ class ShoppingCart extends React.Component {
 		minimumFractionDigits: 2
 	})
 
-	// handleChange = e => {
-	//   const user = { ...this.state.user, [e.target.name]: e.target.value }
-	//   const errors = { ...this.state.errors, [e.target.name]: '' }
-	//   this.setState({ user, errors })
-	// }
-
-	// handleSubmit = async e => {
-	//   e.preventDefault()
-	//   const userId = this.props.match.params.id
-	//   try {
-	//     await axios.put(`/api/user/${userId}`, this.state.user, {
-	//       headers: { Authorization: `Bearer ${Auth.getToken()}` }
-	//     })
-	//     this.props.history.push(`api/user/${userId}`)
-	//   } catch (error) {
-	//     console.log(error)
-	//   }
-	// }
-
 	render() {
 		const userId = Auth.getPayload().sub
 		console.log('rendering')

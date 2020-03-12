@@ -18,8 +18,8 @@ class EventDisplay extends React.Component {
 			const eventId = this.props.match.params.id
 			await axios
 				.all([
-					axios.get(`/api/events/${eventId}`),
-					axios.get(`/api/events/${eventId}/event_groups`),
+					axios.get(`/api/events/${eventId}/`),
+					axios.get(`/api/events/${eventId}/event_groups/`),
 					Auth.getPayload() && axios.get(`/api/user/${userId}`)
 				])
 				.then(

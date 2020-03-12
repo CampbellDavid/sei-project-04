@@ -43,7 +43,7 @@ class UserAmend extends React.Component {
 	render() {
 		console.log('rendering')
 		if (!this.state.user) return null
-		// const { user } = this.state
+
 		return (
 			<body className='has-navbar-fixed-top'>
 				{Auth.isAuthenticated() && (

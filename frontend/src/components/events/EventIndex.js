@@ -11,8 +11,9 @@ class EventIndex extends React.Component {
 
 	async componentDidMount() {
 		try {
-			const response = await axios.get('/api/events')
+			const response = await axios.get('/api/events/')
 			this.setState({ events: response.data })
+			console.log(response.data)
 		} catch (error) {
 			console.log(error)
 		}

@@ -19,7 +19,7 @@ class GroupAmend extends React.Component {
 
 		try {
 			const response = await axios.get(
-				`/api/events/${eventId}/event_groups/${groupId}`
+				`/api/events/${eventId}/event_groups/${groupId}/`
 			)
 			this.setState({ event_group: response.data })
 			console.log(eventId)

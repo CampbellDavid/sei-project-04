@@ -11,7 +11,7 @@ class SportIndex extends React.Component {
 
 	async componentDidMount() {
 		try {
-			const response = await axios.get('/api/sports')
+			const response = await axios.get('/api/sports/')
 			this.setState({ sports: response.data })
 		} catch (error) {
 			console.log(error)
