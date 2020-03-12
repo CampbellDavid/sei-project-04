@@ -1,0 +1,42 @@
+[
+{
+  "model": "sports.sport",
+  "pk": 1,
+  "fields": {
+    "name": "Skydiving",
+    "image": "https://www.experiencedays.co.uk/images/UK-Parachute-Services-Ltd-Tandem-Dive-The-Leap-1920x1080-resize.jpg",
+    "description": "Skydiving is a method of transiting from a high point to Earth with the aid of gravity, involving the control of speed during the descent using a parachute or parachutes.",
+    "owner": 2
+  }
+},
+{
+  "model": "sports.sport",
+  "pk": 2,
+  "fields": {
+    "name": "Hang Gliding",
+    "image": "https://miro.medium.com/max/4096/1*4MNoTuO1SPiRlX12tgXzlw.jpeg",
+    "description": "Hang gliding is an air sport or recreational activity in which a pilot flies a light, non-motorised foot-launched heavier-than-air aircraft called a hang glider.",
+    "owner": 3
+  }
+},
+{
+  "model": "sports.sport",
+  "pk": 3,
+  "fields": {
+    "name": "Rock Climbing",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/2/20/Rock_Climbing_in_Mirabad_-_Nishapur_05.JPG",
+    "description": "Rock climbing is a sport in which participants climb up, down or across natural rock formations or artificial rock walls. The goal is to reach the summit of a formation or the endpoint of a usually pre-defined route without falling.",
+    "owner": 4
+  }
+},
+{
+  "model": "sports.sport",
+  "pk": 4,
+  "fields": {
+    "name": "Bungee Jumping",
+    "image": "https://cdn.getyourguide.com/img/tour_img-1984692-148.jpg",
+    "description": "Bungee jumping, also spelt bungy jumping, is an activity that involves a person jumping from a great height while connected to a large elastic cord.",
+    "owner": 5
+  }
+}
+]

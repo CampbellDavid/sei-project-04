@@ -1,0 +1,117 @@
+[
+{
+  "model": "jwt_auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$rftRdRI9Tjak$/ZSeho+vra9dDP17dTfON0yRYZlNXpHY2DzBre+8kcg=",
+    "last_login": "2020-03-12T11:49:22.310Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2020-03-12T11:48:24.498Z",
+    "email": "admin",
+    "profile_image": "",
+    "bio": "",
+    "sex": "",
+    "groups": [],
+    "user_permissions": [],
+    "wish_list": [],
+    "shopping_cart": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pass1",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "jenniferlawrence",
+    "first_name": "Jennifer",
+    "last_name": "Lawrence",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-03-12T11:49:35Z",
+    "email": "jenniferlawrence@email",
+    "profile_image": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxITEhUSEhIVFRUXFhUVFRcWFRUVFRcVFRUYFhUWFRUYHSggGBolGxcVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGi0lIB8tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0rLf/AABEIAPsAyQMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAEAQIDBQYABwj/xAA/EAABAwEGAwYEAwYFBQEAAAABAAIRAwQFEiExQVFhcQYTIoGRoTKxwfAU0eFCYnKSorIHI1KC8RUWM7PCU//EABkBAAIDAQAAAAAAAAAAAAAAAAEDAAIEBf/EACURAAIDAAICAgICAwAAAAAAAAABAgMREiEEMRNBImEyURRxgf/aAAwDAQACEQMRAD8A9DXJYXLSQRIUq",
+    "bio": "Jennifer Shrader Lawrence (born August 15, 1990) is an American actress. The films she has acted in have grossed over $6 billion worldwide, and she was the highest-paid actress in the world in 2015 and 2016.",
+    "sex": "Female",
+    "groups": [],
+    "user_permissions": [],
+    "wish_list": [],
+    "shopping_cart": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pass1",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "jakegyllenhaal",
+    "first_name": "Jake",
+    "last_name": "Gyllenhaal",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-03-12T11:52:46Z",
+    "email": "jakegyllenhaal@email",
+    "profile_image": "https://www.biography.com/.image/t_share/MTE4MDAzNDEwNzk1MjAyMDYy/jake-gyllenhaal-16242387-1-402.jpg",
+    "bio": "Jacob Benjamin Gyllenhaal (common: /\u02c8d\u0292\u026al\u0259nh\u0254\u02d0l/,[1] correct: [\u02c8j\u028f\u0302l\u02d0\u025bn\u02cch\u0251\u02d0l];[2] born December 19, 1980) is an American actor and film producer. Born into the Gyllenhaal family, he is the son of director Stephen Gyllenhaal and screenwriter Naomi Foner.",
+    "sex": "Male",
+    "groups": [],
+    "user_permissions": [],
+    "wish_list": [],
+    "shopping_cart": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pass1",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "beyonceknowles",
+    "first_name": "Beyonce",
+    "last_name": "Knowles",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-03-12T11:54:04Z",
+    "email": "beyonceknowles@email",
+    "profile_image": "https://upload.wikimedia.org/wikipedia/commons/4/43/Beyonc%C3%A9_2019.png",
+    "bio": "Beyonc\u00e9 Giselle Knowles-Carter (/bi\u02d0\u02c8j\u0252nse\u026a/ bee-YON-say; born September 4, 1981)[4] is an American singer, songwriter, record producer, dancer and actress.",
+    "sex": "Female",
+    "groups": [],
+    "user_permissions": [],
+    "wish_list": [],
+    "shopping_cart": []
+  }
+},
+{
+  "model": "jwt_auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pass1",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "tomhanks",
+    "first_name": "Tom",
+    "last_name": "Hanks",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2020-03-12T11:55:15Z",
+    "email": "tomhanks@email",
+    "profile_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Tom_Hanks_TIFF_2019.jpg/800px-Tom_Hanks_TIFF_2019.jpg",
+    "bio": "Hanks' films have grossed more than $4.9 billion at U.S. and Canadian box offices and more than $9.96 billion worldwide,[2] making him the fifth-highest-grossing actor in North America.",
+    "sex": "Male",
+    "groups": [],
+    "user_permissions": [],
+    "wish_list": [],
+    "shopping_cart": []
+  }
+}
+]

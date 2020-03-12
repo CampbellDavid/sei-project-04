@@ -1,0 +1,107 @@
+[
+{
+  "model": "events.event",
+  "pk": 1,
+  "fields": {
+    "title": "Rock Climbing USA",
+    "location": "Los Angeles, CA",
+    "price": 50,
+    "sport": 3,
+    "time_and_date": "2020-03-25T18:00:00Z",
+    "owner": 5,
+    "description": "Rock Climbing this March in LA!"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 2,
+  "fields": {
+    "title": "Bungee Jump - London",
+    "location": "London, UK",
+    "price": 100,
+    "sport": 4,
+    "time_and_date": "2020-03-30T12:00:00Z",
+    "owner": 4,
+    "description": "Bungee Jumping in London - end of March 2020."
+  }
+},
+{
+  "model": "events.event",
+  "pk": 3,
+  "fields": {
+    "title": "Sky Diving in Atlanta",
+    "location": "Atlanta, GA",
+    "price": 199,
+    "sport": 1,
+    "time_and_date": "2020-04-16T06:00:00Z",
+    "owner": 3,
+    "description": "Sky Diving event in Atlanta near mid-April!"
+  }
+},
+{
+  "model": "events.event",
+  "pk": 4,
+  "fields": {
+    "title": "Hang Gliding tours - AUS",
+    "location": "Sydney, AUS",
+    "price": 149,
+    "sport": 2,
+    "time_and_date": "2020-05-12T06:00:00Z",
+    "owner": 2,
+    "description": "Hang Gliding event - morning time - Sydney"
+  }
+},
+{
+  "model": "events.eventgroup",
+  "pk": 1,
+  "fields": {
+    "group_name": "Group one - Hang Gliding",
+    "event": 4,
+    "owner": 2,
+    "attendees": [
+      2,
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "events.eventgroup",
+  "pk": 2,
+  "fields": {
+    "group_name": "Group one - Skydiving",
+    "event": 3,
+    "owner": 4,
+    "attendees": [
+      4,
+      5
+    ]
+  }
+},
+{
+  "model": "events.eventgroup",
+  "pk": 3,
+  "fields": {
+    "group_name": "Group one - Bungee Jumping",
+    "event": 2,
+    "owner": 5,
+    "attendees": [
+      2,
+      5
+    ]
+  }
+},
+{
+  "model": "events.eventgroup",
+  "pk": 4,
+  "fields": {
+    "group_name": "Group one - Rock Climbing",
+    "event": 1,
+    "owner": 4,
+    "attendees": [
+      3,
+      4
+    ]
+  }
+}
+]
