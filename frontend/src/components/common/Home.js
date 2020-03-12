@@ -14,7 +14,7 @@ const Home = () => (
 		<section style={sectionStyle} className='hero is-fullheight-with-navbar'>
 			<div className='container'>
 				<div className='text-container'>
-					<h1 className='heading-hero'>EXTREME Meet Up</h1>
+					<h1 className='heading-hero'>EXTREME Meet-Up</h1>
 					<h2 className='slogan-hero'>Destroy your fear.</h2>
 				</div>
 			</div>
