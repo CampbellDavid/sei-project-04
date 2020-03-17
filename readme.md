@@ -112,95 +112,63 @@ The backend of this app was created over the courdse of two days and was edited 
 
 <img src="screenshots/erd.png" width=400>
 
-The ERD above demonstrates the different sections of the database and how they relate to each other.
+The ERD above demonstrates the different sections of the database and how they relate to each other. Many of the same user capabilities I developed with my team on project three were implemented on this project. For example, the capability to add and remove yourself from a team, create new teams, add events etc. I worked on and resolved the issues I faced from project three in project four, hence all actions that are possible in the frontend are functional in the backend. The project three database does not have all of the user capabilities or sections that this database has, for example the shopping cart or payment sections, which I was happy to have been able to develop in project four.
 
 -- FRONTEND --
 
-The frontend was developed using React.js and Axios for communication with the backend. We started developing the frontend on the second day of the project, in order to maximize our time and use the time we had efficiently. We have implemented the use of various concepts that we have learned over the preceding several weeks leading up to the development of this application.
+I used React.js to develop the frontend of the project. Axios is used to send requests to the backend and perform CRUD tasks within the database.
 
-The frontend is separated into six separate directories, all located within the 'components' directory which is located in 'src'. Each folder and nested file have been named to reflect the functionality of the file. For example, 'auth' contains files necessary for the correct execution of the login and register functions, and for the protection of access to certain member-only features within the site.
-
-Login is necessary for a user to access features such as the creation, edition and deletion of data within models; a user must be logged in to create a new event, pub or team. This was achieved through the development of the 'authorization.js' file in the 'lib' directory located in the back end. This file has been imported wherever a change to the page needs to reflect if the user is logged in and who the user is. For example, a post request to the 'teams' section of the API requires a token, reflected in the following section of code:
-
-```handleSubmit = async e => {
-    e.preventDefault()
-    const eventId = this.props.match.params.id
-    try {
-      await axios.post(`/api/events/${eventId}/teams`, this.state.team, {
-        headers: { Authorization: `Bearer ${Authorization.getToken()}` }
-      })
-      this.props.history.push(`/events/${eventId}`)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-```
-
-Meanwhile, a ternary statement was used to discern if the user was logged in to be able to show the button to create a new pub:
-
-```
-  {Authorization.isAuthenticated() ?
-    <Link to="/pubs/new">
-      <button
-        className="button"
-        type="button">New Pub</button>
-    </Link>
-    : null}
-```
-
-The isOwner() identifier was used to discern if a user's profile belonged to the currently logged in user. If this is a match, the 'edit' button will appear:
-
-```
-isOwner = () => Authorization.getPayload().sub === this.state.user._id
-
-render() {
-    const userId = this.props.match.params.id
-    return(
-      {this.isOwner() && <Link to={`/profiles/${userId}/edit`}>
-              <button type="button" className="button">Edit Profile</button>
-            </Link>}
-    )
-}
-
-export default Profile
-```
+The frontend is located in the directory named 'frontend', which sits in the root of the project. Within 'src' there is a sub-directory named 'components' where the React.js files live. Within each of these directories you can find which components offer different request types to perform CRUD requests on different sections of the database.
 
 ## Project Management
 
-We structured the ten days we had as follows:
+This project took a total of seven days to complete. The week was divided as follows:
+
 Day 1:
 
-- Planning and assignment of tasks
+- Planning and creation of GitHub repository
 
 Day 2:
 
 - Began backend development
-- Seed development
-- Tests
-- Start of frontend development
+- Created database entries through Django admin
 
-Day 3 - Day 8:
+Day 3:
 
 - Continual changes to backend as issues were discovered
-- Development of frontend
-- Testing using Mocha and Chai
+- Start of frontend development
 
-Day 9:
+Day 4 - 5:
 
-- Fixing errors so that minimum viable product can be showcased
+- Fixing errors as they became evident in the backend
+- Continued development of frontend
+
+Day 6:
+
 - Begin styling
+- Continued development of frontend
 
-Day 10:
+Day 7:
 
-- Continued amendments to code for added features
-- Finishing touches to styling
+- Finished styling
+- Finished development
 
 ## Challenges & future improvements
 
-I believe we produced an exceptional amount of work and to a high standard for the ten days we had to produce this project, working very well as a team with ambitious goals and a can-do approach to problem solving.
+For the week I had, this project was challenging in many ways. My time management skills were greatly improved in this project; as I was completing this project independently, I had to allocate enoough time for each task. I believe I achieved this well, as I managed to complete all the sections that I wanted to wthin the allotted space of time.
 
-Given more time, the added features we wanted to implement include the capability of an instant messaging feature, the ability to take payments for pub quizzes and for the app to display who has paid in the team, the ability to 'buy a pint' for other users. Additionally, more time would ideally have been allocated to styling the site, however we collectively agreed that the application's functionality was of higher importance.
+Upon completion, I had successfully resolved all bugs within my code and had styled the site to a good degree. I am particuarly happy that I was able to add the form styling method to the code, so that the text upon the enterance of a form field floats to the top of the input section, and the line underneath changes colour. I was also happy that I was able to incorporate a shopping cart and psuedo-payment function in the code, as this was an area of the site that was inspired from a classmate later on suring the project.
 
-The app has some errors that require addressing. The first I would like to address relates to the functionality that allows users to add and remove themselves to teams within the quiz. At present, it is possible to belong to two teams at the same time; this is a bug that needs addressing so that any one user can only belong to a single team whilst they are not a member of any others. The 'add to team' function is also only visible from the front end at present, meaning when the page is refreshed the data reverts back to its original state. The reason for this was due to the time crunch we experienced when developing the application, as this was a feature we left until later and required for demonstration. It would also be good if a single user could only belong to one event at any given time, as the way the app is configured currently allows users to be able to belong to multiple teams at various pubs simultaneously. We would have liked to achieve this and have all current attending events visible to the user through the profile view page. Finally, the current team captain does not change in the case that the user who created the team leaves; we tried to set the team captain as the '0' index of the members array, however it wasn't rendering properly in the frontend.
+There are several areas of the code thay I wuld ideally like to improve and address. The first of these is the payment section; ideally if the site was live then payments would be possible, however as this is a mock-payment section, I am not looking to successfuly take payments, but simply demonstrate that this is achievable. At current, the payment section displays a 'PAY' function, which upon actication should ideally process a user's payment and display a success of failure message. Time contraints meant that this button remains inactuve, however I would have ideally allowed for a psuedo-success and -failure page to display when this button is pressed.
 
-Additionally, a user is currently able to add multiple star ratings to a single pub, which is a big that needs addressing. We would achieve this through the use of the .contains() method on the star rating array, as the array is set up to consist of objects which has the user data nested within; the star rating number simply returns the sum of all ratings divided by the length of how many users have left a star rating.
+Another section for developemt is the comments capability on events. I wanted to include this section as a possinility for users to post comments, however again, I fely that this was not of as great importance compared to other sections of the app that I waned to develop, hence it was left out in the end roduct. The database is set up to enable comments however.
+
+At current, the database displays all groups belonging to all events when a `GET` request is sent to the event groups secion of the databsse. This is not ideal, as the request should only return groups that are uniqe to the specified event. In order to fix this is a timely manner, I added a filter method in the `event_display` page, as each event group also contains an event ID.
+
+Currently, if a user is not logged in, the event_display page will not load, as there is an if statement telling the page to render `null` if the user is not logged in. I added this conditional so that the correct buttons could display if the user is the owber of an event, hence the user could delete and edit the event as they wish. Removing this conditional statement breaks the code, so I would have to look into an effective way of renering the buttons appropriately and not nreaking the code at the same time.
+
+I wanted to add an image upload feature for the user and for sports, however again this was something that I felt was not of such great importance compared to other sections of the app when I was developing it, as the user can still add an image using the direct URL. To achieve this, I would have sued cloudinary and allowed the user to browse for an image in their local directory, appending it to the sport as requested.
+
+I would ideally have also liekd to add a map for the event locatons; at current, just the event locaton is shown as theuser inputs it through the event form.
+
+Finally, the site currently breaks upon a user trying to enter enter a value for the sport when a new event is created. This is an issue in the frontend; the form is not hooked-up to the appropriate section of the database, and therefore cannot read which sports are available to choose from. This is a one ti many relationship (one sport - many events) and so a dropdown box with possible events would be approrriate in order to fix this issue.
