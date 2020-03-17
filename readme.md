@@ -28,7 +28,7 @@ This was a solo project for the Software Engineering Immersive at General Assemb
 
 User registration and login is required if the user wishes to perform create, update and delete functions on the database. Read capabilities are accessible without registration, however due to the setup of some sections of the site, a user may not be able to read data on come pages, as the code will return null if there is no user present. This is a bug I need to look into fixing, as I would like to enable the user to access sections of the site without registration.
 
-<img src="screenshots/login_screen.png" width=700>
+<img src="screenshots/login_screen.png" width=400>
 
 #
 
@@ -36,7 +36,7 @@ User registration and login is required if the user wishes to perform create, up
 
 Once logged in, users can navigate to the 'MY ACCOUNT' section (accessible from the navigation bar) if they wish to edit any section of their account, such as updating their name, password or profile image.
 
-<img src="screenshots/user_form.png" width=700>
+<img src="screenshots/user_form.png" width=400>
 
 #
 
@@ -44,7 +44,7 @@ Once logged in, users can navigate to the 'MY ACCOUNT' section (accessible from 
 
 The homepage is the page any user is presented with upon navigation to the URL. This displays the site name, slogan and an image. Users can navigate to other sections of the app from here using the links in the navigation bar.
 
-<img src="screenshots/home_screen.png" width=700>
+<img src="screenshots/home_screen.png" width=400>
 
 #
 
