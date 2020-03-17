@@ -4,7 +4,7 @@
 
 Software Engineering Immersive: Project 4 (Solo Project)
 
-This was a solo project for the Software Engineering Immersive at General Assembly London (Week 12) built with React.js and Django.
+This was a solo project for the Software Engineering Immersive at General Assembly London (Week 12), built with React.js and Django.
 
 ## Built With
 
