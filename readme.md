@@ -38,6 +38,10 @@ Once logged in, users can navigate to the 'MY ACCOUNT' section (accessible from 
 
 <img src="screenshots/user_form.png" width=600>
 
+The user can view their own profile or any other user's profile by entering the user ID in the URL, or by clicking on a user's card in the `event_group` section of the `event_display` page. If the user ID of the currently logged in user matches the profile ID, then the user will be shown an 'Edit' button, clicking which will navigate the user to the `user_form`.
+
+<img src="screenshots/user_display.png" width=600>
+
 #
 
 ## Homepage
