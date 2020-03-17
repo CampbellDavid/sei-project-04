@@ -9,7 +9,9 @@ This was a solo project for the Software Engineering Immersive at General Assemb
 ## Built With
 
 1. HTML5
-2. CSS3
+2. Styling
+   - CSS3
+   - Bulma
 3. JavaScript
    - ECMAScript6
    - React.js
