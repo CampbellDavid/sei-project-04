@@ -63,13 +63,13 @@ If a user selects a sport from the sport index page, they will then be shown the
 
 <img src="screenshots/sport_display.png" width=400>
 
-If the user created the sport in question, then 'Edit Sport' and 'Delete Sport; buttons will appear, enabling the user to respectively amend any details of the sport or delete it entirely.
+If the user created the sport in question, then 'Edit Sport' and 'Delete Sport; buttons will appear, enabling the user to respectively amend any details of the sport or delete it entirely. If the user selects the edit function, then the form displayed above will be automatically popualted with the pre-existing data.
 
 #
 
 ## Posting/editing/deleting an event
 
-Again, users must be logged in to perform CUD actions on the event section of the database. This can be achieved by loggin in, navigating to the 'EVENTS' section of the site and selecting 'Create Event'.
+Again, users must be logged in to perform CUD actions on the event section of the database (read actions do not require a user to be loggen in here). This can be achieved by loggin in, navigating to the 'EVENTS' section of the site and selecting 'Create Event'.
 
 <img src="screenshots/event_index.png" width=400>
 
@@ -77,13 +77,30 @@ A form is then displayed for the user to complete.
 
 <img src="screenshots/event_form.png" width=400>
 
-#
+The same as with the sport section, when an event is selected from the event index page, the user will be shown the event display page, which contains information in detail relating to a single event. This data includes, location, price, date, title and teams. IF the user logged in is the owner of the event, then they too can edit and delete the event by selecting the appropriate buttons that will appear if the conditions for ownership are met.
 
-## Posting/editing/deleting a new team
+<img src="screenshots/event_display.png" width=400>
 
-The team schema is nested within the event schema, as each team belongs to a specific event. The team captain is shown as the user who created the team at first, however the captain is able to remove themselves and re-join if they so wish. The 'captain' is set as the zero index of the team members array.
+The user can also add and remove the event from their wishlist and shopping cart by selecting the appropriate buttons displayed in the above screenshot. Note that the user can also add themselves to any teams nested within the event, create new teams, and if they own the team, edit the team name and delete the team altogether.
 
-<img src="src/assets/screenshots/team-create.png" width=700>
+## Shopping Cart and Checkout
+
+The user has a shopping cart that is attached to their account ID. This is a list of dictionaries that is edited whenever the user performs an update on this section of the database. The user's shopping cart can be viewed by navigating to the 'SHOPPING CART' link in the navbar.
+
+<img src="screenshots/shopping_cart.png" width=400>
+
+The shopping cart will display all items in the cart, and will also allow the user to remove any items they do not want before checkout. Each card within the checkout also links to the appropriate event display page.
+
+<img src="screenshots/checkout_screen.png" width=400>
+
+The checkout screen displays all items and the grand total. This page is for the user's information solely. They cannot remove any items from the checkout.
+
+The payment screen uses `react-credit-cards` and an animated graphic I found online that displays the user's inputted data (i.e. the card number, their name, the expiraton date and the CVC). The card graphic at the top will automatically change depending on the first series of digits that are entered, as this will dictate the card type (e.g. AMEX, MasterCard, VISA...). The graphic will also flip over to show the reverse of the card when the user clicks on the CVC field of the form.
+
+<img src="screenshots/payment_screen_card.png" width=400>
+<img src="screenshots/payment_screen_cvc.png" width=400>
+
+This section of the site is for display purposes only at current, to show what I would like to happen on the app; no payment will be taken in the case of a user netering correct card details, and none will be saved.
 
 #
 
@@ -91,13 +108,11 @@ The team schema is nested within the event schema, as each team belongs to a spe
 
 -- BACKEND --
 
-The backend of the app was developed first and foremost using MongoDB. This was necessary in order for the functions to operate correctly and render properly on the frontend. A first structure of the backend was primarily developed, and changes were made throughout the duration of the project in response to issues that needed addressing and when functionality was added.
+The backend of this app was created over the courdse of two days and was edited as capabilities and errors were discovered. I used Django to develop the backend for this project.
 
-The following diagram illustrates the relationship between various models used within our database:
+<img src="screenshots/erd.png" width=400>
 
-<img src="src/assets/relational-map.png" width=400 height=400>
-
-The above model demonstrates which data elements are nested within which model (found in the 'models' folder) and how they relate to the other. A dashed line with a triple-linear attachment to the model indicated that said model is supplied with many forms of the data coming from the connected model, whilst a dashed line with a single-linear attachment after indicated that said model is supplied with one form of the data coming from the connected model. For example, the 'pubs' model is connected to the 'star rating' model via a dashed line that is connected to the 'pubs' model using a singular connector, and the 'star rating' model using a triple connector, indicating that one pub can have many star ratings, and a single star rating can only belong to one pub.
+The ERD above demonstrates the different sections of the database and how they relate to each other.
 
 -- FRONTEND --
 
