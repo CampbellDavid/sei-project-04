@@ -82,6 +82,8 @@ The same as with the sport section, when an event is selected from the event ind
 
 The user can also add and remove the event from their wish list and shopping cart by selecting the appropriate buttons displayed in the above screenshot. Note that the user can also add themselves to any teams nested within the event, create new teams, and if they own the team, edit the team name and delete the team altogether.
 
+#
+
 ## Shopping Cart and Checkout
 
 The user has a shopping cart that is attached to their account ID. This is a list of dictionaries that is edited whenever the user performs an update on this section of the database. The user's shopping cart can be viewed by navigating to the 'SHOPPING CART' link in the navbar.
