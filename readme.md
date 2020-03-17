@@ -20,7 +20,6 @@ This was a solo project for the Software Engineering Immersive at General Assemb
    - Django
 5. Testing
    - Manual: Insomnia
-   - Automated: Mocha & Chai
 6. GitHub
 
 # User Experience
@@ -110,7 +109,7 @@ This section of the site is for display purposes only at current, to show what I
 
 The backend of this app was created over the course of two days and was edited as capabilities and errors were discovered. I used Django to develop the backend for this project.
 
-<img src="screenshots/erd.png" width=400>
+<img src="screenshots/erd.png" width=700>
 
 The ERD above demonstrates the different sections of the database and how they relate to each other. Many of the same user capabilities I developed with my team on project three were implemented on this project. For example, the capability to add and remove yourself from a team, create new teams, add events etc. I worked on and resolved the issues I faced from project three in project four, hence all actions that are possible in the frontend are functional in the backend. The project three database does not have all of the user capabilities or sections that this database has, for example the shopping cart or payment sections, which I was happy to have been able to develop in project four.
 
