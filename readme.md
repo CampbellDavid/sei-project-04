@@ -160,6 +160,16 @@ Day 7:
 - Finished styling
 - Finished development
 
+## Successes and key learnings
+
+I chose to challenge myself with project four by doing it individually. This was challenging in many ways, as I had the same amount of time to complete this project as I did with project three, only this time I was independently creating a frontend and backend using a new language (Python).
+
+The main success here was that I proved to myself I was capable of producing a full-stack application by myself and with some help from my tutors. I had to learn a lot of content at a fast pace in order to produce an application that I believed delivered a more than satisfactory end result. I really got to grips with the syntax and structure of python and thoroughly enjoyed using it to develop the backend.
+
+I also gained skills relating to the presentation of the application (using CSS) and some skills relating to user experience.
+
+Additionally, I was able to expand on my organisation skills, my problem-solving abilities, my time management skills, and my prioritisation skills.
+
 ## Challenges & future improvements
 
 For the week that I had, this project was challenging in many ways. My time management skills were greatly improved; because I was completing this project independently, I had to allocate enough time for each task. I believe I achieved this well, as I managed to complete all the sections that I wanted to within the allotted space of time.
