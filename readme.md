@@ -166,7 +166,9 @@ I chose to challenge myself with project four by doing it individually. This was
 
 The main success here was that I proved to myself I was capable of producing a full-stack application by myself and with some help from my tutors. I had to learn a lot of content at a fast pace in order to produce an application that I believed delivered a more than satisfactory end result. I really got to grips with the syntax and structure of python and thoroughly enjoyed using it to develop the backend.
 
-Additionally, I also gained skills relating to the presentation of the application (using CSS) and some skills relating to user experience. I was also able to expand on my organisation skills, problem-solving abilities, time management skills and prioritisation skills.
+I also gained skills relating to the presentation of the application (using CSS) and some skills relating to user experience.
+
+Additionally, I was able to expand on my organisation skills, my problem-solving abilities, my time management skills, and my prioritisation skills.
 
 ## Challenges & future improvements
 
