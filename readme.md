@@ -113,19 +113,19 @@ This section of the site is for display purposes only at current, to show what I
 
 ## Planning
 
--- BACKEND --
+-- BACK END --
 
-The backend of this app was created over the course of two days and was edited as capabilities and errors were discovered. I used Django to develop the backend for this project.
+The back end of this app was created over the course of two days and was edited as capabilities and errors were discovered. I used Django to develop the back end for this project.
 
 <img src="screenshots/erd.png" width=700>
 
-The ERD above demonstrates the different sections of the database and how they relate to each other. Many of the same user capabilities I developed with my team on project three were implemented on this project. For example, the capability to add and remove yourself from a team, create new teams, add events etc. I worked on and resolved the issues I faced from project three in project four, hence all actions that are possible in the frontend are functional in the backend. The project three database does not have all of the user capabilities or sections that this database has, for example the shopping cart or payment sections, which I was happy to have been able to develop in project four.
+The ERD above demonstrates the different sections of the database and how they relate to each other. Many of the same user capabilities I developed with my team on project three were implemented on this project. For example, the capability to add and remove yourself from a team, create new teams, add events etc. I worked on and resolved the issues I faced from project three in project four, hence all actions that are possible in the front end are functional in the back end. The project three database does not have all of the user capabilities or sections that this database has, for example the shopping cart or payment sections, which I was happy to have been able to develop in project four.
 
--- FRONTEND --
+-- FRONT END --
 
-I used React.js to develop the frontend of the project. Axios is used to send requests to the backend and perform CRUD tasks within the database.
+I used React.js to develop the front end of the project. Axios is used to send requests to the back end and perform CRUD tasks within the database.
 
-The frontend is located in the directory named 'frontend', which sits in the root of the project. Within 'src' there is a sub-directory named 'components' where the React.js files live. Within each of these directories you can find which components offer different request types to perform CRUD requests on different sections of the database.
+The front end is located in the directory named 'front end', which sits in the root of the project. Within 'src' there is a sub-directory named 'components' where the React.js files live. Within each of these directories you can find which components offer different request types to perform CRUD requests on different sections of the database.
 
 ## Project Management
 
@@ -137,23 +137,23 @@ Day 1:
 
 Day 2:
 
-- Began backend development
+- Began back end development
 - Created database entries through Django admin
 
 Day 3:
 
-- Continual changes to backend as issues were discovered
-- Start of frontend development
+- Continual changes to back end as issues were discovered
+- Start of front end development
 
 Day 4 - 5:
 
-- Fixing errors as they became evident in the backend
-- Continued development of frontend
+- Fixing errors as they became evident in the back end
+- Continued development of front end
 
 Day 6:
 
 - Begin styling
-- Continued development of frontend
+- Continued development of front end
 
 Day 7:
 
@@ -162,9 +162,9 @@ Day 7:
 
 ## Successes and key learnings
 
-I chose to challenge myself with project four by doing it individually. This was challenging in many ways, as I had the same amount of time to complete this project as I did with project three, only this time I was independently creating a frontend and backend using a new language (Python).
+I chose to challenge myself with project four by doing it individually. This was challenging in many ways, as I had the same amount of time to complete this project as I did with project three, only this time I was independently creating a front end and back end using a new language (Python).
 
-The main success here was that I proved to myself I was capable of producing a full-stack application by myself and with some help from my tutors. I had to learn a lot of content at a fast pace in order to produce an application that I believed delivered a more than satisfactory end result. I really got to grips with the syntax and structure of python and thoroughly enjoyed using it to develop the backend.
+The main success here was that I proved to myself I was capable of producing a full-stack application by myself and with some help from my tutors. I had to learn a lot of content at a fast pace in order to produce an application that I believed delivered a more than satisfactory end result. I really got to grips with the syntax and structure of python and thoroughly enjoyed using it to develop the back end.
 
 Additionally, I gained skills relating to the presentation of the application (using CSS) and some skills relating to user experience. I was also able to expand on my organisation skills, problem-solving abilities, time management skills and prioritisation skills.
 
@@ -188,6 +188,6 @@ There are several areas of the code that I would ideally like to improve and add
 
 - I would ideally have liked to add a map for the event locations. At current, just the event location is shown as the creator has input it through the event form.
 
-- When a CRUD request is sent to the backend and fails, there is no error handler that displays a message to the user (for example, if the user enters an incorrect password). This is a function that I would have developed with an appropriate error handler, the same as was implemented in project three.
+- When a CRUD request is sent to the back end and fails, there is no error handler that displays a message to the user (for example, if the user enters an incorrect password). This is a function that I would have developed with an appropriate error handler, the same as was implemented in project three.
 
-- Finally, the site currently breaks upon a user trying to enter a value for the sport when a new event is created. This is an issue in the frontend; the form is not hooked-up to the appropriate section of the database, and therefore cannot read which sports are available to choose from. This is a one to many relationship (one sport to many events) and so a dropdown box with possible events would be appropriate in order to fix this issue.
+- Finally, the site currently breaks upon a user trying to enter a value for the sport when a new event is created. This is an issue in the front end; the form is not hooked-up to the appropriate section of the database, and therefore cannot read which sports are available to choose from. This is a one to many relationship (one sport to many events) and so a dropdown box with possible events would be appropriate in order to fix this issue.
